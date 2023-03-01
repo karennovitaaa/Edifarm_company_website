@@ -7,14 +7,14 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>SocialV | Responsive Bootstrap 4 Admin Dashboard Template</title>
       
-      <link rel="shortcut icon" href="../assets/images/favicon.ico" />
-      <link rel="stylesheet" href="../assets/css/libs.min.css">
-      <link rel="stylesheet" href="../assets/css/socialv.css?v=4.0.0">
-      <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-      <link rel="stylesheet" href="../assets/vendor/remixicon/fonts/remixicon.css">
-      <link rel="stylesheet" href="../assets/vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
-      <link rel="stylesheet" href="../assets/vendor/font-awesome-line-awesome/css/all.min.css">
-      <link rel="stylesheet" href="../assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+      <link rel="shortcut icon" href="images/favicon.ico" />
+      <link rel="stylesheet" href="css/libs.min.css">
+      <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
+      <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
+      <link rel="stylesheet" href="vendor/remixicon/fonts/remixicon.css">
+      <link rel="stylesheet" href="vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
+      <link rel="stylesheet" href="vendor/font-awesome-line-awesome/css/all.min.css">
+      <link rel="stylesheet" href="vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
       
   </head>
   <body class=" ">
@@ -98,20 +98,20 @@
       </div>
     
     <!-- Backend Bundle JavaScript -->
-    <script src="../assets/js/libs.min.js"></script>
+    <script src= "js/libs.min.js"></script>
     <!-- slider JavaScript -->
-    <script src="../assets/js/slider.js"></script>
+    <script src="js/slider.js"></script>
     <!-- masonry JavaScript --> 
-    <script src="../assets/js/masonry.pkgd.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
     <!-- SweetAlert JavaScript -->
-    <script src="../assets/js/enchanter.js"></script>
+    <script src="js/enchanter.js"></script>
     <!-- SweetAlert JavaScript -->
-    <script src="../assets/js/sweetalert.js"></script>
+    <script src="js/sweetalert.js"></script>
     <!-- app JavaScript -->
-    <script src="../assets/js/charts/weather-chart.js"></script>
-    <script src="../assets/js/app.js"></script>
+    <script src="js/charts/weather-chart.js"></script>
+    <script src="js/app.js"></script>
     <script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
-    <script src="../assets/js/lottie.js"></script>
+    <script src="js/lottie.js"></script>
     
   </body>
 </html>
