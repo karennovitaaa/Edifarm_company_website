@@ -22,3 +22,6 @@ Route::get('/register', function() {
 Route::get('/postingan', function() {
     return view('postingan');
 });
+Route::get('/profile', function() {
+    return view('profile');
+});

@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>SocialV | Responsive Bootstrap 5 Admin Dashboard Template</title>
+      <title>Edifarm</title>
       
       <link rel="shortcut icon" href="images/favicon.ico" />
       <link rel="stylesheet" href="css/libs.min.css">
