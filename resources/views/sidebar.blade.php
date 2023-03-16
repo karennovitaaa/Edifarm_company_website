@@ -25,7 +25,7 @@
                   <ul id="iq-sidebar-toggle" class="iq-menu">
                       <li class="active">
                           <a href="/postingan" class=" "> 
-                              <i class="las la-newspaper"></i><span>Newsfeed</span>
+                              <i class="las la-newspaper"></i><span>Postingan</span>
                           </a>
                       </li>
                       <li class="">
