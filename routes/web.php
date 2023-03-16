@@ -6,7 +6,9 @@ use App\Http\Controllers\BlogController;
 
 Route::get('/table', [BlogController::class, 'table']);
 Route::get('/lapor', [BlogController::class, 'lapor']);
-
+Route::get('/postingan', [SideController::class, 'post']);
+Route::get('/profile', [SideController::class, 'profile']);
+Route::get('/edit_profile', [SideController::class, 'editprofile']);
 Route::get('/login', function() {
     return view('login');
 });
@@ -18,4 +20,7 @@ Route::get('/postingan', function() {
 });
 Route::get('/profile', function() {
     return view('profile');
+});
+Route::get('/edit_profile', function() {
+    return view('edit_profile');
 });
