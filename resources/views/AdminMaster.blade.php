@@ -7,7 +7,8 @@
       <title>Edifarm</title>
       
       <link rel="shortcut icon" href="images/favicon.ico" />
-      <link rel="stylesheet" href="css/libs.min.css">
+      <!-- <link rel="stylesheet" href="css/libs.min.css"> -->
+      <link rel="stylesheet" href="{{ asset('css/libs.min.css') }}">
       <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
       <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
       <link rel="stylesheet" href="vendor/remixicon/fonts/remixicon.css">
@@ -24,7 +25,7 @@
               <nav class="iq-sidebar-menu">
                   <ul id="iq-sidebar-toggle" class="iq-menu">
                       <li class="">
-                          <a href="/table" class=" "> 
+                          <a href="/table" class=""> 
                               <i class="las la-users"></i><span>Newsfeed</span>
                           </a>
                       </li>
