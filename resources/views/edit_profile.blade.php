@@ -10,12 +10,12 @@
                             <ul class="iq-edit-profile row nav nav-pills">
                                 <li class="col-md-3 p-0">
                                     <a class="nav-link active" data-bs-toggle="pill" href="#personal-information">
-                                        Personal Information
+                                        Informasi Pribadi
                                     </a>
                                 </li>
                                 <li class="col-md-3 p-0">
                                     <a class="nav-link" data-bs-toggle="pill" href="#chang-pwd">
-                                        Change Password
+                                        Ganti Password
                                     </a>
                                 </li>
                             </ul>
@@ -30,7 +30,7 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between">
                                     <div class="header-title">
-                                        <h4 class="card-title">Personal Information</h4>
+                                        <h4 class="card-title">Informasi Pribadi</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -48,38 +48,38 @@
                                         </div>
                                         <div class=" row align-items-center">
                                             <div class="form-group col-sm-6">
-                                                <label for="fname"  class="form-label">First Name:</label>
+                                                <label for="fname"  class="form-label">Nama Lengkap:</label>
                                                 <input type="text" class="form-control" id="fname" placeholder="Bni">
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                <label for="lname" class="form-label">Last Name:</label>
+                                                <label for="lname" class="form-label">Nama Pengguna:</label>
                                                 <input type="text" class="form-control" id="lname" placeholder="Jhon">
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                <label for="uname" class="form-label">User Name:</label>
+                                                <label for="uname" class="form-label">Perusahaan:</label>
                                                 <input type="text" class="form-control" id="uname" placeholder="Bni@01">
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                <label for="cname" class="form-label">City:</label>
+                                                <label for="cname" class="form-label">Kota Asal:</label>
                                                 <input type="text" class="form-control" id="cname" placeholder="Atlanta">
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                <label class="form-label d-block">Gender:</label>
+                                                <label class="form-label d-block">Jenis Kelamin:</label>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio10" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio10"> Male</label>
+                                                    <label class="form-check-label" for="inlineRadio10"> Laki-laki</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio11" value="option1">
-                                                    <label class="form-check-label" for="inlineRadio11">Female</label>
+                                                    <label class="form-check-label" for="inlineRadio11">Perempuan</label>
                                                 </div>
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                <label for="dob" class="form-label">Date Of Birth:</label>
+                                                <label for="dob" class="form-label">Tanggal Lahir:</label>
                                                 <input  class="form-control" id="dob" placeholder="1984-01-24">
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                <label class="form-label">Marital Status:</label>
+                                                <label class="form-label">Status Pernikahan:</label>
                                             <select class="form-select" aria-label="Default select example">
                                                     <option selected="">Single</option>
                                                     <option>Married</option>
@@ -89,14 +89,14 @@
                                                 </select>
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                <label class="form-label">Age:</label>
+                                                <label class="form-label">Umur:</label>
                                                 <select class="form-select" aria-label="Default select example 2">
                                                 <option>46-62</option>
                                                 <option>63 > </option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                <label class="form-label">Country:</label>
+                                                <label class="form-label">Negara:</label>
                                                 <select class="form-select" aria-label="Default select example 3">
                                                 <option>Caneda</option>
                                                 <option>Noida</option>
@@ -106,7 +106,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group col-sm-6">
-                                                <label class="form-label">State:</label>
+                                                <label class="form-label">Provinsi:</label>
                                                 <select class="form-select" aria-label="Default select example 4">
                                                     <option>California</option>
                                                     <option>Florida</option>
@@ -116,7 +116,16 @@
                                                 </select>
                                             </div>
                                             <div class="form-group col-sm-12">
-                                                <label class="form-label">Address:</label>
+                                                <label class="form-label">Alamat:</label>
+                                                <textarea class="form-control" name="address" rows="5" style="line-height: 22px;">
+                                                37 Cardinal Lane
+                                                Petersburg, VA 23803
+                                                United States of America
+                                                Zip Code: 85001
+                                                </textarea>
+                                            </div>
+                                            <div class="form-group col-sm-12">
+                                                <label class="form-label">Bio:</label>
                                                 <textarea class="form-control" name="address" rows="5" style="line-height: 22px;">
                                                 37 Cardinal Lane
                                                 Petersburg, VA 23803
