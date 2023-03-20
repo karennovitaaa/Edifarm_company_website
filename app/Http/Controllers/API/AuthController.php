@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
 class AuthController extends Controller
@@ -16,20 +17,21 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
             'confirm_password' => 'required|same:password',
-            'hp' => 'required',
-            'alamat' => 'required',
-            'lahir' => 'required'
+            'phone' => 'required',
+            'address' => 'required',
+            'born_date' => 'required'
         ]);
+
         if($validator->fails()){
             return response()->json([
                 'success'=> false,
                 'massage' => 'ada kesalahan',
-                'data'=> $validator -> errors()
-            ]);
+                'data'=> $validator -> errors()->first()
+            ], 403);
         }
         $input = $request->all();
         $input['password']=bcrypt($input['password']);
-        $user = tb_akun::create($input);
+        $user = User::create($input);
 
         $success['token']=$user->createToken('auth_token')->plainTextToken;
         $success['name']=$user->name;
