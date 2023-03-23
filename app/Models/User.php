@@ -42,41 +42,41 @@ class User extends Authenticatable
 
     public function posts()
     {
-        $this->hasMany(Post::class);
+        return $this->hasMany(Post::class);
     }
 
     public function activities()
     {
-        $this->hasMany(Activity::class);
+        return $this->hasMany(Activity::class);
     }
 
     public function comments()
     {
-        $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class);
     }
 
     public function postComments()
     {
-        $this->belongsToMany(Post::class, 'comments');
+        return $this->belongsToMany(Post::class, 'comments');
     }
 
     public function likes()
     {
-        $this->hasMany(Like::class);
+        return $this->hasMany(Like::class);
     }
 
     public function postLikes()
     {
-        $this->belongsToMany(Post::class, 'likes');
+        return $this->belongsToMany(Post::class, 'likes');
     }
 
     public function reports()
     {
-        $this->hasMany(Report::class);
+        return $this->hasMany(Report::class);
     }
 
     public function postReports()
     {
-        $this->belongsToMany(Post::class, 'reports');
+        return $this->belongsToMany(Post::class, 'reports');
     }
 }

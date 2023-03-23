@@ -16,4 +16,9 @@ class Activity extends Model
         'end',
         'user_id'
     ];
+
+    public function user() :BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

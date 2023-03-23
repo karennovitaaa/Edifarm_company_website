@@ -18,13 +18,7 @@
       
   </head>
   <body class=" ">
-    <!-- loader Start -->
-    <div id="loading">
-          <div id="loading-center">
-          </div>
-    </div>
-    <!-- loader END -->
-    
+   
       <div class="wrapper">
     <section class="sign-in-page">
         <div id="container-inside">
@@ -63,23 +57,39 @@
                 <div class="col-md-6 bg-white pt-5 pt-5 pb-lg-0 pb-5">
                     <div class="sign-in-from">
                         <h1 class="mb-0">Sign Up</h1>
-                        <p>Enter your email address and password to access admin panel.</p>
-                        <form class="mt-4">
+                        <p>Enter your email data to access admin panel.</p>
+                        <form class="mt-0" method="POST" action="/authRegist">
+                        @csrf
                             <div class="form-group">
-                                <label class="form-label" for="exampleInputEmail1">Your Full Name</label>
-                                <input type="email" class="form-control mb-0" id="exampleInputEmail1" placeholder="Your Full Name">
+                                <input type="text" name="name" class="form-control mb-0" id="exampleInputEmail1" placeholder="Your Full Name" required>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="exampleInputEmail2">Email address</label>
-                                <input type="email" class="form-control mb-0" id="exampleInputEmail2" placeholder="Enter email">
+                                <!-- <label class="form-label" for="exampleInputEmail1">Your Username</label> -->
+                                <input type="text" name="username" class="form-control mb-0" id="exampleInputEmail1" placeholder="Your Username" required>
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password">
+                                <!-- <label class="form-label" for="exampleInputEmail1">Your Phone Number</label> -->
+                                <input type="number" name="phone" class="form-control mb-0" id="exampleInputEmail1" placeholder="Your Phone Number" required>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label class="form-label" for="exampleInputEmail2">Email address</label> -->
+                                <input type="email" name="email" class="form-control mb-0" id="exampleInputEmail2" placeholder="Your email" required>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label class="form-label" for="exampleInputEmail2">Born Date</label> -->
+                                <input type="date" name="born_date" class="form-control mb-0" id="exampleInputEmail2" placeholder="Born Date" required>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label class="form-label" for="exampleInputPassword1">Password</label> -->
+                                <input type="text" name="address" class="form-control mb-0" id="exampleInputPassword1" placeholder="Address" required>
+                            </div>
+                            <div class="form-group">
+                                <!-- <label class="form-label" for="exampleInputPassword1">Confirm Password</label> -->
+                                <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" required>
                             </div>
                             <div class="d-inline-block w-100">
                                 <div class="form-check d-inline-block mt-2 pt-1">
-                                    <input type="checkbox" class="form-check-input" id="customCheck1">
+                                    <input type="checkbox" class="form-check-input" id="customCheck1" required>
                                     <label class="form-check-label" for="customCheck1">I accept <a href="#">Terms and Conditions</a></label>
                                 </div>
                                 <button type="submit" class="btn btn-primary float-end">Sign Up</button>
@@ -115,6 +125,6 @@
     <script src="js/app.js"></script>
     <script src="vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
     <script src="js/lottie.js"></script>
-    
+    @include('sweetalert::alert')
   </body>
 </html>

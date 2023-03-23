@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
+Use Auth;
 class AuthController extends Controller
 {
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(),[
             'username' => 'required',
-            'level' => 'required',
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
@@ -41,5 +41,40 @@ class AuthController extends Controller
             'massage'=> 'sukses register',
             'data'=> $success
         ]);
+    }
+
+    public function login(Request $request)
+    {
+        if(Auth::attempt(['username'=> $request->username, 'password'=> $request->password, 'level'=>'admin'])){
+            $auth = Auth::user();
+            $success['token']=$auth->createToken('auth_token')->plainTextToken;
+            $success['name']=$auth->name;
+            $success['level']=$auth->level;
+
+            return response()->json([
+                'success'=> true,
+                'massage'=> 'login admin sukses',
+                'data'=> $success
+            ]);
+        }elseif(Auth::attempt(['username'=> $request->username, 'password'=> $request->password, 'level'=>'user'])){
+            $auth = Auth::user();
+            $success['token']=$auth->createToken('auth_token')->plainTextToken;
+            $success['name']=$auth->name;
+            $success['level']=$auth->level;
+
+            return response()->json([
+                'success'=> true,
+                'massage'=> 'login user sukses',
+                'data'=> $success
+            ]);
+            //return redirect('postingan'); 
+        } else{
+            return response()->json([
+                'success'=> false,
+                'massage'=> 'Pastikan email dan password sudah benar',
+                'data'=> null
+            ]);
+        }
+        
     }
 }
