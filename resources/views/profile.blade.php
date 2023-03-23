@@ -8,15 +8,11 @@
             <div class="card-body profile-page p-0">
                <div class="profile-header">
                   <div class="position-relative">
-                     <img src="/images/page-img/profile-bg1.jpg" alt="profile-bg" class="rounded img-fluid">
-                     <ul class="header-nav list-inline d-flex flex-wrap justify-end p-0 m-0">
-                        <li><a href="#"><i class="ri-pencil-line"></i></a></li>
-                        <li><a href="#"><i class="ri-settings-4-line"></i></a></li>
-                     </ul>
+                     <img src="/images/user/foto_edifarm.jpg" alt="profile-bg" class="rounded img-fluid">
                   </div>
                   <div class="user-detail text-center mb-3">
                      <div class="profile-img">
-                        <img src="/images/user/11.png" alt="profile-img" class="avatar-130 img-fluid" />
+                        <img src="/images/user/foto_profil_wishal.jpg" alt="profile-img" class="avatar-130 img-fluid" />
                      </div>
                      <div class="profile-detail">
                         <h3 class="">Wishal Azharyan Al Hisyam</h3>
@@ -774,9 +770,6 @@
                </div>
             </div>
          </div>
-      </div>
-      <div class="col-sm-12 text-center">
-         <img src="/images/page-img/page-load-loader.gif" alt="loader" style="height: 100px;">
       </div>
    </div>
 </div>
