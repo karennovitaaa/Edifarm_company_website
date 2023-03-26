@@ -16,7 +16,4 @@ class SideController extends Controller
 	public function editprofile(){
 		return view('edit_profil');
 	}
-	public function activity(){
-		return view('activity');
-	}
 }

@@ -13,4 +13,14 @@ class BlogController extends Controller
 	public function lapor(){
 		return view('AdminLapor');
 	}
+    public function post(){
+		return view('postingan');
+	}
+	public function profile(){
+		return view('profile');
+	}
+	public function editprofile(){
+		return view('edit_profil');
+	}
+	
 }

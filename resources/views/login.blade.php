@@ -15,15 +15,9 @@
       <link rel="stylesheet" href="vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
       <link rel="stylesheet" href="vendor/font-awesome-line-awesome/css/all.min.css">
       <link rel="stylesheet" href="vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
-      
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body class=" ">
-    <!-- loader Start -->
-    <div id="loading">
-          <div id="loading-center">
-          </div>
-    </div>
-    <!-- loader END -->
     
       <div class="wrapper">
     <section class="sign-in-page">
@@ -64,21 +58,18 @@
                     <div class="sign-in-from">
                         <h1 class="mb-0">Sign in</h1>
                         <p>Enter your email address and password to access admin panel.</p>
-                        <form class="mt-4">
-                            <div class="form-group">
-                                <label class="form-label" for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control mb-0" id="exampleInputEmail1" placeholder="Enter email">
+                        <form class="mt-4" method="POST" action="/authLogin">
+                        @csrf    
+                        <div class="form-group">
+                                <label class="form-label" for="exampleInputEmail1">Username</label>
+                                <input type="text" name="username" class="form-control mb-0" id="exampleInputEmail1" placeholder="Enter username" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="exampleInputPassword1">Password</label>
                                 <a href="#" class="float-end">Forgot password?</a>
-                                <input type="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password">
+                                <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" required>
                             </div>
                             <div class="d-inline-block w-100">
-                                <div class="form-check d-inline-block mt-2 pt-1">
-                                    <input type="checkbox" class="form-check-input" id="customCheck11">
-                                    <label class="form-check-label" for="customCheck11">Remember Me</label>
-                                </div>
                                 <button type="submit" class="btn btn-primary float-end">Sign in</button>
                             </div>
                             <div class="sign-info">
@@ -112,6 +103,6 @@
     <script src="js/app.js"></script>
     <script src="../vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
     <script src="js/lottie.js"></script>
-    
+    @include('sweetalert::alert')
   </body>
 </html>

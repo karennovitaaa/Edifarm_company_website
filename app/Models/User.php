@@ -18,9 +18,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'username',
         'name',
+        'photo',
+        'address',
+        'phone',
+        'born_date',
+        'latitude',
+        'longitude',
         'email',
         'password',
+        'level'
     ];
 
     /**
@@ -30,15 +38,45 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function postComments()
+    {
+        return $this->belongsToMany(Post::class, 'comments');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function postLikes()
+    {
+        return $this->belongsToMany(Post::class, 'likes');
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
+
+    public function postReports()
+    {
+        return $this->belongsToMany(Post::class, 'reports');
+    }
 }
