@@ -5,8 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Validator;
-Use Auth;
+
+
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -19,7 +21,8 @@ class AuthController extends Controller
             'confirm_password' => 'required|same:password',
             'phone' => 'required',
             'address' => 'required',
-            'born_date' => 'required'
+            'born_date' => 'required',
+        
         ]);
 
         if($validator->fails()){
@@ -31,6 +34,10 @@ class AuthController extends Controller
         }
         $input = $request->all();
         $input['password']=bcrypt($input['password']);
+        $input['level']='user';
+        $input['photo']='can.png';
+        $input['latitude'] = 'gbhnjkm';
+        $input['longitude'] = 'ftgyhuik';
         $user = User::create($input);
 
         $success['token']=$user->createToken('auth_token')->plainTextToken;
@@ -49,6 +56,7 @@ class AuthController extends Controller
             $auth = Auth::user();
             $success['token']=$auth->createToken('auth_token')->plainTextToken;
             $success['name']=$auth->name;
+
             $success['level']=$auth->level;
 
             return response()->json([
@@ -59,7 +67,7 @@ class AuthController extends Controller
         }elseif(Auth::attempt(['username'=> $request->username, 'password'=> $request->password, 'level'=>'user'])){
             $auth = Auth::user();
             $success['token']=$auth->createToken('auth_token')->plainTextToken;
-            $success['name']=$auth->name;
+            $success['username']=$auth->username;
             $success['level']=$auth->level;
 
             return response()->json([
@@ -71,7 +79,7 @@ class AuthController extends Controller
         } else{
             return response()->json([
                 'success'=> false,
-                'massage'=> 'Pastikan email dan password sudah benar',
+                'massage'=> 'Pastikan username dan password sudah benar',
                 'data'=> null
             ]);
         }
