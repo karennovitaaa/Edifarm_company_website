@@ -75,6 +75,5 @@ class AuthController extends Controller
                 'data'=> null
             ]);
         }
-        
     }
 }

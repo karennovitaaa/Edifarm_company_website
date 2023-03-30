@@ -2,8 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Auth;
 use Validator;
+use Auth;
 class ActivityController extends Controller
 {
     public function register(Request $request)
@@ -32,6 +32,7 @@ class ActivityController extends Controller
         // echo "<script>alert('Ada Kesalahan');</script>"; 
         return redirect('login')->with('toast_success', 'Registrasi Berhasil! Silahkan login dengan akun baru anda');
     }
+
     public function login(Request $request)
     {
         

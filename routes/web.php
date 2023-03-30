@@ -26,3 +26,6 @@ Route::get('/profile', function() {
 Route::get('/edit_profile', function() {
     return view('edit_profile');
 });
+Route::get('/landingpage', function() {
+    return view('landingpage');
+});
