@@ -18,28 +18,6 @@
   </head>
   <body class="  ">
     <!-- Wrapper Start -->
-    <div class="wrapper">
-      <div class="iq-sidebar  sidebar-default ">
-          <div id="sidebar-scrollbar">
-              <nav class="iq-sidebar-menu">
-                  <ul id="iq-sidebar-toggle" class="iq-menu">
-                      <li class="active">
-                          <a href="/postingan" class=" "> 
-                              <i class="las la-newspaper"></i><span>Postingan</span>
-                          </a>
-                      </li>
-                      <li class="">
-                         <a href="/profile" class=" ">
-                             <i class="las la-user"></i><span>Profile</span>
-                          </a>
-                      </li>
-                     
-                  </ul>
-                  </nav>
-                  <div class="p-5"></div>
-              </div>
-          </div>
-      
               <div class="iq-top-navbar">
           <div class="iq-navbar-custom">
               <nav class="navbar navbar-expand-lg navbar-light p-0">
@@ -48,11 +26,7 @@
                           <img src="/images/logo.png" class="img-fluid" alt="">
                           <span>Edifarm</span>
                       </a>
-                      <div class="iq-menu-bt align-self-center">
-                          <div class="wrapper-menu">
-                              <div class="main-circle"><i class="ri-menu-line"></i></div>
-                          </div>
-                      </div>
+                      
                   </div>
                   <div class="iq-search-bar device-search">
                       <form action="#" class="searchbox">
