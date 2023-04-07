@@ -44,7 +44,7 @@
                                 <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
                             </td>
                             <td>
-                                <form action="{{ url('/category', ['id' => $user->id]) }}" method="post" onclick="return confirm('Weet je dit zeker?')">
+                                <form action="{{ url('/category', ['id' => $user->id]) }}" method="post" onclick="return confirm('Yain ingin menghapus data?')">
                                     @method('delete')
                                     @csrf    
                                     <button  type="submit" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button>

@@ -5,17 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Report;
 
 class BlogController extends Controller
 {
     public function table(){
 		$users = User::get();
-
         //$datas = compact('users');
 		return view('AdminTable', compact('users'));
 	}
 	public function lapor(){
-		return view('AdminLapor');
+		$reports = Report::with('users')->get();
+		//return var_dump($reports);
+		return view('AdminLapor', compact('reports'));
 	}
     public function post(){
 		return view('postingan');

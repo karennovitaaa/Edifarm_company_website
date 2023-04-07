@@ -67,6 +67,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="mail-inbox" role="tabpanel">
                             <ul class="iq-email-sender-list">
+                            @foreach($reports as $report)
                                 <li class="iq-unread">
                                     <div class="d-flex align-self-center iq-unread-inner">
                                         <div class="iq-email-sender-info">
@@ -77,14 +78,13 @@
                                             </div>
                                         </div>
                                         <span class="ri-star-line iq-star-toggle text-warning"></span>
-                                        <a href="#" class="iq-email-title">Jopour Xiong (Me)</a>
+                                        <a href="#" class="iq-email-title">{{ $report->username }}</a>
                                         </div>
                                         <div class="iq-email-content">
-                                        <a href="#" class="iq-email-subject">Mackenzie Bnio (@MackenzieBnio) has sent
-                                        you a direct message on Twitter! &nbsp;–&nbsp;
-                                        <span>@MackenzieBnio - Very cool :) Nicklas, You have a new direct message.</span>
+                                        <a href="#" class="iq-email-subject">{{ $report->reason }} 
+                                        <span></span>
                                         </a>
-                                        <div class="iq-email-date">08:00 am</div>
+                                        <div class="iq-email-date">{{ $report->created_at }}</div>
                                         </div>
                                         <ul class="iq-social-media list-inline">
                                         <li><a href="#"><i class="ri-delete-bin-2-line"></i></a></li>
@@ -194,6 +194,11 @@
                                         </div>
                                     </div>                                
                                 </li>
+                                @endforeach
+
+
+
+
                                 <li>
                                     <div class="d-flex align-self-center iq-unread-inner">
                                         <div class="iq-email-sender-info">
