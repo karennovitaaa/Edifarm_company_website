@@ -30,8 +30,9 @@ Route::get('/profile', function() {
 Route::get('/edit_profile', function() {
     return view('edit_profile');
 });
-Route::get('/activity', function() {
-    return view('activity');
+Route::get('/tentang', function() {
+    return view('tentang');
 });
-Route::post('/authLogin', [ActivityController::class, 'login']);
-Route::post('/authRegist', [ActivityController::class, 'register']);
+Route::get('/landingpage', function() {
+    return view('landingpage');
+});
