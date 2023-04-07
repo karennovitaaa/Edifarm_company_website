@@ -250,20 +250,9 @@
                         <div class="like-block position-relative d-flex align-items-center">
                            <div class="d-flex align-items-center">
                               <div class="like-data">
-                                 <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <img src="images/icon/01.png" class="img-fluid" alt="">
+                                    <img src="images/icon/love.png" class="img-fluid" alt="">
                                     </span>
-                                    <div class="dropdown-menu py-2">
-                                       <a class="ms-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><img src="images/icon/01.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Love"><img src="images/icon/02.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Happy"><img src="images/icon/03.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="HaHa"><img src="images/icon/04.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Think"><img src="images/icon/05.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Sade" ><img src="images/icon/06.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Lovely"><img src="images/icon/07.png" class="img-fluid" alt=""></a>
-                                    </div>
-                                 </div>
                               </div>
                               <div class="total-like-block ms-2 me-3">
                                  <div class="dropdown">
@@ -278,16 +267,13 @@
                            <div class="total-comment-block">
                               <div class="dropdown">
                                  <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                 <img src="images/icon/komen.png" class="img-fluid" alt="">
                                  20 Comment
                                  </span>
                                  <div class="dropdown-menu">
                                  </div>
                               </div>
                            </div>
-                        </div>
-                        <div class="share-block d-flex align-items-center feather-icon mt-2 mt-md-0">
-                           <a href="javascript:void();" data-bs-toggle="offcanvas" data-bs-target="#share-btn" aria-controls="share-btn"><i class="ri-share-line"></i>
-                           <span class="ms-1">99 Share</span></a>                           
                         </div>
                      </div>
                      <!--<hr>
@@ -416,17 +402,8 @@
                               <div class="like-data">
                                  <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <img src="images/icon/01.png" class="img-fluid" alt="">
+                                    <img src="images/icon/love.png" class="img-fluid" alt="">
                                     </span>
-                                    <div class="dropdown-menu py-2">
-                                       <a class="ms-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><img src="images/icon/01.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Love"><img src="images/icon/02.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Happy"><img src="images/icon/03.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="HaHa"><img src="images/icon/04.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Think"><img src="images/icon/05.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Sade" ><img src="images/icon/06.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Lovely"><img src="images/icon/07.png" class="img-fluid" alt=""></a>
-                                    </div>
                                  </div>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -442,16 +419,13 @@
                            <div class="total-comment-block">
                               <div class="dropdown">
                                  <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                 <img src="images/icon/komen.png" class="img-fluid" alt="">
                                  20 Comment
                                  </span>
                                  <div class="dropdown-menu">
                                  </div>
                               </div>
                            </div>
-                        </div>
-                        <div class="share-block d-flex align-items-center feather-icon mt-2 mt-md-0">
-                           <a href="javascript:void();" data-bs-toggle="offcanvas" data-bs-target="#share-btn" aria-controls="share-btn"><i class="ri-share-line"></i>
-                           <span class="ms-1">99 Share</span></a>
                         </div>
                      </div>
                   </div>
@@ -533,17 +507,8 @@
                               <div class="like-data">
                                  <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <img src="images/icon/01.png" class="img-fluid" alt="">
+                                    <img src="images/icon/love.png" class="img-fluid" alt="">
                                     </span>
-                                    <div class="dropdown-menu py-2">
-                                       <a class="ms-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><img src="images/icon/01.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Love"><img src="images/icon/02.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Happy"><img src="images/icon/03.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="HaHa"><img src="images/icon/04.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Think"><img src="images/icon/05.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Sade" ><img src="images/icon/06.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Lovely"><img src="images/icon/07.png" class="img-fluid" alt=""></a>
-                                    </div>
                                  </div>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -557,14 +522,11 @@
                            <div class="total-comment-block">
                               <div class="dropdown">
                                  <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                 <img src="images/icon/komen.png" class="img-fluid" alt="">
                                  20 Comment
                                  </span>
                               </div>
                            </div>
-                        </div>
-                        <div class="share-block d-flex align-items-center feather-icon mt-2 mt-md-0">
-                           <a href="javascript:void();" data-bs-toggle="offcanvas" data-bs-target="#share-btn" aria-controls="share-btn"><i class="ri-share-line"></i>
-                           <span class="ms-1">99 Share</span></a>
                         </div>
                      </div>
                      <hr>
@@ -647,17 +609,8 @@
                               <div class="like-data">
                                  <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <img src="images/icon/01.png" class="img-fluid" alt="">
+                                    <img src="images/icon/love.png" class="img-fluid" alt="">
                                     </span>
-                                    <div class="dropdown-menu py-2">
-                                       <a class="ms-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><img src="images/icon/01.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Love"><img src="images/icon/02.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Happy"><img src="images/icon/03.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="HaHa"><img src="images/icon/04.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Think"><img src="images/icon/05.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Sade" ><img src="images/icon/06.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Lovely"><img src="images/icon/07.png" class="img-fluid" alt=""></a>
-                                    </div>
                                  </div>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -671,14 +624,11 @@
                            <div class="total-comment-block">
                               <div class="dropdown">
                                  <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                 <img src="images/icon/komen.png" class="img-fluid" alt="">
                                  20 Comment
                                  </span>
                               </div>
                            </div>
-                        </div>
-                        <div class="share-block d-flex align-items-center feather-icon mt-2 mt-md-0">
-                           <a href="javascript:void();" data-bs-toggle="offcanvas" data-bs-target="#share-btn" aria-controls="share-btn"><i class="ri-share-line"></i>
-                           <span class="ms-1">99 Share</span></a>
                         </div>
                      </div>
                   </div>
@@ -765,17 +715,8 @@
                               <div class="like-data">
                                  <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <img src="images/icon/01.png" class="img-fluid" alt="">
+                                    <img src="images/icon/love.png" class="img-fluid" alt="">
                                     </span>
-                                    <div class="dropdown-menu py-2">
-                                       <a class="ms-2 me-2" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"><img src="images/icon/01.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Love"><img src="images/icon/02.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Happy"><img src="images/icon/03.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="HaHa"><img src="images/icon/04.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Think"><img src="images/icon/05.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Sade" ><img src="images/icon/06.png" class="img-fluid" alt=""></a>
-                                       <a class="me-2" href="#"  data-bs-toggle="tooltip" data-bs-placement="top" title="Lovely"><img src="images/icon/07.png" class="img-fluid" alt=""></a>
-                                    </div>
                                  </div>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -789,14 +730,11 @@
                            <div class="total-comment-block">
                               <div class="dropdown">
                                  <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                 <img src="images/icon/komen.png" class="img-fluid" alt="">
                                  20 Comment
                                  </span>
                               </div>
                            </div>
-                        </div>
-                        <div class="share-block d-flex align-items-center feather-icon mt-2 mt-md-0">
-                           <a href="javascript:void();" data-bs-toggle="offcanvas" data-bs-target="#share-btn" aria-controls="share-btn"><i class="ri-share-line"></i>
-                           <span class="ms-1">99 Share</span></a>
                         </div>
                      </div>
                   </div>
@@ -804,5 +742,8 @@
             </div>
          </div>
       </div>
+		<button class="welcome-modal-btn">
+			<a href="postingan"><i class="fas fa-arrow-up"></i></a>
+		</button>
     <!-- Wrapper End-->
    @endsection
