@@ -16,9 +16,7 @@ Route::get('/edit_profile', [BlogController::class, 'editprofile']);
 Route::get('/login', function() {
     return view('login');
 });
-Route::get('/post', function() {
-    return view('post');
-});
+
 
 Route::get('/register', function() {
     return view('register');

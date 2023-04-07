@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 
@@ -86,33 +87,47 @@ class AuthController extends Controller
         }
         
     }
+
     public function post(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'image' => 'required',
-        'caption' => 'required',
-        'post_latitude' => 'required',
-        'post_longitude' => 'required',
-        'user_id' => 'required'
-    ]);
-
-    if($validator->fails()){
+    {
+        $validator = Validator::make($request->all(), [
+            'image' => 'required',
+            'caption' => 'required',
+            'post_latitude' => 'required',
+            'post_longitude' => 'required',
+            'user_id' => 'required'
+        ]);
+    
+        if($validator->fails()){
+            return response()->json([
+                'success'=> false,
+                'message' => 'Ada kesalahan',
+                'data'=> $validator->errors()->first()
+            ], 404);
+        }
+    
+        // Proses upload gambar
+        $file = $request->file('image');
+        $name = $file->getClientOriginalName();
+        $path = $file->store('public/images');
+        $url = Storage::url($path);
+    
+        // Simpan data post ke database
+        $input = $request->all();
+        $input['image_path'] = $path;
+        $post = Post::create($input);
+    
+        $success = [
+            'id' => $post->id,
+            'caption' => $post->caption,
+            'image_url' => $url
+        ];
+    
         return response()->json([
-            'success'=> false,
-            'massage' => 'ada kesalahan',
-            'data'=> $validator -> errors()->first()
-        ], 404);
+            'success'=> true,
+            'message'=> 'Sukses membuat post baru',
+            'data'=> $success
+        ]);
     }
-    $input = $request->all();
-    $post = Post::create($input);
-
-
-    $success['caption']=$post->caption;
-
-    return response()->json([
-        'success'=> true,
-        'massage'=> 'sukses register',
-        'data'=> $success
-    ]);
-}
+    
 }
