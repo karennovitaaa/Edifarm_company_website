@@ -17,12 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('username');
             $table->string('name');
+            $table->enum('gender', ['Laki-laki', 'Perempuan']);
             $table->string('photo');
             $table->string('address');
             $table->string('phone', 13);
             $table->date('born_date');
-            $table->string('latitude');
-            $table->string('longitude');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('level', ['admin', 'user']);

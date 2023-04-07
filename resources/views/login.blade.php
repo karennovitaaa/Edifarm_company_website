@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Edifarm</title>
       
-      <link rel="shortcut icon" href="images/favicon.ico" />
+      <link rel="shortcut icon" href="images/logo.png" />
       <link rel="stylesheet" href="css/libs.min.css">
       <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
       <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
@@ -66,7 +66,6 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="exampleInputPassword1">Password</label>
-                                <a href="#" class="float-end">Forgot password?</a>
                                 <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" required>
                             </div>
                             <div class="d-inline-block w-100">

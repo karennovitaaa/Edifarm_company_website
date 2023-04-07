@@ -41,14 +41,18 @@ class ActivityController extends Controller
             $success['token']=$auth->createToken('auth_token')->plainTextToken;
             $success['name']=$auth->name;
             $success['level']=$auth->level;
-
+            // Session::set('user_ids', $auth->id);
+            // Session::set('names', $auth->name);
+            $request->session()->put('nama',$auth->name);
             return view('AdminTable');
         }elseif(Auth::attempt(['username'=> $request->username, 'password'=> $request->password, 'level'=>'user'])){
             $auth = Auth::user();
             $success['token']=$auth->createToken('auth_token')->plainTextToken;
             $success['name']=$auth->name;
             $success['level']=$auth->level;
-
+            // Session::set('user_ids', $auth->id);
+            // Session::set('names', $auth->name);
+            $request->session()->put('nama',$auth->name);
             return redirect('postingan'); 
         } else{
             return back()->with('toast_error', 'Periksa kembali username atau password anda!')->withInput();

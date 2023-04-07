@@ -236,11 +236,11 @@ sup {
 }
 
 a {
-  color: #2937f0;
-  text-decoration: underline;
+  color: #000000;
+  text-decoration: none;
 }
 a:hover {
-  color: #212cc0;
+  color: #000000;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -3041,33 +3041,33 @@ textarea.form-control-lg {
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
-  background-color: #232fcc;
-  border-color: #212cc0;
-  box-shadow: 0 0 0 0.25rem rgba(73, 85, 242, 0.5);
+  background-color: #41A59B;
+  border-color: #41A59B;
+  box-shadow: 0 0 0 0.25rem #41A59B;
 }
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #212cc0;
-  border-color: #1f29b4;
+  background-color: #BBE3DA;
+  border-color: #BBE3DA;
 }
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.25rem rgba(73, 85, 242, 0.5);
+  box-shadow: 0 0 0 0.25rem #BBE3DA;
 }
 .btn-primary:disabled, .btn-primary.disabled {
   color: #fff;
-  background-color: #2937f0;
-  border-color: #2937f0;
+  background-color: #41A59B;
+  border-color: #41A59B;
 }
 
 .btn-secondary {
   color: #fff;
-  background-color: #9f1ae2;
-  border-color: #9f1ae2;
+  background-color: #41A59B;
+  border-color: #41A59B;
 }
 .btn-secondary:hover {
   color: #fff;
-  background-color: #8716c0;
-  border-color: #7f15b5;
+  background-color: #41A59B;
+  border-color: #41A59B;
 }
 .btn-check:focus + .btn-secondary, .btn-secondary:focus {
   color: #fff;
@@ -11444,10 +11444,10 @@ section.cta:before {
   display: none;
 }
 .features-device-mockup .circle .gradient-start-color {
-  stop-color: #006B6C;
+  stop-color: #94D5C9;
 }
 .features-device-mockup .circle .gradient-end-color {
-  stop-color: #94D5C9;
+  stop-color: #006B6C;
 }
 .features-device-mockup .shape-1 {
   position: absolute;
@@ -11556,10 +11556,10 @@ footer a:hover, footer a:active, footer a:focus {
   display: none;
 }
 .masthead .masthead-device-mockup .circle .gradient-start-color {
-  stop-color: #2937f0;
+  stop-color: #006B6C;
 }
 .masthead .masthead-device-mockup .circle .gradient-end-color {
-  stop-color: #9f1ae2;
+  stop-color: #94D5C9;
 }
 .masthead .masthead-device-mockup .shape-1 {
   position: absolute;
