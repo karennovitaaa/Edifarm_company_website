@@ -107,10 +107,10 @@ class AuthController extends Controller
         }
     
         // Proses upload gambar
-        $file = $request->file('image');
-        $name = $file->getClientOriginalName();
+        $file = $request->file('image')->getClientOriginalName();
         $path = $file->store('public/images');
-        $url = Storage::url($path);
+        $url = Storage::disk('public')->url($path);
+
     
         // Simpan data post ke database
         $input = $request->all();
@@ -120,7 +120,8 @@ class AuthController extends Controller
         $success = [
             'id' => $post->id,
             'caption' => $post->caption,
-            'image_url' => $url
+            'image_url' => $url,
+            'image'=> $file
         ];
     
         return response()->json([
