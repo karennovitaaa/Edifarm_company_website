@@ -29708,3 +29708,25 @@ body.swal2-toast-shown .swal2-container.swal2-bottom-right {
     bottom: 0;
     left: auto
 }
+
+.welcome-modal-btn {
+  position: fixed;
+  right: 24px;
+  z-index: 12;
+}
+
+.welcome-modal-btn {
+  bottom: 15px;
+  height: 44px;
+  padding: 0 20px;
+  background: #41a59b;
+  color: #fff;
+  font-size: 15px;
+  border: 0;
+  border-radius: 8px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+button [class = "fas fa-arrow-up"]{
+    color: #fff;
+}

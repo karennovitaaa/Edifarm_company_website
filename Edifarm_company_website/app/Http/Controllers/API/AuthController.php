@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 
@@ -37,8 +38,6 @@ class AuthController extends Controller
         $input['password']=bcrypt($input['password']);
         $input['level']='user';
         $input['photo']='can.png';
-        $input['latitude'] = 'gbhnjkm';
-        $input['longitude'] = 'ftgyhuik';
         $user = User::create($input);
 
         $success['token']=$user->createToken('auth_token')->plainTextToken;
@@ -56,6 +55,7 @@ class AuthController extends Controller
         if(Auth::attempt(['username'=> $request->username, 'password'=> $request->password, 'level'=>'admin'])){
             $auth = Auth::user();
             $success['token']=$auth->createToken('auth_token')->plainTextToken;
+
             $success['name']=$auth->name;
 
             $success['level']=$auth->level;
@@ -69,7 +69,8 @@ class AuthController extends Controller
             $auth = Auth::user();
             $success['token']=$auth->createToken('auth_token')->plainTextToken;
             $success['username']=$auth->username;
-            $success['level']=$auth->level;
+            $success['level']=$auth->name;
+         
 
             return response()->json([
                 'success'=> true,
@@ -84,46 +85,50 @@ class AuthController extends Controller
                 'data'=> null
             ]);
         }
+        
     }
 
     public function post(Request $request)
     {
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(), [
             'image' => 'required',
             'caption' => 'required',
             'post_latitude' => 'required',
             'post_longitude' => 'required',
             'user_id' => 'required'
         ]);
-
+    
         if($validator->fails()){
             return response()->json([
                 'success'=> false,
-                'massage' => 'ada kesalahan',
-                'data'=> $validator -> errors()->first()
-            ], 403);
+                'message' => 'Ada kesalahan',
+                'data'=> $validator->errors()->first()
+            ], 404);
         }
+    
+        // Proses upload gambar
+        $file = $request->file('image')->getClientOriginalName();
+        $path = $file->store('public/images');
+        $url = Storage::disk('public')->url($path);
+
+    
+        // Simpan data post ke database
         $input = $request->all();
-        $user = Post::create($input);
-
+        $input['image_path'] = $path;
+        $post = Post::create($input);
+    
+        $success = [
+            'id' => $post->id,
+            'caption' => $post->caption,
+            'image_url' => $url,
+            'image'=> $file
+        ];
+    
         return response()->json([
             'success'=> true,
-            'massage'=> 'sukses post'
+            'message'=> 'Sukses membuat post baru',
+            'data'=> $success
         ]);
     }
-
-    public function getpost()
-    {
-        $users = Post::get();
-        // $user = User::create($input);
-
-        // $success['token']=$user->createToken('auth_token')->plainTextToken;
-        // $success['name']=$user->name;
-
-        return response()->json([
-            'success'=> true,
-            'massage'=> 'sukses register',
-            'data'=> $users
-        ]);
-    }
+    
 }

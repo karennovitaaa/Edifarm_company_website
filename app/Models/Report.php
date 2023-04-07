@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\User;
 
 class Report extends Model
 {
@@ -15,12 +17,12 @@ class Report extends Model
         'post_id'
     ];
 
-    public function user() :BelongsTo
+    public function users() :BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\User','user_id');
     }
     
-    public function post() :BelongsTo
+    public function posts() :BelongsTo
     {
         return $this->belongsTo(Post::class);
     }
