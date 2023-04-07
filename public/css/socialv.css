@@ -14120,7 +14120,8 @@ fieldset:disabled .btn {
     border-radius: 5px;
     border: none;
     border: 1px solid #f1f1f1;
-    background: rgba(80, 181, 255, .2)
+    background: #B3DBD7;
+    opacity: 60%;
 }
 
 .iq-navbar-logo {
@@ -14359,7 +14360,8 @@ fieldset:disabled .btn {
     .iq-top-navbar .navbar-toggler {
         position: static;
         color: #41A59B;
-        background: rgba(80, 181, 255, .2);
+        background: #B3DBD7;
+        opacity: 60%;
         border: none;
         padding: .313rem .625rem;
         -webkit-border-radius: 5px;

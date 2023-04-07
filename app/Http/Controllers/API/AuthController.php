@@ -84,9 +84,35 @@ class AuthController extends Controller
                 'data'=> null
             ]);
         }
-        
     }
-    public function post()
+
+    public function post(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'image' => 'required',
+            'caption' => 'required',
+            'post_latitude' => 'required',
+            'post_longitude' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                'success'=> false,
+                'massage' => 'ada kesalahan',
+                'data'=> $validator -> errors()->first()
+            ], 403);
+        }
+        $input = $request->all();
+        $user = Post::create($input);
+
+        return response()->json([
+            'success'=> true,
+            'massage'=> 'sukses post'
+        ]);
+    }
+
+    public function getpost()
     {
         $users = Post::get();
         // $user = User::create($input);
