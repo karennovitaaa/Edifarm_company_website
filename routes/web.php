@@ -6,12 +6,16 @@ use App\Http\Controllers\ActivityController;
 
 
 Route::get('/table', [BlogController::class, 'table']);
+
 Route::get('/lapor', [BlogController::class, 'lapor']);
-Route::get('/postingan', [SideController::class, 'post']);
+Route::get('/posting', [SideController::class, 'posting']);
 Route::get('/profile', [SideController::class, 'profile']);
 Route::get('/edit_profile', [SideController::class, 'editprofile']);
 Route::get('/login', function() {
     return view('login');
+});
+Route::get('/post', function() {
+    return view('post');
 });
 
 Route::get('/register', function() {
