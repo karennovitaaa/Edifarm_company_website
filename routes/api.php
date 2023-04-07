@@ -15,14 +15,12 @@ use App\Http\Controllers\API\AuthController;
 */
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-<<<<<<< HEAD
 
-=======
-Route::get('post', [AuthController::class, 'post']);
->>>>>>> dfb9864b1385006a6c37b1c4dfdf6ecb8c2297c3
+Route::get('getpost', [AuthController::class, 'getpost']);
+Route::post('post', [AuthController::class, 'post']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('post', [AuthController::class, 'post']);
+
 
 
