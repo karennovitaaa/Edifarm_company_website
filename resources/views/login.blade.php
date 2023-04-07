@@ -66,7 +66,6 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="exampleInputPassword1">Password</label>
-                                <a href="#" class="float-end">Forgot password?</a>
                                 <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" required>
                             </div>
                             <div class="d-inline-block w-100">

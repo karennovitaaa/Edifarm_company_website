@@ -21,44 +21,38 @@
                 </span>
                 <table class="table table-bordered table-responsive-md table-striped text-center">
                     <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Company Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th>Sort</th>
-                        <th>Remove</th>
-                    </tr>
+                        <tr>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Born Date</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Sort</th>
+                            <th>Remove</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr class="">
-                        <td contenteditable="true">Anna Mull</td>
-                        <td contenteditable="true">35</td>
-                        <td contenteditable="true">Portica</td>
-                        <td contenteditable="true">USA</td>
-                        <td contenteditable="true">Oregon</td>
-                        <td>
-                            <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
-                            <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
-                        </td>
-                        <td>
-                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                        </td>
-                    </tr><tr class="">
-                        <td contenteditable="true">Jon Mull</td>
-                        <td contenteditable="true">55</td>
-                        <td contenteditable="true">dow jones</td>
-                        <td contenteditable="true">US</td>
-                        <td contenteditable="true">London</td>
-                        <td>
-                            <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
-                            <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
-                        </td>
-                        <td>
-                            <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                        </td>
-                    </tr></tbody>
+                        @foreach($users as $user)
+                        <tr class="">
+                            <td contenteditable="true">{{ $user->username }}</td>
+                            <td contenteditable="true">{{ $user->name }}</td>
+                            <td contenteditable="true">{{ $user->born_date }}</td>
+                            <td contenteditable="true">{{ $user->phone }}</td>
+                            <td contenteditable="true">{{ $user->email }}</td>
+                            <td>
+                                <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
+                                <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
+                            </td>
+                            <td>
+                                <form action="{{ url('/category', ['id' => $user->id]) }}" method="post" onclick="return confirm('Weet je dit zeker?')">
+                                    @method('delete')
+                                    @csrf    
+                                    <button  type="submit" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>

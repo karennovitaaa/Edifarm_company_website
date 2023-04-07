@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -84,5 +85,19 @@ class AuthController extends Controller
             ]);
         }
         
+    }
+    public function post()
+    {
+        $users = Post::get();
+        // $user = User::create($input);
+
+        // $success['token']=$user->createToken('auth_token')->plainTextToken;
+        // $success['name']=$user->name;
+
+        return response()->json([
+            'success'=> true,
+            'massage'=> 'sukses register',
+            'data'=> $users
+        ]);
     }
 }
