@@ -114,7 +114,7 @@ class AuthController extends Controller
     
         // Simpan data post ke database
         $input = $request->all();
-        $input['image_path'] = $fileName;
+        $input['image_path'] = $fileName; // mengupdate nama file ke database
         $post = Post::create($input);
     
         $success = [
@@ -129,6 +129,7 @@ class AuthController extends Controller
             'data'=> $success
         ]);
     }
+    
     
 
     public function gambar(Request $request){
