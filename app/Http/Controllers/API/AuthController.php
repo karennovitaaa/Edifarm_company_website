@@ -85,7 +85,6 @@ class AuthController extends Controller
                 'data'=> null
             ]);
         }
-        
     }
 
     public function post(Request $request)

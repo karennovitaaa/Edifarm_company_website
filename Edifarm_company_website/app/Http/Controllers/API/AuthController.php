@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 
@@ -87,32 +88,55 @@ class AuthController extends Controller
         
     }
     public function post(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'image' => 'required',
-        'caption' => 'required',
-        'post_latitude' => 'required',
-        'post_longitude' => 'required',
-        'user_id' => 'required'
-    ]);
-
-    if($validator->fails()){
+    {
+        $validator = Validator::make($request->all(), [
+           
+            'caption' => 'required',
+            'post_latitude' => 'required',
+            'post_longitude' => 'required',
+            'user_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+    
+        if($validator->fails()){
+            return response()->json([
+                'success'=> false,
+                'message' => 'Ada kesalahan',
+                'data'=> $validator->errors()->first()
+            ], 404);
+        }
+    
+        // Proses upload gambar
+        $image = $request->file('image');
+        $fileName = time() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs('public/images', $fileName);
+        $url = Storage::url($path);
+    
+        // Simpan data post ke database
+        $input = $request->all();
+        $input['image_path'] = $fileName; // mengupdate nama file ke database
+        $post = Post::create($input);
+    
+        $success = [
+            'id' => $post->id,
+            'caption' => $post->caption,
+            'image' => $url
+        ];
+    
         return response()->json([
-            'success'=> false,
-            'massage' => 'ada kesalahan',
-            'data'=> $validator -> errors()->first()
-        ], 404);
+            'success'=> true,
+            'message'=> 'Sukses membuat post baru',
+            'data'=> $success
+        ]);
     }
-    $input = $request->all();
-    $post = Post::create($input);
+    
+    
 
+    public function gambar(Request $request){
+        $image = $request->file('image')->getClientOriginalName();
+        $post = Post::create($image);
+        return response()->json($image);
 
-    $success['caption']=$post->caption;
-
-    return response()->json([
-        'success'=> true,
-        'massage'=> 'sukses register',
-        'data'=> $success
-    ]);
-}
+    }
+    
 }
