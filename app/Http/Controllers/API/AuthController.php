@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 
@@ -90,7 +91,7 @@ class AuthController extends Controller
     public function post(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'image' => 'required',
+            'image' => 'required|file|max:7000', // max 7MB
             'caption' => 'required',
             'post_latitude' => 'required',
             'post_longitude' => 'required',
@@ -104,7 +105,18 @@ class AuthController extends Controller
                 'data'=> $validator -> errors()->first()
             ], 403);
         }
+        $file = $request->file('image');
+        $name = $file->getClientOriginalName();
+        $path = $file->store('public/images');
+        $url = Storage::url($path);
+
+        // $path = Storage::putFile(
+        //     'public/images',
+        //     $request->file('image'),
+        // );
+
         $input = $request->all();
+        $input['image'] = $path;
         $user = Post::create($input);
 
         return response()->json([
