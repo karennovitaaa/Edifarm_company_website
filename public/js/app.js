@@ -875,3 +875,17 @@ Editable Table
     });
     });
 })(jQuery);
+var like = document.querySelector('.like-data');
+
+like.addEventListener('click', function() {
+  like.classList.toggle('active'); /* menambah/menghapus class "active" */
+});
+const likeButtons = document.querySelectorAll('.like-btn');
+likeButtons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    const icon = this.querySelector('i');
+    icon.classList.toggle('far');
+    icon.classList.toggle('fas');
+  });
+});
+  

@@ -12,7 +12,8 @@ Route::delete('/category/{id}', [BlogController::class,'destroy'])->name('nieuws
 Route::get('/postingan', [BlogController::class, 'post']);
 Route::get('/profile', [BlogController::class, 'profile']);
 Route::get('/edit_profile', [BlogController::class, 'editprofile']);
-
+Route::post('/authLogin', [ActivityController::class, 'Login']);
+Route::post('/authRegist', [ActivityController::class, 'register']);
 Route::get('/login', function() {
     return view('login');
 });

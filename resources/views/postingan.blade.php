@@ -202,17 +202,17 @@
                            <div class="d-flex align-items-center">
                               <div class="like-data">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <img src="images/icon/love.png" class="img-fluid" alt="">
+                                    <button class = "like-btn"><i class = "far fa-heart"></i></button> 
                                     </span>
                               </div>
                               <div class="total-like-block ms-2 me-3">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    140 Likes
+                                    Likes
                                     </span>
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="fa fa-comment"></i></a>
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-comment"></i></a>
                                  </form>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -259,17 +259,17 @@
                            <div class="d-flex align-items-center">
                               <div class="like-data">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <img src="images/icon/love.png" class="img-fluid" alt="">
+                                    <button class = "like-btn"><i class = "far fa-heart"></i></button> 
                                     </span>
                               </div>
                               <div class="total-like-block ms-2 me-3">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    140 Likes
+                                    Likes
                                     </span>
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="fa fa-comment"></i></a>
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-comment"></i></a>
                                  </form>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -315,17 +315,17 @@
                            <div class="d-flex align-items-center">
                               <div class="like-data">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <img src="images/icon/love.png" class="img-fluid" alt="">
+                                    <button class = "like-btn"><i class = "far fa-heart"></i></button> 
                                     </span>
                               </div>
                               <div class="total-like-block ms-2 me-3">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    140 Likes
+                                    Likes
                                     </span>
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="fa fa-comment"></i></a>
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-comment"></i></a>
                                  </form>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -370,17 +370,17 @@
                            <div class="d-flex align-items-center">
                               <div class="like-data">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <img src="images/icon/love.png" class="img-fluid" alt=""> 
+                                    <button class = "like-btn"><i class = "far fa-heart"></i></button> 
                                     </span>
                               </div>
                               <div class="total-like-block ms-2 me-3">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    140 Likes
+                                    Likes
                                     </span>
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="fa fa-comment"></i></a>
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-comment"></i></a>
                                  </form>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -431,18 +431,18 @@
                            <div class="d-flex align-items-center">
                               <div class="like-data">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <img src="images/icon/love.png" class="img-fluid" alt="">
+                                    <button class = "like-btn"><i class = "far fa-heart"></i></button> 
                                     </span>
                               </div>
                               <div class="total-like-block ms-2 me-3">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    140 Likes
+                                    Likes
                                     </span>
                               </div>
                            
                            <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="fa fa-comment"></i></a>
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-comment"></i></a>
                                  </form>
                            </div>
                            <div class="total-like-block ms-2 me-3">
@@ -543,11 +543,45 @@
                               </div>
                            </div>
                         </li>
+                        <li>
+                           <div class="d-flex ">
+                              <div class="user-img">
+                                 <img src="images/user/03.jpg" alt="userimg" class="avatar-35 rounded-circle img-fluid">
+                              </div>
+                              <div class="comment-data-block ms-3">
+                                 <h6>Paul Molive</h6>
+                                 <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                                 <div class="d-flex flex-wrap align-items-center comment-activity">
+                                    <a href="javascript:void();">like</a>
+                                    <a href="javascript:void();">reply</a>
+                                    <a href="javascript:void();">translate</a>
+                                    <span> 5 min </span>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                        <li>
+                           <div class="d-flex ">
+                              <div class="user-img">
+                                 <img src="images/user/03.jpg" alt="userimg" class="avatar-35 rounded-circle img-fluid">
+                              </div>
+                              <div class="comment-data-block ms-3">
+                                 <h6>Paul Molive</h6>
+                                 <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                                 <div class="d-flex flex-wrap align-items-center comment-activity">
+                                    <a href="javascript:void();">like</a>
+                                    <a href="javascript:void();">reply</a>
+                                    <a href="javascript:void();">translate</a>
+                                    <span> 5 min </span>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
                      </ul>
                      <form class="comment-text d-flex align-items-center mt-3" action="javascript:void(0);">
                         <input type="text" class="form-control rounded" placeholder="Enter Your Comment">
                         <div class="comment-attagement d-flex">
-                           <a href="javascript:void();"><i class="fa fa-paper-plane"></i></a>
+                           <a href="javascript:void();"><i class="far fa-paper-plane"></i></a>
                         </div>
                      </form>
                         </div>

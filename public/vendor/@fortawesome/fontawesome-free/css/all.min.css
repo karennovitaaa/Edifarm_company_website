@@ -2157,6 +2157,7 @@
 }
 .fa-heart:before {
     content: "\f004";
+    font-size: 30px;
 }
 .fa-heart-broken:before {
     content: "\f7a9";

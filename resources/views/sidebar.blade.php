@@ -14,6 +14,7 @@
       <link rel="stylesheet" href="vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
       <link rel="stylesheet" href="vendor/font-awesome-line-awesome/css/all.min.css">
       <link rel="stylesheet" href="vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-dYmLvC1rLz/rJksmDfCmOlk+ymMzfJxYYhX9lhHVQ0UyyB6lAg8bw/+Nz/pL0B5+5Ln03p5xkr06WZ0v/6/OYQ==" crossorigin="anonymous" />
       
   </head>
   <body class="  ">
