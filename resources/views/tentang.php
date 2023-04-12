@@ -61,7 +61,7 @@
                 <div class="row">
             <section class="foi-page-section mb-5">
                 <div class="team-member-card">
-                <img src="landing/assets/images/karen1.jpg" class="team-member-avatar">
+                <img src="landing/assets/images/karen.png" class="team-member-avatar">
                 <h5 class="text-center font-os mb-0">Karen Novita Rahmadhani</h5>
                 <h2 class="team-section-title">Project Manager</h2>
                 <div class="row">
