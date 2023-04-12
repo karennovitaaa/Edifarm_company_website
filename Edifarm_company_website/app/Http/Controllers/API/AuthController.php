@@ -132,11 +132,6 @@ class AuthController extends Controller
     
     
 
-    public function gambar(Request $request){
-        $image = $request->file('image')->getClientOriginalName();
-        $post = Post::create($image);
-        return response()->json($image);
-
-    }
+ 
     
 }
