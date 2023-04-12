@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Edifarm</title>
       
-      <link rel="shortcut icon" href="images/favicon.ico" />
+      <link rel="shortcut icon" href="images/logo.png" />
       <link rel="stylesheet" href="css/libs.min.css">
       <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
       <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
