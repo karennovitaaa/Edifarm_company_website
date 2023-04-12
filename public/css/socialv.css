@@ -342,7 +342,9 @@ label {
 
 button {
     -webkit-border-radius: 0;
+    border: #f8f9fa;
     border-radius: 0
+    
 }
 
 button:focus:not(:focus-visible) {
@@ -16356,7 +16358,7 @@ body.sidebar-main .iq-menu-bt-sidebar .iq-menu-bt {
 }
 
 .total-comment-block .dropdown>.dropdown-menu {
-    background-color: #41A59B
+    background-color: #777d74
 }
 
 .total-comment-block .dropdown>.dropdown-menu>a {
@@ -16365,7 +16367,7 @@ body.sidebar-main .iq-menu-bt-sidebar .iq-menu-bt {
 }
 
 .total-comment-block .dropdown>.dropdown-menu>a:hover {
-    color: #41A59B
+    color: #777d74
 }
 
 .total-comment-block .dropdown>.dropdown-menu>a:focus {
@@ -16387,7 +16389,7 @@ body.sidebar-main .iq-menu-bt-sidebar .iq-menu-bt {
 }
 
 .total-like-block .dropdown>.dropdown-menu {
-    background-color: #41A59B
+    background-color: #777d74
 }
 
 .total-like-block .dropdown>.dropdown-menu>a {
@@ -16396,7 +16398,7 @@ body.sidebar-main .iq-menu-bt-sidebar .iq-menu-bt {
 }
 
 .total-like-block .dropdown>.dropdown-menu>a:hover {
-    color: #41A59B
+    color: #777d74
 }
 
 .total-like-block .dropdown>.dropdown-menu>a:focus {
@@ -29734,3 +29736,20 @@ body.swal2-toast-shown .swal2-container.swal2-bottom-right {
 button [class = "fas fa-arrow-up"]{
     color: #fff;
 }
+
+  .far {
+    color: gray;
+    
+  }
+  
+  .far:hover {
+    color: red;
+    
+  }
+  
+  .fas {
+    color: red;
+    
+  }
+  
+  
