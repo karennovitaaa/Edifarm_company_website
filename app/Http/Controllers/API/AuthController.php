@@ -137,7 +137,7 @@ class AuthController extends Controller
 
         // $success['token']=$user->createToken('auth_token')->plainTextToken;
         // $success['name']=$user->name;
-
+//haloo
         return response()->json([
             'success'=> true,
             'massage'=> 'sukses register',
