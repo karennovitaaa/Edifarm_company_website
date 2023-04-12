@@ -39,7 +39,6 @@
                      <li>
                         <button class="btn btn-soft-primary">
                            <div class="card-header-toolbar d-flex align-items-center">
-                              <div class="dropdown">
                                  <div class="dropdown-toggle" id="post-option"   data-bs-toggle="dropdown">
                                     <i class="ri-more-fill"></i>
                                  </div>
@@ -109,7 +108,6 @@
                                     <h6>Your Story</h6>
                                  </div>
                                  <div class="card-post-toolbar">
-                                    <div class="dropdown">
                                        <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
                                        <span class="btn btn-primary">Friend</span>
                                        </span>
@@ -161,7 +159,7 @@
                   </div>
                </div>
             </div>
-         </div>
+         
                     
          <div class="col-sm-12">
             <div class="card card-block card-stretch card-height">
@@ -177,53 +175,6 @@
                                  <h5 class="mb-0 d-inline-block">Anna Sthesia</h5>
                                  <span class="mb-0 d-inline-block">Add New Post</span>
                                  <p class="mb-0 text-primary">Just Now</p>
-                              </div>
-                              <div class="card-post-toolbar">
-                                 <div class="dropdown">
-                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <i class="ri-more-fill"></i>
-                                    </span>
-                                    <div class="dropdown-menu m-0 p-0">
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <div class="h4">
-                                                <i class="ri-save-line"></i>
-                                             </div>
-                                             <div class="data ms-2">
-                                                <h6>Save Post</h6>
-                                                <p class="mb-0">Add this to your saved items</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-close-circle-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Hide Post</h6>
-                                                <p class="mb-0">See fewer posts like this.</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-user-unfollow-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Unfollow User</h6>
-                                                <p class="mb-0">Stop seeing posts but stay friends.</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-notification-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Notifications</h6>
-                                                <p class="mb-0">Turn on notifications for this post</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
                               </div>
                            </div>
                         </div>
@@ -255,72 +206,24 @@
                                     </span>
                               </div>
                               <div class="total-like-block ms-2 me-3">
-                                 <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
                                     140 Likes
                                     </span>
-                                    <div class="dropdown-menu">
-                                    </div>
-                                 </div>
                               </div>
-                           </div>
-                           <div class="total-comment-block">
-                              <div class="dropdown">
-                                 <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                 <img src="images/icon/komen.png" class="img-fluid" alt="">
-                                 20 Comment
-                                 </span>
-                                 <div class="dropdown-menu">
-                                 </div>
+                              <div class="total-comment-block">
+                                 <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="fa fa-comment"></i></a>
+                                 </form>
+                              </div>
+                              <div class="total-like-block ms-2 me-3">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                    Comment
+                                    </span>
                               </div>
                            </div>
                         </div>
                      </div>
-                     <!--<hr>
-                      <ul class="post-comments list-inline p-0 m-0">
-                        <li class="mb-2">
-                           <div class="d-flex">
-                              <div class="user-img">
-                                 <img src="images/user/02.jpg" alt="userimg" class="avatar-35 rounded-circle img-fluid">
-                              </div>
-                              <div class="comment-data-block ms-3">
-                                 <h6>Monty Carlo</h6>
-                                 <p class="mb-0">Lorem ipsum dolor sit amet</p>
-                                 <div class="d-flex flex-wrap align-items-center comment-activity">
-                                    <a href="javascript:void();">like</a>
-                                    <a href="javascript:void();">reply</a>
-                                    <a href="javascript:void();">translate</a>
-                                    <span> 5 min </span>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="d-flex">
-                              <div class="user-img">
-                                 <img src="images/user/03.jpg" alt="userimg" class="avatar-35 rounded-circle img-fluid">
-                              </div>
-                              <div class="comment-data-block ms-3">
-                                 <h6>Paul Molive</h6>
-                                 <p class="mb-0">Lorem ipsum dolor sit amet</p>
-                                 <div class="d-flex flex-wrap align-items-center comment-activity">
-                                    <a href="javascript:void();">like</a>
-                                    <a href="javascript:void();">reply</a>
-                                    <a href="javascript:void();">translate</a>
-                                    <span> 5 min </span>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                     </ul> -->
-                     <!-- <form class="comment-text d-flex align-items-center mt-3" action="javascript:void(0);">
-                        <input type="text" class="form-control rounded" placeholder="Enter Your Comment">
-                        <div class="comment-attagement d-flex">
-                           <a href="javascript:void();"><i class="ri-link me-3"></i></a>
-                           <a href="javascript:void();"><i class="ri-user-smile-line me-3"></i></a>
-                           <a href="javascript:void();"><i class="ri-camera-line me-3"></i></a>
-                        </div>
-                     </form>-->
+                     <hr>
                   </div>
                </div>
             </div>
@@ -340,51 +243,6 @@
                                  <span class="mb-0 d-inline-block">Added New Image in a Post</span>
                                  <p class="mb-0 text-primary">1 hour ago</p>
                               </div>
-                              <div class="card-post-toolbar">
-                                 <div class="dropdown">
-                                    <span class="dropdown-toggle" id="postdata-5" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <i class="ri-more-fill"></i>
-                                    </span>
-                                    <div class="dropdown-menu m-0 p-0" aria-labelledby="postdata-5">
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-save-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Save Post</h6>
-                                                <p class="mb-0">Add this to your saved items</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-close-circle-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Hide Post</h6>
-                                                <p class="mb-0">See fewer posts like this.</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-user-unfollow-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Unfollow User</h6>
-                                                <p class="mb-0">Stop seeing posts but stay friends.</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-notification-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Notifications</h6>
-                                                <p class="mb-0">Turn on notifications for this post</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                              </div>
                            </div>
                         </div>
                      </div>
@@ -400,38 +258,34 @@
                         <div class="like-block position-relative d-flex align-items-center">
                            <div class="d-flex align-items-center">
                               <div class="like-data">
-                                 <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
                                     <img src="images/icon/love.png" class="img-fluid" alt="">
                                     </span>
-                                 </div>
                               </div>
                               <div class="total-like-block ms-2 me-3">
-                                 <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
                                     140 Likes
                                     </span>
-                                    <div class="dropdown-menu">
-                                    </div>
-                                 </div>
                               </div>
-                           </div>
-                           <div class="total-comment-block">
-                              <div class="dropdown">
-                                 <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                 <img src="images/icon/komen.png" class="img-fluid" alt="">
-                                 20 Comment
-                                 </span>
-                                 <div class="dropdown-menu">
-                                 </div>
+                              <div class="total-comment-block">
+                                 <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="fa fa-comment"></i></a>
+                                 </form>
+                              </div>
+                              <div class="total-like-block ms-2 me-3">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                    Comment
+                                    </span>
                               </div>
                            </div>
                         </div>
                      </div>
+                     <hr>
                   </div>
                </div>
             </div>
-         </div> 
+         
+      
          
          <div class="col-sm-12">
             <div class="card card-block card-stretch card-height">
@@ -448,51 +302,6 @@
                                  <p class="mb-0 d-inline-block">Update her Status</p>
                                  <p class="mb-0 text-primary">6 hour ago</p>
                               </div>
-                              <div class="card-post-toolbar">
-                                 <div class="dropdown">
-                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <i class="ri-more-fill"></i>
-                                    </span>
-                                    <div class="dropdown-menu m-0 p-0">
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-save-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Save Post</h6>
-                                                <p class="mb-0">Add this to your saved items</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-close-circle-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Hide Post</h6>
-                                                <p class="mb-0">See fewer posts like this.</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-user-unfollow-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Unfollow User</h6>
-                                                <p class="mb-0">Stop seeing posts but stay friends.</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-notification-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Notifications</h6>
-                                                <p class="mb-0">Turn on notifications for this post</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                              </div>
                            </div>
                         </div>
                      </div>
@@ -505,26 +314,24 @@
                         <div class="like-block position-relative d-flex align-items-center">
                            <div class="d-flex align-items-center">
                               <div class="like-data">
-                                 <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
                                     <img src="images/icon/love.png" class="img-fluid" alt="">
                                     </span>
-                                 </div>
                               </div>
                               <div class="total-like-block ms-2 me-3">
-                                 <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
                                     140 Likes
                                     </span>
-                                 </div>
                               </div>
-                           </div>
-                           <div class="total-comment-block">
-                              <div class="dropdown">
-                                 <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                 <img src="images/icon/komen.png" class="img-fluid" alt="">
-                                 20 Comment
-                                 </span>
+                              <div class="total-comment-block">
+                                 <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="fa fa-comment"></i></a>
+                                 </form>
+                              </div>
+                              <div class="total-like-block ms-2 me-3">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                    Comment
+                                    </span>
                               </div>
                            </div>
                         </div>
@@ -550,51 +357,6 @@
                                  <p class="ms-1 mb-0 d-inline-block">Changed Profile Picture</p>
                                  <p class="mb-0">3 day ago</p>
                               </div>
-                              <div class="card-post-toolbar">
-                                 <div class="dropdown">
-                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <i class="ri-more-fill"></i>
-                                    </span>
-                                    <div class="dropdown-menu m-0 p-0">
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-save-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Save Post</h6>
-                                                <p class="mb-0">Add this to your saved items</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-close-circle-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Hide Post</h6>
-                                                <p class="mb-0">See fewer posts like this.</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-user-unfollow-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Unfollow User</h6>
-                                                <p class="mb-0">Stop seeing posts but stay friends.</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-notification-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Notifications</h6>
-                                                <p class="mb-0">Turn on notifications for this post</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                              </div>
                            </div>
                         </div>
                      </div>
@@ -607,34 +369,34 @@
                         <div class="like-block position-relative d-flex align-items-center">
                            <div class="d-flex align-items-center">
                               <div class="like-data">
-                                 <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <img src="images/icon/love.png" class="img-fluid" alt="">
+                                    <img src="images/icon/love.png" class="img-fluid" alt=""> 
                                     </span>
-                                 </div>
                               </div>
                               <div class="total-like-block ms-2 me-3">
-                                 <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
                                     140 Likes
                                     </span>
-                                 </div>
                               </div>
-                           </div>
-                           <div class="total-comment-block">
-                              <div class="dropdown">
-                                 <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                 <img src="images/icon/komen.png" class="img-fluid" alt="">
-                                 20 Comment
-                                 </span>
+                              <div class="total-comment-block">
+                                 <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="fa fa-comment"></i></a>
+                                 </form>
+                              </div>
+                              <div class="total-like-block ms-2 me-3">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                    Comment
+                                    </span>
                               </div>
                            </div>
                         </div>
                      </div>
+                     <hr>
                   </div>
                </div>
             </div>
          </div>
+        
 
          <div class="col-sm-12">
             <div class="card card-block card-stretch card-height">
@@ -650,51 +412,6 @@
                                  <h5 class="mb-0 d-inline-block">Paige Turner</h5>
                                  <p class="mb-0 d-inline-block">Added New Video in his Timeline</p>
                                  <p class="mb-0 text-primary">1 day ago</p>
-                              </div>
-                              <div class="card-post-toolbar">
-                                 <div class="dropdown">
-                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <i class="ri-more-fill"></i>
-                                    </span>
-                                    <div class="dropdown-menu m-0 p-0">
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-save-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Save Post</h6>
-                                                <p class="mb-0">Add this to your saved items</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-close-circle-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Hide Post</h6>
-                                                <p class="mb-0">See fewer posts like this.</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-user-unfollow-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Unfollow User</h6>
-                                                <p class="mb-0">Stop seeing posts but stay friends.</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                       <a class="dropdown-item p-3" href="#">
-                                          <div class="d-flex align-items-top">
-                                             <i class="ri-notification-line h4"></i>
-                                             <div class="data ms-2">
-                                                <h6>Notifications</h6>
-                                                <p class="mb-0">Turn on notifications for this post</p>
-                                             </div>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
                               </div>
                            </div>
                         </div>
@@ -713,35 +430,131 @@
                         <div class="like-block position-relative d-flex align-items-center">
                            <div class="d-flex align-items-center">
                               <div class="like-data">
-                                 <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
                                     <img src="images/icon/love.png" class="img-fluid" alt="">
                                     </span>
-                                 </div>
                               </div>
                               <div class="total-like-block ms-2 me-3">
-                                 <div class="dropdown">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
                                     140 Likes
                                     </span>
-                                 </div>
                               </div>
-                           </div>
+                           
                            <div class="total-comment-block">
-                              <div class="dropdown">
-                                 <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                 <img src="images/icon/komen.png" class="img-fluid" alt="">
-                                 20 Comment
-                                 </span>
-                              </div>
+                                 <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="fa fa-comment"></i></a>
+                                 </form>
+                           </div>
+                           <div class="total-like-block ms-2 me-3">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                    Comment
+                                    </span>
                            </div>
                         </div>
+                       </div>
                      </div>
+                     <hr>
                   </div>
                </div>
             </div>
          </div>
-      </div>
+
+
+         <div class="modal fade" id="komen-modal" tabindex="-1"  aria-labelledby="post-modalLabel" aria-hidden="true" >
+                  <div class="modal-dialog   modal-fullscreen-sm-down">
+                     <div class="modal-content">
+                        <div class="modal-header" >
+                           <h5 class="modal-title" id="post-modalLabel">Create Post</h5>
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="ri-close-fill"></i></button>
+                        </div>
+                        <div class="modal-body">
+                           <div class="d-flex align-items-center">
+                              <form class="post-text ms-3 w-100" action="javascript:void();">
+                                 <input type="button"  src="images/icon/komen.png" class="form-control rounded" style="border:none;">
+                              </form>
+                           </div>
+                          
+                     <ul class="post-comments list-inline p-0 m-0">
+                        <li class="mb-2">
+                           <div class="d-flex">
+                              <div class="user-img">
+                                 <img src="images/user/02.jpg" alt="userimg" class="avatar-35 rounded-circle img-fluid">
+                              </div>
+                              <div class="comment-data-block ms-3">
+                                 <h6>Monty Carlo</h6>
+                                 <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                                 <div class="d-flex flex-wrap align-items-center comment-activity">
+                                    <a href="javascript:void();">like</a>
+                                    <a href="javascript:void();">reply</a>
+                                    <a href="javascript:void();">translate</a>
+                                    <span> 5 min </span>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                        <li>
+                           <div class="d-flex ">
+                              <div class="user-img">
+                                 <img src="images/user/03.jpg" alt="userimg" class="avatar-35 rounded-circle img-fluid">
+                              </div>
+                              <div class="comment-data-block ms-3">
+                                 <h6>Paul Molive</h6>
+                                 <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                                 <div class="d-flex flex-wrap align-items-center comment-activity">
+                                    <a href="javascript:void();">like</a>
+                                    <a href="javascript:void();">reply</a>
+                                    <a href="javascript:void();">translate</a>
+                                    <span> 5 min </span>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                        <li>
+                           <div class="d-flex ">
+                              <div class="user-img">
+                                 <img src="images/user/03.jpg" alt="userimg" class="avatar-35 rounded-circle img-fluid">
+                              </div>
+                              <div class="comment-data-block ms-3">
+                                 <h6>Paul Molive</h6>
+                                 <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                                 <div class="d-flex flex-wrap align-items-center comment-activity">
+                                    <a href="javascript:void();">like</a>
+                                    <a href="javascript:void();">reply</a>
+                                    <a href="javascript:void();">translate</a>
+                                    <span> 5 min </span>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                        <li>
+                           <div class="d-flex ">
+                              <div class="user-img">
+                                 <img src="images/user/03.jpg" alt="userimg" class="avatar-35 rounded-circle img-fluid">
+                              </div>
+                              <div class="comment-data-block ms-3">
+                                 <h6>Paul Molive</h6>
+                                 <p class="mb-0">Lorem ipsum dolor sit amet</p>
+                                 <div class="d-flex flex-wrap align-items-center comment-activity">
+                                    <a href="javascript:void();">like</a>
+                                    <a href="javascript:void();">reply</a>
+                                    <a href="javascript:void();">translate</a>
+                                    <span> 5 min </span>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                     </ul>
+                     <form class="comment-text d-flex align-items-center mt-3" action="javascript:void(0);">
+                        <input type="text" class="form-control rounded" placeholder="Enter Your Comment">
+                        <div class="comment-attagement d-flex">
+                           <a href="javascript:void();"><i class="fa fa-paper-plane"></i></a>
+                        </div>
+                     </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+   
 		<button class="welcome-modal-btn">
 			<a href="postingan"><i class="fas fa-arrow-up"></i></a>
 		</button>

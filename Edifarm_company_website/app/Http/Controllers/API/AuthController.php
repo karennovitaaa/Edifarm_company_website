@@ -87,15 +87,15 @@ class AuthController extends Controller
         }
         
     }
-
     public function post(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'image' => 'required',
+           
             'caption' => 'required',
             'post_latitude' => 'required',
             'post_longitude' => 'required',
-            'user_id' => 'required'
+            'user_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
     
         if($validator->fails()){
@@ -107,21 +107,20 @@ class AuthController extends Controller
         }
     
         // Proses upload gambar
-        $file = $request->file('image')->getClientOriginalName();
-        $path = $file->store('public/images');
-        $url = Storage::disk('public')->url($path);
-
+        $image = $request->file('image');
+        $fileName = time() . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs('public/images', $fileName);
+        $url = Storage::url($path);
     
         // Simpan data post ke database
         $input = $request->all();
-        $input['image_path'] = $path;
+        $input['image_path'] = $fileName; // mengupdate nama file ke database
         $post = Post::create($input);
     
         $success = [
             'id' => $post->id,
             'caption' => $post->caption,
-            'image_url' => $url,
-            'image'=> $file
+            'image' => $url
         ];
     
         return response()->json([
@@ -129,6 +128,15 @@ class AuthController extends Controller
             'message'=> 'Sukses membuat post baru',
             'data'=> $success
         ]);
+    }
+    
+    
+
+    public function gambar(Request $request){
+        $image = $request->file('image')->getClientOriginalName();
+        $post = Post::create($image);
+        return response()->json($image);
+
     }
     
 }
