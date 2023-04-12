@@ -52,7 +52,46 @@ class AuthController extends Controller
         ]);
     }
 
-    
+    public function login(Request $request)
+    {
+        if(Auth::attempt(['username'=> $request->username, 'password'=> $request->password, 'level'=>'admin'])){
+            $auth = Auth::user();
+          
+            $success['name']=$auth->name;
+            $success['username']=$auth->username;
+            $success['photo']=$auth->photo;
+            $success['address']=$auth->address;
+            $success['phone']=$auth->phone;
+            $success['born_date']=$auth->born_date;
+            $success['email']=$auth->email;
+
+            $success['level']=$auth->level;
+
+            return response()->json([
+                'success'=> true,
+                'massage'=> 'login admin sukses',
+                'data'=> $success
+            ]);
+        }elseif(Auth::attempt(['username'=> $request->username, 'password'=> $request->password, 'level'=>'user'])){
+            $auth = Auth::user();
+            $success['token']=$auth->createToken('auth_token')->plainTextToken;
+            $success['username']=$auth->username;
+            $success['level']=$auth->level;
+
+            return response()->json([
+                'success'=> true,
+                'massage'=> 'login user sukses',
+                'data'=> $success
+            ]);
+            //return redirect('postingan'); 
+        } else{
+            return response()->json([
+                'success'=> false,
+                'massage'=> 'Pastikan username dan password sudah benar',
+                'data'=> null
+            ]);
+        }
+    }
 
     public function post(Request $request)
     {
