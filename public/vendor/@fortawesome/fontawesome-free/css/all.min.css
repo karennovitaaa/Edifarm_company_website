@@ -1698,6 +1698,8 @@
 }
 .fa-flag:before {
     content: "\f024";
+    font-size: 30px;
+    margin-left: -15px;
 }
 .fa-flag-checkered:before {
     content: "\f11e";

@@ -220,6 +220,16 @@
                                     Comment
                                     </span>
                               </div>
+                              <div class="total-comment-block">
+                                 <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#lapor-modal" action="javascript:void();">
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
+                                 </form>
+                           </div>
+                           <div class="total-like-block ms-2 me-3">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                    Laporkan
+                                    </span>
+                           </div>
                            </div>
                         </div>
                      </div>
@@ -277,6 +287,17 @@
                                     Comment
                                     </span>
                               </div>
+                              <div class="total-comment-block">
+                                 <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#lapor-modal" action="javascript:void();">
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
+                                 </form>
+                           </div>
+                           <div class="total-like-block ms-2 me-3">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                    Laporkan
+                                    </span>
+                           </div>
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -333,6 +354,16 @@
                                     Comment
                                     </span>
                               </div>
+                              <div class="total-comment-block">
+                                 <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#lapor-modal" action="javascript:void();">
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
+                                 </form>
+                           </div>
+                           <div class="total-like-block ms-2 me-3">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                    Laporkan
+                                    </span>
+                           </div>
                            </div>
                         </div>
                      </div>
@@ -388,6 +419,16 @@
                                     Comment
                                     </span>
                               </div>
+                              <div class="total-comment-block">
+                                 <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#lapor-modal" action="javascript:void();">
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
+                                 </form>
+                           </div>
+                           <div class="total-like-block ms-2 me-3">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                    Laporkan
+                                    </span>
+                           </div>
                            </div>
                         </div>
                      </div>
@@ -448,6 +489,16 @@
                            <div class="total-like-block ms-2 me-3">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
                                     Comment
+                                    </span>
+                           </div>
+                           <div class="total-comment-block">
+                                 <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#lapor-modal" action="javascript:void();">
+                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
+                                 </form>
+                           </div>
+                           <div class="total-like-block ms-2 me-3">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                    Laporkan
                                     </span>
                            </div>
                         </div>
@@ -579,7 +630,7 @@
                         </li>
                      </ul>
                      <form class="comment-text d-flex align-items-center mt-3" action="javascript:void(0);">
-                        <input type="text" class="form-control rounded" placeholder="Enter Your Comment">
+                        <input type="text" class="form-control rounded" placeholder="Ketikkan komenmu disini...">
                         <div class="comment-attagement d-flex">
                            <a href="javascript:void();"><i class="far fa-paper-plane"></i></a>
                         </div>
@@ -587,8 +638,33 @@
                         </div>
                      </div>
                   </div>
-               </div>
-   
+         </div>
+
+
+         <div class="modal fade" id="lapor-modal" tabindex="-1"  aria-labelledby="post-modalLabel" aria-hidden="true" >
+                  <div class="modal-dialog   modal-fullscreen-sm-down">
+                     <div class="modal-content">
+                        <div class="modal-header" >
+                           <h5 class="modal-title" id="post-modalLabel">Laporkan</h5>
+                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="ri-close-fill"></i></button>
+                        </div>
+                        <div class="modal-body">
+                           <div class="d-flex align-items-center">
+                              <form class="post-text ms-3 w-100" action="javascript:void();">
+                                 <input type="button"  src="images/icon/komen.png" class="form-control rounded" style="border:none;">
+                              </form>
+                           </div>
+                         <div class = "lapor">Apakah anda memiliki Keluhan terhadap postingan ini?</div>
+                     </form> <form class="comment-text d-flex align-items-center mt-3" action="javascript:void(0);">
+                        <input type="text" class="form-control rounded" placeholder="Ketikkan keluhanmu disini...">
+                        <div class="comment-attagement d-flex">
+                           <a href="javascript:void();"><i class="far fa-paper-plane"></i></a>
+                        </div>
+                     </form>
+                     </div>
+                     </div>
+                  </div>
+         </div>
 		<button class="welcome-modal-btn">
 			<a href="postingan"><i class="fas fa-arrow-up"></i></a>
 		</button>
