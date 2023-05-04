@@ -3800,8 +3800,8 @@ fieldset:disabled .btn {
 
 .btn-secondary {
     color: #fff;
-    background-color: #777d74;
-    border-color: #777d74
+    background-color: #000000;
+    border-color: #000000
 }
 
 .btn-secondary:hover {
@@ -29738,7 +29738,7 @@ button [class = "fas fa-arrow-up"]{
 }
 
   .far {
-    color: gray;
+    color: black;
     
   }
   
@@ -29750,6 +29750,13 @@ button [class = "fas fa-arrow-up"]{
   .fas {
     color: red;
     
+  }
+  .ri-close-fill {
+    color: #fff;
+    
+  }
+  .lapor {
+    color:#000;
   }
   
   
