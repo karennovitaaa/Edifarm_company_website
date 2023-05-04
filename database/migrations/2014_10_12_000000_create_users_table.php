@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('level', ['admin', 'user']);
+            $table->enum('gender', ['Laki-laki', 'Perempuan']);
             $table->timestamps();
         });
     }
