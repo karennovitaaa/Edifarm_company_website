@@ -20235,7 +20235,7 @@ ul.request-list>li:last-child {
 }
 
 .profile-pic {
-    margin-left: 250%;
+    margin-top: 20%;
     max-width: 100%;
     display: block;
     border-radius: 50%;
@@ -20256,8 +20256,8 @@ ul.request-list>li:last-child {
 .p-image {
     position: absolute;
     top: auto;
-    left: 490px;
-    bottom: 10px;
+    left: 110px;
+    bottom: -20px;
     -webkit-transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
     -o-transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
     transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
