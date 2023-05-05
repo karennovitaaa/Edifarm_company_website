@@ -44,6 +44,7 @@ class ActivityController extends Controller
             // Session::set('user_ids', $auth->id);
             // Session::set('names', $auth->name);
             $request->session()->put('nama',$auth->name);
+            $request->session()->put('ids',$auth->id);
             return view('AdminTable');
         }elseif(Auth::attempt(['username'=> $request->username, 'password'=> $request->password, 'level'=>'user'])){
             $auth = Auth::user();
@@ -53,6 +54,7 @@ class ActivityController extends Controller
             // Session::set('user_ids', $auth->id);
             // Session::set('names', $auth->name);
             $request->session()->put('nama',$auth->name);
+            $request->session()->put('ids',$auth->id);
             return redirect('postingan'); 
         } else{
             return back()->with('toast_error', 'Periksa kembali username atau password anda!')->withInput();

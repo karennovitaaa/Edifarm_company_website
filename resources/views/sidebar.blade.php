@@ -51,14 +51,14 @@
                               <a href="#" class="   d-flex align-items-center dropdown-toggle" id="drop-down-arrow" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   <img src="images/user/1.jpg" class="img-fluid rounded-circle me-3" alt="user">
                                   <div class="caption">
-                                      <h6 class="mb-0 line-height">Wishal Azharyan Al Hisyam</h6>
+                                      <h6 class="mb-0 line-height">{{session()->get('nama') }}</h6>
                                   </div>
                               </a>
                               <div class="sub-drop dropdown-menu caption-menu" aria-labelledby="drop-down-arrow">
                                   <div class="card shadow-none m-0">
                                        <div class="card-header  bg-primary">
                                           <div class="header-title">
-                                              <h5 class="mb-0 text-white">Hello Wishal Azharyan Al Hisyam</h5>
+                                              <h5 class="mb-0 text-white">Hello {{session()->get('nama') }}</h5>
                                               <span class="text-white font-size-12">Available</span>
                                           </div>
                                       </div>
