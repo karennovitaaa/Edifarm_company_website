@@ -45,7 +45,7 @@ class ActivityController extends Controller
             // Session::set('names', $auth->name);
             $request->session()->put('nama',$auth->name);
             $request->session()->put('ids',$auth->id);
-            return view('AdminTable');
+            return redirect('table');
         }elseif(Auth::attempt(['username'=> $request->username, 'password'=> $request->password, 'level'=>'user'])){
             $auth = Auth::user();
             $success['token']=$auth->createToken('auth_token')->plainTextToken;
