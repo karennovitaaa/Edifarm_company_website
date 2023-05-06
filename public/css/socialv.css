@@ -124,6 +124,9 @@ h2 {
 
 .h3,
 h3 {
+    margin-left: 437px;
+    margin-top: 60px;
+    margin-bottom: -50px;
     font-size: -webkit-calc(1.29589rem + .55065vw);
     font-size: calc(1.29589rem + .55065vw)
 }
@@ -344,7 +347,7 @@ button {
     -webkit-border-radius: 0;
     border: #f8f9fa;
     border-radius: 0
-    
+
 }
 
 button:focus:not(:focus-visible) {
@@ -8629,7 +8632,7 @@ fieldset:disabled .btn {
     display: -webkit-flex !important;
     display: -ms-flexbox !important;
     display: flex !important
-    
+
 }
 
 .d-inline-flex {
@@ -8646,7 +8649,7 @@ fieldset:disabled .btn {
     display: -webkit-flex !important;
     display: -ms-flexbox !important;
     display: flex !important
-    
+
 }
 
 .d-inline-flex2 {
@@ -8663,7 +8666,7 @@ fieldset:disabled .btn {
     display: -webkit-flex !important;
     display: -ms-flexbox !important;
     display: flex !important
-    
+
 }
 
 .d-inline-flex3 {
@@ -20273,7 +20276,8 @@ ul.request-list>li:last-child {
 }
 
 .profile-pic {
-    margin-top: 20%;
+    margin-top: 40%;
+    margin-left: 260%;
     max-width: 100%;
     display: block;
     border-radius: 50%;
@@ -20283,15 +20287,16 @@ ul.request-list>li:last-child {
     margin-left: 230%;
     max-width: 100%;
     display: block;
-    border-radius: 50%;
-    -webkit-border-radius: 50%
+    border-radius: 30%;
+
+    -webkit-border-radius: 10%;
 }
 
 .profile-img-edit {
     position: relative;
     display: inline-block;
     height: 150px;
-    width: 150px
+    width: 150px;
 }
 
 .file-upload {
@@ -29802,25 +29807,24 @@ button [class = "fas fa-arrow-up"]{
 
   .far {
     color: black;
-    
+
   }
-  
+
   .far:hover {
     color: gray;
-    
+
   }
-  
+
   .fas {
     color: red;
-    
+
   }
   .ri-close-fill {
     color: #fff;
-    
+
   }
   .lapor {
     color:#000;
   }
-  
- 
-  
+
+

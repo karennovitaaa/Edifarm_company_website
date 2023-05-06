@@ -1,5 +1,5 @@
 @extends('sidebar')
-@section('content')      
+@section('content')
 <div id="content-page" class="content-page">
 <div class="container">
    <div class="row">
@@ -8,17 +8,8 @@
             <div class="card-body profile-page p-0">
                <div class="profile-header">
                   <div class="position-relative">
-                     <img src="/images/user/foto_edifarm.jpg" alt="profile-bg" class="rounded img-fluid">
-                  </div>
-                  <div class="user-detail text-center mb-3">
-                  <div class="form-group row align-items-center">
-                  <div class="col-md-12">
                         <div class="profile-img-edit">
                         <img class="profile-pic" src="/images/user/11.png" alt="profile-pic">
-                        <div class="p-image">
-                           <i class="ri-pencil-line upload-button text-white"></i>
-                           <input class="file-upload" type="file" accept="image/*"/>
-                        </div>
                         </div>
                   </div>
                </div>
@@ -153,7 +144,7 @@
                                     </div>
                                  </div>
                               </div>
-                              
+
                               <div class="tab-pane fade" id="v-pills-details-tab" role="tabpanel" aria-labelledby="v-pills-details-tab">
                                  <h4 class="mb-3">About You</h4>
                                  <p>Hi, I’m Bni, I’m 26 and I work as a Web Designer for the iqonicdesign.</p>
