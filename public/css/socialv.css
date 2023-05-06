@@ -236,7 +236,7 @@ sup {
 }
 
 a {
-    color: #41A59B;
+    color: #777d74;
     text-decoration: none
 }
 
@@ -8623,10 +8623,13 @@ fieldset:disabled .btn {
 }
 
 .d-flex {
+    margin-right:20px;
+    margin-top: 5px;
     display: -webkit-box !important;
     display: -webkit-flex !important;
     display: -ms-flexbox !important;
     display: flex !important
+    
 }
 
 .d-inline-flex {
@@ -8635,7 +8638,40 @@ fieldset:disabled .btn {
     display: -ms-inline-flexbox !important;
     display: inline-flex !important
 }
+.d-flex2 {
+    margin-left: 20px;
+    margin-right:20px;
+    margin-top: 5px;
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important
+    
+}
 
+.d-inline-flex2 {
+    display: -webkit-inline-box !important;
+    display: -webkit-inline-flex !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important
+}
+.d-flex3 {
+    margin-left: 20px;
+    margin-right:20px;
+    margin-top: 5px;
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important
+    
+}
+
+.d-inline-flex3 {
+    display: -webkit-inline-box !important;
+    display: -webkit-inline-flex !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important
+}
 .d-none {
     display: none !important
 }
@@ -19895,6 +19931,7 @@ form.comment-text {
 }
 
 form.comment-text input {
+    margin-bottom: 20px;
     padding-right: 8.125rem
 }
 
@@ -19902,6 +19939,7 @@ form.comment-text input {
     position: absolute;
     left: auto;
     right: 0;
+    top: 0;
     font-size: 1.25rem
 }
 
@@ -20241,6 +20279,13 @@ ul.request-list>li:last-child {
     border-radius: 50%;
     -webkit-border-radius: 50%
 }
+.profile-pic1 {
+    margin-left: 230%;
+    max-width: 100%;
+    display: block;
+    border-radius: 50%;
+    -webkit-border-radius: 50%
+}
 
 .profile-img-edit {
     position: relative;
@@ -20272,7 +20317,25 @@ ul.request-list>li:last-child {
     font-size: 12px;
     cursor: pointer
 }
-
+.p-image1 {
+    position: absolute;
+    top: 115px;
+    left: 455px;
+    bottom: -20px;
+    -webkit-transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    -o-transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    background: #41A59B;
+    color: #fff;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer
+}
 .upload-button {
     font-size: 1.5em
 }
@@ -29743,7 +29806,7 @@ button [class = "fas fa-arrow-up"]{
   }
   
   .far:hover {
-    color: red;
+    color: gray;
     
   }
   
@@ -29759,4 +29822,5 @@ button [class = "fas fa-arrow-up"]{
     color:#000;
   }
   
+ 
   
