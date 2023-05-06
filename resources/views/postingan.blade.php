@@ -20,28 +20,7 @@
                      </form>
                   </div>
                   <hr>
-                  <ul class=" post-opt-block d-flex list-inline m-0 p-0 flex-wrap">
-                     <li class="me-3 mb-md-0 mb-2">
-                        <a href="#" class="btn btn-soft-primary">
-                           <img src="images/small/07.png" alt="icon" class="img-fluid me-2"> Photo/Video
-                        </a>
-                     </li>
-                     <li class="me-3 mb-md-0 mb-2">
-                        <a href="#" class="btn btn-soft-primary">
-                           <img src="images/small/08.png" alt="icon" class="img-fluid me-2"> Tag Friend
-                        </a>
-                     </li>
-                     <li class="me-3">
-                        <a href="#" class="btn btn-soft-primary">
-                           <img src="images/small/09.png" alt="icon" class="img-fluid me-2"> Feeling/Activity
-                        </a>
-                     </li>
-                     <li>
-                        <button class="btn btn-soft-primary">
-                           <div class="card-header-toolbar d-flex align-items-center">
-                                 <div class="dropdown-toggle" id="post-option"   data-bs-toggle="dropdown">
-                                    <i class="ri-more-fill"></i>
-                                 </div>
+               
                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="post-option" style="">
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#post-modal">Check in</a>
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#post-modal">Live Video</a>
@@ -65,38 +44,17 @@
                         <div class="modal-body">
                            <div class="d-flex align-items-center">
                               <div class="user-img">
-                                 <img src="images/user/1.jpg" alt="userimg" class="avatar-60 rounded-circle img-fluid">
+                                 <img src="images/user/gallery.png" alt="userimg" class="posting">
+                                 <html> <head><title>this is used for the title</title></head> 
+                                 <body> <h3></h3><br/> 
+                                 <form action="process.php" method= "POST" enctype="multipart/form-data"> <table> 
+                                 <tr><td><h6>Tambahkan foto</h6></td><td></td></tr> <tr >
+                                 <td><td><td><input type="file" value="upload image"/></td></tr> 
+                                 <tr><td></td><td></td></tr> </table> </form> </body> </html> 
                               </div>
-                              <form class="post-text ms-3 w-100" action="javascript:void();">
-                                 <input type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;">
-                              </form>
                            </div>
                            <hr>
-                           <ul class="d-flex flex-wrap align-items-center list-inline m-0 p-0">
-                              <li class="col-md-6 mb-3">
-                                 <div class="bg-soft-primary rounded p-2 pointer me-3"><a href="#"></a><img src="images/small/07.png" alt="icon" class="img-fluid"> Photo/Video</div>
-                              </li>
-                              <li class="col-md-6 mb-3">
-                                 <div class="bg-soft-primary rounded p-2 pointer me-3"><a href="#"></a><img src="images/small/08.png" alt="icon" class="img-fluid"> Tag Friend</div>
-                              </li>
-                              <li class="col-md-6 mb-3">
-                                 <div class="bg-soft-primary rounded p-2 pointer me-3"><a href="#"></a><img src="images/small/09.png" alt="icon" class="img-fluid"> Feeling/Activity</div>
-                              </li>
-                              <li class="col-md-6 mb-3">
-                                 <div class="bg-soft-primary rounded p-2 pointer me-3"><a href="#"></a><img src="images/small/10.png" alt="icon" class="img-fluid"> Check in</div>
-                              </li>
-                              <li class="col-md-6 mb-3">
-                                 <div class="bg-soft-primary rounded p-2 pointer me-3"><a href="#"></a><img src="images/small/11.png" alt="icon" class="img-fluid"> Live Video</div>
-                              </li>
-                              <li class="col-md-6 mb-3">
-                                 <div class="bg-soft-primary rounded p-2 pointer me-3"><a href="#"></a><img src="images/small/12.png" alt="icon" class="img-fluid"> Gif</div>
-                              </li>
-                              <li class="col-md-6 mb-3">
-                                 <div class="bg-soft-primary rounded p-2 pointer me-3"><a href="#"></a><img src="images/small/13.png" alt="icon" class="img-fluid"> Watch Party</div>
-                              </li>
-                              <li class="col-md-6 mb-3">
-                                 <div class="bg-soft-primary rounded p-2 pointer me-3"><a href="#"></a><img src="images/small/14.png" alt="icon" class="img-fluid"> Play with Friends</div>
-                              </li>
+                           <img src="images/user/location.png" alt="userimg" class="location"> Tambahkan lokasi
                            </ul>
                            <hr>
                            <div class="other-option">
@@ -105,12 +63,15 @@
                                     <div class="user-img me-3">
                                        <img src="images/user/1.jpg" alt="userimg" class="avatar-60 rounded-circle img-fluid">
                                     </div>
-                                    <h6>Your Story</h6>
                                  </div>
-                                 <div class="card-post-toolbar">
-                                       <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                       <span class="btn btn-primary">Friend</span>
-                                       </span>
+                                 <div class="modal-body">
+                                    <div class="d-flex align-items-center">
+                                       <div class="user-img">
+                                       <form class="post-text ms-3 w-100" action="javascript:void();">
+                                          <input type="text" class="form-control rounded" placeholder="Tulis keterangan disini..." style="border:none;">
+                                       </form>
+                                       </div>
+                                       <hr>
                                        <div class="dropdown-menu m-0 p-0">
                                           <a class="dropdown-item p-3" href="#">
                                              <div class="d-flex align-items-top">
