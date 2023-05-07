@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-use Validator;
+
 
 
 class AuthController extends Controller
@@ -17,7 +19,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $validator = Validator::make($request->json()->all(),[
+        $validator = Validator::make($request->all(),[
             'username' => 'required',
             'name' => 'required',
             'email' => 'required|email',
@@ -53,7 +55,6 @@ class AuthController extends Controller
             'data'=> $success
         ]);
     }
-
 
 
     public function login(Request $request)
@@ -109,32 +110,92 @@ class AuthController extends Controller
 
 
 
-    public function update(Request $request)
-    {   
-    $input = $request->json()->all();
-    $user = User::find($input['id']);
-    if(!$user){
+//     public function update(Request $request)
+//     {   
+//     $input = $request->all();
+//     $user = User::find($input['id']);
+//     $validator = Validator::make($request->json()->all(), [
+//         'username' => 'required',
+//         'name' => 'required',
+//         'email' => 'required|email',
+//         'phone' => 'required',
+//         'address' => 'required',
+//         'born_date' => 'required',
+//     ]);
+//     if(!$user){
+//         return response()->json([
+//             'success'=> false,
+//             'message'=> 'User not found',
+//             'data'=> null
+//         ], 404);
+//     }
+
+
+//     if(isset($input['password'])){
+//         $input['password'] = bcrypt($input['password']);
+//     }
+
+//     $user->update($input);
+    
+//     return response()->json([
+//         'success'=> true,
+//         'message'=> 'User updated successfully',
+//         'data'=> $user
+//     ], 200);
+// }
+
+
+public function update(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'id' => 'required',
+        'username' => 'required',
+        'name' => 'required',
+        'email' => 'required',
+        'phone' => 'required',
+        'address' => 'required',
+        'born_date' => 'required',
+    ]);
+
+    if ($validator->fails()) {
         return response()->json([
-            'success'=> false,
-            'message'=> 'User not found',
-            'data'=> null
+            'success' => false,
+            'message' => $validator->errors()->first(),
+            'data' => $validator->errors()->first()
         ], 404);
     }
 
+    // $input = $request->only(['username', 'name', 'email', 'phone', 'address', 'born_date']);
 
-    if(isset($input['password'])){
-        $input['password'] = bcrypt($input['password']);
-    }
+    // $user = User::find($request->input('id'));
 
-    $user->update($input);
-    
+    // if (!$user) {
+    //     return response()->json([
+    //         'success' => false,
+    //         'message' => 'pengguna tidak ditemukan',
+    //         'data' => null
+    //     ]);
+    // }
+
+    // $user->fill($input);
+    // $user->save();
+
+    $input = $request->all();
+    $blog= User::where('id', $input['id'])->update([
+        'username'=>$request->username, 
+        'name'=>$request->name, 
+        'email'=>$request->email, 
+        'phone'=>$request->phone, 
+        'address'=>$request->address, 
+        'born_date'=>$request->born_date
+    ]);
+
     return response()->json([
-        'success'=> true,
-        'message'=> 'User updated successfully',
-        'data'=> $user
-    ], 200);
+        'success' => true,
+        'message' => 'sukses update pengguna',
+        'data' => $input
+    ]);
 }
-
 
 
 
@@ -271,6 +332,19 @@ class AuthController extends Controller
         ]);
     }
 
+    public function getact(Request $request)
+    {
+        $id = $request->input('id');
+        $user = Activity::where('user_id', $id)->get();
+    
+        return response()->json([
+            'success'=> true,
+            'message'=> 'sukses mendapatkan data',
+            'data'=> $user
+        ]);
+    }
+    
+
 // public function updateUser(Request $request, $id)
 // {
 //     $validator = Validator::make($request->all(), [
@@ -311,5 +385,76 @@ class AuthController extends Controller
 //     ]);
 // }
 
+public function addActivity(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'activity_name' => 'required',
+        'status' => 'required',
+        'start' => 'required',
+        'end' => 'required',
+        'user_id' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 403);
+    }
+    $activity = new Activity();
+  
+  
+    $activity->activity_name = $request->activity_name;
+    $activity->status = $request->status;
+    $activity->start = $request->start;
+    $activity->end = $request->end;
+    $activity->user_id = $request->user_id;
+    $activity->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses menambahkan data aktivitas',
+        'data' => $activity
+    ]);
+}
+
+
+public function updateStatus(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'id' => 'required',
+        'user_id' => 'required',
+        'status' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 403);
+    }
+
+    $activity = Activity::find($request->id);
+
+    if (!$activity) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Kegiatan tidak ditemukan',
+            'data' => null
+        ], 404);
+    }
+
+    $activity->user_id = $request->user_id;
+    $activity->status = $request->status;
+    $activity->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Data berhasil diupdate',
+        'data' => $activity
+    ]);
+}
 
 }
