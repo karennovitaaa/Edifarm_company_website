@@ -40,43 +40,43 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function posts()
-    {
-        return $this->hasMany(Post::class);
-    }
+    // public function posts()
+    // {
+    //     return $this->hasMany(Post::class);
+    // }
 
-    public function activities()
-    {
-        return $this->hasMany(Activity::class);
-    }
+    // public function activities()
+    // {
+    //     return $this->hasMany(Activity::class);
+    // }
 
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
+    // public function comments()
+    // {
+    //     return $this->hasMany(Comment::class);
+    // }
 
-    public function postComments()
-    {
-        return $this->belongsToMany(Post::class, 'comments');
-    }
+    // public function postComments()
+    // {
+    //     return $this->belongsToMany(Post::class, 'comments');
+    // }
 
-    public function likes()
-    {
-        return $this->hasMany(Like::class);
-    }
+    // public function likes()
+    // {
+    //     return $this->hasMany(Like::class);
+    // }
 
-    public function postLikes()
-    {
-        return $this->belongsToMany(Post::class, 'likes');
-    }
+    // public function postLikes()
+    // {
+    //     return $this->belongsToMany(Post::class, 'likes');
+    // }
 
-    public function reports()
-    {
-        return $this->hasMany(Report::class);
-    }
+    // public function reports()
+    // {
+    //     return $this->hasMany(Report::class);
+    // }
 
-    public function postReports()
-    {
-        return $this->belongsToMany(Post::class, 'reports');
-    }
+    // public function postReports()
+    // {
+    //     return $this->belongsToMany(Post::class, 'reports');
+    // }
 }

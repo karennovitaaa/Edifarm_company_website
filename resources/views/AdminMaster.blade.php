@@ -15,7 +15,9 @@
       <link rel="stylesheet" href="vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
       <link rel="stylesheet" href="vendor/font-awesome-line-awesome/css/all.min.css">
       <link rel="stylesheet" href="vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
-      
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"> -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
   </head>
   <body class="  ">
     <!-- Wrapper Start -->
@@ -70,7 +72,7 @@
                                           </div>
                                       </div>
                                       <div class="card-body p-0 ">
-                                      <a href="/profile" class="iq-sub-card iq-bg-primary-hover">
+                                      <a href="/adminprofile" class="iq-sub-card iq-bg-primary-hover">
                                               <div class="d-flex align-items-center">
                                                   <div class="rounded card-icon bg-soft-primary">
                                                       <i class="ri-file-user-line"></i>
@@ -172,5 +174,12 @@
           </div>
        </div>
     </div>
+    <script>$(document).ready(function () {
+    $('#example').DataTable({
+        order: [[3, 'desc']],
+    });
+});</script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
   </body>
 </html>

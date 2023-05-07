@@ -14,12 +14,10 @@
         <div class="card">
         
         <div class="card-body">
-            <div id="table" class="table-editable">
+            <!-- <div id="table" class="table-editable">
                 <span class="table-add float-end mb-3 me-2">
-                <button class="btn btn-sm btn-success"><i class="ri-add-fill"><span class="ps-1">Add New</span></i>
-                </button>
-                </span>
-                <table class="table table-bordered table-responsive-md table-striped text-center">
+                </span> -->
+                <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
                             <th>Username</th>
@@ -54,7 +52,7 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </div>
