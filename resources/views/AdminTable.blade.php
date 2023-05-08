@@ -25,7 +25,6 @@
                             <th>Born Date</th>
                             <th>Phone</th>
                             <th>Email</th>
-                            <th>Sort</th>
                             <th>Remove</th>
                         </tr>
                     </thead>
@@ -37,10 +36,6 @@
                             <td contenteditable="true">{{ $user->born_date }}</td>
                             <td contenteditable="true">{{ $user->phone }}</td>
                             <td contenteditable="true">{{ $user->email }}</td>
-                            <td>
-                                <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
-                                <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
-                            </td>
                             <td>
                                 <form action="{{ url('/category', ['id' => $user->id]) }}" method="post" onclick="return confirm('Yain ingin menghapus data?')">
                                     @method('delete')

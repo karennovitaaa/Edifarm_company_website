@@ -15,7 +15,7 @@
       <link rel="stylesheet" href="vendor/font-awesome-line-awesome/css/all.min.css">
       <link rel="stylesheet" href="vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-dYmLvC1rLz/rJksmDfCmOlk+ymMzfJxYYhX9lhHVQ0UyyB6lAg8bw/+Nz/pL0B5+5Ln03p5xkr06WZ0v/6/OYQ==" crossorigin="anonymous" />
-      
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body class="  ">
     <!-- Wrapper Start -->
@@ -49,9 +49,9 @@
                           </li> -->
                            <li class="nav-item dropdown">
                               <a href="#" class="   d-flex align-items-center dropdown-toggle" id="drop-down-arrow" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <img src="images/user/1.jpg" class="img-fluid rounded-circle me-3" alt="user">
+                                  <img src="{{session()->get('photo') }}" class="img-fluid rounded-circle me-3" alt="user">
                                   <div class="caption">
-                                      <h6 class="mb-0 line-height">{{session()->get('nama') }}</h6>
+                                      <h6 class="mb-0 line-height">{{session()->get('username') }}</h6>
                                   </div>
                               </a>
                               <div class="sub-drop dropdown-menu caption-menu" aria-labelledby="drop-down-arrow">
@@ -137,7 +137,7 @@
     <script src="js/app.js"></script>
     <script src="vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
     <script src="js/lottie.js"></script>
-    
+    @include('sweetalert::alert')
 
     <!-- offcanvas start -->
  

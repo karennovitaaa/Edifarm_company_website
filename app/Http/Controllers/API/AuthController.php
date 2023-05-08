@@ -110,18 +110,13 @@ class AuthController extends Controller
                 'data'=> $validator -> errors()->first()
             ], 403);
         }
-        $file = $request->file('image');
-        $name = $file->getClientOriginalName();
-        $path = $file->store('public/images');
-        $url = Storage::url($path);
-
-        // $path = Storage::putFile(
-        //     'public/images',
-        //     $request->file('image'),
-        // );
+        $imageName = time().'.'.request()->image->extension();
+        request()->image->move(public_path('images/post'), $imageName);
+        $path = "images/post/$imageName";
 
         $input = $request->all();
         $input['image'] = $path;
+
         $user = Post::create($input);
 
         return response()->json([

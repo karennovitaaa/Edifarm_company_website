@@ -12,10 +12,10 @@
                   </div>
                   <div class="user-detail text-center mb-3">
                      <div class="profile-img">
-                        <img src="/images/user/foto_profil_wishal.jpg" alt="profile-img" class="avatar-130 img-fluid" />
+                        <img src="{{session()->get('photo') }}" alt="profile-img" class="avatar-130 img-fluid" />
                      </div>
                      <div class="profile-detail">
-                        <h3 class="">{{session()->get('nama') }}</h3>
+                        <h3 class="">{{session()->get('username') }}</h3>
                      </div>
                   </div>
                   <div class="profile-info p-3 d-flex align-items-center justify-content-between position-relative">
@@ -70,78 +70,51 @@
                            </ul>
                         </div>
                         <div class="col-md-9 ps-4">
+                           @foreach($reports as $report)
                            <div class="tab-content" >
                               <div class="tab-pane fade active show" id="v-pills-basicinfo-tab" role="tabpanel"  aria-labelledby="v-pills-basicinfo-tab">
-                                 <h4>Contact Information</h4>
+                              <h4 >Informasi Pribadi</h4>
+                                 <hr>
+                                 <div class="row">
+                                    <div class="col-3">
+                                       <h6>Nama</h6>
+                                    </div>
+                                    <div class="col-9">
+                                       <p class="mb-0">{{ $report->name }}</p>
+                                    </div>
+                                    <div class="col-3">
+                                       <h6>Tanggal Lahir</h6>
+                                    </div>
+                                    <div class="col-9">
+                                       <p class="mb-0">{{ $report->born_date }}</p>
+                                    </div>
+                                    <div class="col-3">
+                                       <h6>Jenis Kelamin</h6>
+                                    </div>
+                                    <div class="col-9">
+                                       <p class="mb-0">{{ $report->gender }}</p>
+                                    </div>
+                                 </div>   
+                              <h4 class="mt-3">Contact Information</h4>
                                  <hr>
                                  <div class="row">
                                     <div class="col-3">
                                        <h6>Email</h6>
                                     </div>
                                     <div class="col-9">
-                                       <p class="mb-0">Bnijohn@gmail.com</p>
+                                       <p class="mb-0">{{ $report->email }}</p>
                                     </div>
                                     <div class="col-3">
-                                       <h6>Mobile</h6>
+                                       <h6>Nomor HP</h6>
                                     </div>
                                     <div class="col-9">
-                                       <p class="mb-0">(001) 4544 565 456</p>
+                                       <p class="mb-0">{{ $report->phone }}</p>
                                     </div>
                                     <div class="col-3">
-                                       <h6>Address</h6>
+                                       <h6>Alamat</h6>
                                     </div>
                                     <div class="col-9">
-                                       <p class="mb-0">United States of America</p>
-                                    </div>
-                                 </div>
-                                 <h4 class="mt-3">Websites and Social Links</h4>
-                                 <hr>
-                                 <div class="row">
-                                    <div class="col-3">
-                                       <h6>Website</h6>
-                                    </div>
-                                    <div class="col-9">
-                                       <p class="mb-0">www.bootstrap.com</p>
-                                    </div>
-                                    <div class="col-3">
-                                       <h6>Social Link</h6>
-                                    </div>
-                                    <div class="col-9">
-                                       <p class="mb-0">www.bootstrap.com</p>
-                                    </div>
-                                 </div>
-                                 <h4 class="mt-3">Basic Information</h4>
-                                 <hr>
-                                 <div class="row">
-                                    <div class="col-3">
-                                       <h6>Birth Date</h6>
-                                    </div>
-                                    <div class="col-9">
-                                       <p class="mb-0">24 January</p>
-                                    </div>
-                                    <div class="col-3">
-                                       <h6>Birth Year</h6>
-                                    </div>
-                                    <div class="col-9">
-                                       <p class="mb-0">1994</p>
-                                    </div>
-                                    <div class="col-3">
-                                       <h6>Gender</h6>
-                                    </div>
-                                    <div class="col-9">
-                                       <p class="mb-0">Female</p>
-                                    </div>
-                                    <div class="col-3">
-                                       <h6>interested in</h6>
-                                    </div>
-                                    <div class="col-9">
-                                       <p class="mb-0">Designing</p>
-                                    </div>
-                                    <div class="col-3">
-                                       <h6>language</h6>
-                                    </div>
-                                    <div class="col-9">
-                                       <p class="mb-0">English, French</p>
+                                       <p class="mb-0">{{ $report->address }}</p>
                                     </div>
                                  </div>
                               </div>
@@ -155,6 +128,7 @@
                                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                               </div>
                            </div>
+                           @endforeach
                         </div>
                      </div>
                   </div>

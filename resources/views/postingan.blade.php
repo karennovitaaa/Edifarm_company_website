@@ -13,7 +13,7 @@
                <div class="card-body">
                   <div class="d-flex align-items-center">
                      <div class="user-img">
-                        <img src="images/user/1.jpg" alt="userimg" class="avatar-60 rounded-circle">
+                        <img src="{{session()->get('photo') }}" alt="userimg" class="avatar-60 rounded-circle">
                      </div>
                      <form class="post-text ms-3 w-100 "  data-bs-toggle="modal" data-bs-target="#post-modal" action="javascript:void();">
                         <input type="text" class="form-control rounded" placeholder="Write something here..." style="border:none;">
@@ -238,6 +238,7 @@
                </div>
             </div>
          </div> 
+         
          <div class="col-sm-12">
             <div class="card card-block card-stretch card-height">
                <div class="card-body">
@@ -258,11 +259,13 @@
                      </div>
                   </div>
                   <div class="mt-3">
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus</p>
+                     <p>CAPTIOKN</p>
                   </div>
+
                   <div class="user-post">
                      <a href="javascript:void();"><img src="images/page-img/p4.jpg" alt="post-image" class="img-fluid rounded w-100"></a>
                   </div>
+
                   <div class="comment-area mt-3">
                      <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <div class="like-block position-relative d-flex align-items-center">
