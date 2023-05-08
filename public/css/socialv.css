@@ -124,6 +124,9 @@ h2 {
 
 .h3,
 h3 {
+    margin-left: 437px;
+    margin-top: 60px;
+    margin-bottom: -50px;
     font-size: -webkit-calc(1.29589rem + .55065vw);
     font-size: calc(1.29589rem + .55065vw)
 }
@@ -152,6 +155,7 @@ h6 {
 }
 
 p {
+    color: #000;
     margin-top: 0;
     margin-bottom: 1rem
 }
@@ -236,7 +240,7 @@ sup {
 }
 
 a {
-    color: #41A59B;
+    color: #000;
     text-decoration: none
 }
 
@@ -344,7 +348,7 @@ button {
     -webkit-border-radius: 0;
     border: #f8f9fa;
     border-radius: 0
-    
+
 }
 
 button:focus:not(:focus-visible) {
@@ -8623,10 +8627,13 @@ fieldset:disabled .btn {
 }
 
 .d-flex {
+    margin-right:20px;
+    margin-top: 5px;
     display: -webkit-box !important;
     display: -webkit-flex !important;
     display: -ms-flexbox !important;
     display: flex !important
+
 }
 
 .d-inline-flex {
@@ -8635,7 +8642,40 @@ fieldset:disabled .btn {
     display: -ms-inline-flexbox !important;
     display: inline-flex !important
 }
+.d-flex2 {
+    margin-left: 20px;
+    margin-right:20px;
+    margin-top: 5px;
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important
 
+}
+
+.d-inline-flex2 {
+    display: -webkit-inline-box !important;
+    display: -webkit-inline-flex !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important
+}
+.d-flex3 {
+    margin-left: 20px;
+    margin-right:20px;
+    margin-top: 5px;
+    display: -webkit-box !important;
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important
+
+}
+
+.d-inline-flex3 {
+    display: -webkit-inline-box !important;
+    display: -webkit-inline-flex !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important
+}
 .d-none {
     display: none !important
 }
@@ -19895,6 +19935,7 @@ form.comment-text {
 }
 
 form.comment-text input {
+    margin-bottom: 20px;
     padding-right: 8.125rem
 }
 
@@ -19902,6 +19943,7 @@ form.comment-text input {
     position: absolute;
     left: auto;
     right: 0;
+    top: 0;
     font-size: 1.25rem
 }
 
@@ -20235,18 +20277,27 @@ ul.request-list>li:last-child {
 }
 
 .profile-pic {
-    margin-left: 250%;
+    margin-top: 40%;
+    margin-left: 260%;
     max-width: 100%;
     display: block;
     border-radius: 50%;
     -webkit-border-radius: 50%
+}
+.profile-pic1 {
+    margin-left: 230%;
+    max-width: 100%;
+    display: block;
+    border-radius: 30%;
+
+    -webkit-border-radius: 10%;
 }
 
 .profile-img-edit {
     position: relative;
     display: inline-block;
     height: 150px;
-    width: 150px
+    width: 150px;
 }
 
 .file-upload {
@@ -20256,8 +20307,8 @@ ul.request-list>li:last-child {
 .p-image {
     position: absolute;
     top: auto;
-    left: 490px;
-    bottom: 10px;
+    left: 110px;
+    bottom: -20px;
     -webkit-transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
     -o-transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
     transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
@@ -20272,7 +20323,25 @@ ul.request-list>li:last-child {
     font-size: 12px;
     cursor: pointer
 }
-
+.p-image1 {
+    position: absolute;
+    top: 115px;
+    left: 455px;
+    bottom: -20px;
+    -webkit-transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    -o-transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    background: #41A59B;
+    color: #fff;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer
+}
 .upload-button {
     font-size: 1.5em
 }
@@ -23007,7 +23076,7 @@ button.bg-soft-dark:hover {
 .avatar-60 {
     height: 60px;
     width: 60px;
-    line-height: 60px
+    line-height: 60px;
 }
 
 .avatar-65 {
@@ -29739,24 +29808,52 @@ button [class = "fas fa-arrow-up"]{
 
   .far {
     color: black;
-    
+
   }
-  
+
   .far:hover {
-    color: red;
-    
+
+    color: #93989A;
+
+
+    color: gray;
+
+
   }
-  
+
   .fas {
     color: red;
-    
+
   }
   .ri-close-fill {
     color: #fff;
-    
+
   }
   .lapor {
     color:#000;
   }
-  
-  
+
+
+.posting {
+    height: 130px;
+    width: 130px;
+    margin-left: 165px;
+}
+
+.gambarposting {
+    font-size: .800rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #777d74;
+    background-color: #fff;
+}
+
+.location {
+    height: 22px;
+    width: 22px;
+}
+
+.fotopostingan {
+    margin-left: 100px;
+}
+

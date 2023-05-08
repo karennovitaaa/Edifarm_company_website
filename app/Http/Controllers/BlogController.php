@@ -35,6 +35,15 @@ class BlogController extends Controller
 		$reports = DB::table('users')->where('id', $id)->get();
 		return view('profile', compact('reports'));
 	}
+	public function postingan(){
+		return view('postingan_profile');
+	}
+	public function komen(){
+		return view('komen');
+	}
+	public function like(){
+		return view('like');
+	}
 	public function editprofile(){
 		$id = session('ids');
 		$reports = DB::table('users')->where('id', $id)->get();

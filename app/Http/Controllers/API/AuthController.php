@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
-use Validator;
+
 
 
 class AuthController extends Controller
 {
+
+
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(),[
@@ -52,6 +56,7 @@ class AuthController extends Controller
         ]);
     }
 
+
     public function login(Request $request)
     {
         if(Auth::attempt(['username'=> $request->username, 'password'=> $request->password, 'level'=>'admin'])){
@@ -64,7 +69,7 @@ class AuthController extends Controller
             $success['phone']=$auth->phone;
             $success['born_date']=$auth->born_date;
             $success['email']=$auth->email;
-
+            $success['id']=$auth->id;
             $success['level']=$auth->level;
 
             return response()->json([
@@ -76,6 +81,15 @@ class AuthController extends Controller
             $auth = Auth::user();
             $success['token']=$auth->createToken('auth_token')->plainTextToken;
             $success['username']=$auth->username;
+            $success['level']=$auth->level;
+            $success['name']=$auth->name;
+            $success['username']=$auth->username;
+            $success['photo']=$auth->photo;
+            $success['address']=$auth->address;
+            $success['phone']=$auth->phone;
+            $success['born_date']=$auth->born_date;
+            $success['email']=$auth->email;
+            $success['id']=$auth->id;
             $success['level']=$auth->level;
 
             return response()->json([
@@ -94,14 +108,14 @@ class AuthController extends Controller
     }
 
     public function post(Request $request)
-    {
-        $validator = Validator::make($request->all(),[
-            'image' => 'required|file|max:7000', // max 7MB
-            'caption' => 'required',
-            'post_latitude' => 'required',
-            'post_longitude' => 'required',
-            'user_id' => 'required'
-        ]);
+{
+    $validator = Validator::make($request->all(), [
+        'caption' => 'required',
+        'post_latitude' => 'required',
+        'post_longitude' => 'required',
+        'user_id' => 'required',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    ]);
 
         if($validator->fails()){
             return response()->json([
@@ -119,24 +133,226 @@ class AuthController extends Controller
 
         $user = Post::create($input);
 
-        return response()->json([
-            'success'=> true,
-            'massage'=> 'sukses post'
-        ]);
-    }
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses membuat post',
+        'data' => $success
+    ]);
+}
+
+    // public function post(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+           
+    //         'caption' => 'required',
+    //         'post_latitude' => 'required',
+    //         'post_longitude' => 'required',
+    //         'user_id' => 'required',
+    //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    //     ]);
+    
+    //     if($validator->fails()){
+    //         return response()->json([
+    //             'success'=> false,
+    //             'message' => 'Ada kesalahan',
+    //             'data'=> $validator->errors()->first()
+    //         ], 404);
+    //     }
+    
+    //     // Proses upload gambar
+    //     $image = $request->file('image');
+    //     $fileName = time() . '.' . $image->getClientOriginalExtension();
+    //     $path = $image->storeAs('public/images', $fileName);
+    //     $url = Storage::url($path);
+    
+    //     // Simpan data post ke database
+    //     $input = $request->all();
+    //     $input['image_path'] = $fileName; // mengupdate nama file ke database
+    //     $post = Post::create($input);
+    
+    //     $success = [
+    //         'id' => $post->id,
+    //         'caption' => $post->caption,
+    //         'image' => $url
+    //     ];
+    
+    //     return response()->json([
+    //         'success'=> true,
+    //         'message'=> 'Sukses membuat ',
+    //         'data'=> $success
+    //     ]);
+    // }
+//     public function post(Request $request)
+//     {
+//         $validator = Validator::make($request->all(),[
+//             'image' => 'required|file|max:7000', // max 7MB
+//             'caption' => 'required',
+//             'post_latitude' => 'required',
+//             'post_longitude' => 'required',
+//             'user_id' => 'required'
+//         ]);
+
+//         if($validator->fails()){
+//             return response()->json([
+//                 'success'=> false,
+//                 'massage' => 'ada kesalahan',
+//                 'data'=> $validator -> errors()->first()
+//             ], 403);
+//         }
+//         $file = $request->file('image');
+//         $name = $file->getClientOriginalName();
+//         $path = $file->store('public/images');
+//         $url = Storage::url($path);
+
+//         // $path = Storage::putFile(
+//         //     'public/images',
+//         //     $request->file('image'),
+//         // );
+
+//         $input = $request->all();
+//         $input['image'] = $path;
+//         $user = Post::create($input);
+
+//         return response()->json([
+//             'success'=> true,
+//             'massage'=> 'sukses post'
+//         ]);
+//     }
 
     public function getpost()
     {
         $users = Post::get();
-        // $user = User::create($input);
-
-        // $success['token']=$user->createToken('auth_token')->plainTextToken;
-        // $success['name']=$user->name;
-//haloo
+ 
         return response()->json([
             'success'=> true,
             'massage'=> 'sukses register',
             'data'=> $users
         ]);
     }
+
+    public function getact(Request $request)
+    {
+        $id = $request->input('id');
+        $user = Activity::where('user_id', $id)->get();
+    
+        return response()->json([
+            'success'=> true,
+            'message'=> 'sukses mendapatkan data',
+            'data'=> $user
+        ]);
+    }
+    
+
+// public function updateUser(Request $request, $id)
+// {
+//     $validator = Validator::make($request->all(), [
+//         'username' => 'required',
+//         'name' => 'required',
+//         'email' => 'required|email',
+//         'phone' => 'required',
+//         'address' => 'required',
+//         'born_date' => 'required'
+//     ]);
+
+//     if ($validator->fails()) {
+//         return response()->json([
+//             'success' => false,
+//             'message' => 'Ada kesalahan',
+//             'data' => $validator->errors()->first()
+//         ], 403);
+//     }
+
+//     $user = User::find($id);
+
+//     if (!$user) {
+//         return response()->json([
+//             'success' => false,
+//             'message' => 'User tidak ditemukan',
+//         ], 404);
+//     }
+
+//     $input = $request->only(['username', 'name', 'email', 'phone', 'address', 'born_date']);
+
+//     $user->fill($input);
+//     $user->save();
+
+//     return response()->json([
+//         'success' => true,
+//         'message' => 'Data user berhasil diupdate',
+//         'data' => $user
+//     ]);
+// }
+
+public function addActivity(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'activity_name' => 'required',
+        'status' => 'required',
+        'start' => 'required',
+        'end' => 'required',
+        'user_id' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 403);
+    }
+    $activity = new Activity();
+  
+  
+    $activity->activity_name = $request->activity_name;
+    $activity->status = $request->status;
+    $activity->start = $request->start;
+    $activity->end = $request->end;
+    $activity->user_id = $request->user_id;
+    $activity->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses menambahkan data aktivitas',
+        'data' => $activity
+    ]);
+}
+
+
+public function updateStatus(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'id' => 'required',
+        'user_id' => 'required',
+        'status' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 403);
+    }
+
+    $activity = Activity::find($request->id);
+
+    if (!$activity) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Kegiatan tidak ditemukan',
+            'data' => null
+        ], 404);
+    }
+
+    $activity->user_id = $request->user_id;
+    $activity->status = $request->status;
+    $activity->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Data berhasil diupdate',
+        'data' => $activity
+    ]);
+}
+
 }
