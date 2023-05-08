@@ -5,7 +5,7 @@
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Edifarm</title>
-      
+
       <link rel="shortcut icon" href="images/logo.png" />
       <link rel="stylesheet" href="css/libs.min.css">
       <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
@@ -15,7 +15,7 @@
       <link rel="stylesheet" href="vendor/font-awesome-line-awesome/css/all.min.css">
       <link rel="stylesheet" href="vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-dYmLvC1rLz/rJksmDfCmOlk+ymMzfJxYYhX9lhHVQ0UyyB6lAg8bw/+Nz/pL0B5+5Ln03p5xkr06WZ0v/6/OYQ==" crossorigin="anonymous" />
-      
+
   </head>
   <body class="  ">
     <!-- Wrapper Start -->
@@ -27,12 +27,12 @@
                           <img src="/images/logo.png" class="img-fluid" alt="">
                           <span>Edifarm</span>
                       </a>
-                      
+
                   </div>
                   <div class="iq-search-bar device-search">
                       <form action="#" class="searchbox">
-                          <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                           <input type="text" class="text search-input" placeholder="Search here...">
+                          <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                       </form>
                   </div>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -70,7 +70,7 @@
                                                   </div>
                                                   <div class="ms-3">
                                                       <h6 class="mb-0 ">My Profile</h6>
-                                                      <p class="mb-0 font-size-12">View personal profile details.</p>
+                                                      <p class="mb-0 font-size-12">Lihat data pribadi anda disini.</p>
                                                   </div>
                                               </div>
                                           </a>
@@ -81,7 +81,7 @@
                                                   </div>
                                                   <div class="ms-3">
                                                       <h6 class="mb-0 ">Edit Profile</h6>
-                                                      <p class="mb-0 font-size-12">Modify your personal details.</p>
+                                                      <p class="mb-0 font-size-12">Edit data pribadi anda disini.</p>
                                                   </div>
                                               </div>
                                           </a>
@@ -93,14 +93,14 @@
                                   </div>
                               </div>
                           </li>
-                      </ul>               
+                      </ul>
                   </div>
               </nav>
           </div>
-      </div>             
+      </div>
         <div id="content-page" class="content-page">
             <div class="container">
-    
+
                 <!-- bagian konten blog -->
                 @yield('content')
             </div>
@@ -112,7 +112,7 @@
     <script src="js/libs.min.js"></script>
     <!-- slider JavaScript -->
     <script src="js/slider.js"></script>
-    <!-- masonry JavaScript --> 
+    <!-- masonry JavaScript -->
     <script src="js/masonry.pkgd.min.js"></script>
     <!-- SweetAlert JavaScript -->
     <script src="js/enchanter.js"></script>
@@ -123,10 +123,10 @@
     <script src="js/app.js"></script>
     <script src="vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
     <script src="js/lottie.js"></script>
-    
+
 
     <!-- offcanvas start -->
- 
+
     <div class="offcanvas offcanvas-bottom share-offcanvas" tabindex="-1" id="share-btn" aria-labelledby="shareBottomLabel">
        <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="shareBottomLabel">Share</h5>

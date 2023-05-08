@@ -1,5 +1,5 @@
 @extends ('sidebar')
-@section('content') 
+@section('content')
 <div id="content-page" class="content-page">
 <div class="container">
    <div class="row">
@@ -20,7 +20,7 @@
                      </form>
                   </div>
                   <hr>
-               
+
                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="post-option" style="">
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#post-modal">Check in</a>
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#post-modal">Live Video</a>
@@ -45,12 +45,12 @@
                            <div class="d-flex align-items-center">
                               <div class="user-img">
                                  <img src="images/user/gallery.png" alt="userimg" class="posting">
-                                 <html> <head><title>this is used for the title</title></head> 
-                                 <body> <h3></h3><br/> 
-                                 <form action="process.php" method= "POST" enctype="multipart/form-data"> <table> 
+                                 <html> <head><title>this is used for the title</title></head>
+                                 <body> <h3></h3><br/>
+                                 <form action="process.php" method= "POST" enctype="multipart/form-data"> <table>
                                  <tr><td><h6>Tambahkan foto</h6></td><td></td></tr> <tr >
-                                 <td><td><td><input type="file" value="upload image"/></td></tr> 
-                                 <tr><td></td><td></td></tr> </table> </form> </body> </html> 
+                                 <td><td><td><input type="file" value="upload image"/></td></tr>
+                                 <tr><td></td><td></td></tr> </table> </form> </body> </html>
                               </div>
                            </div>
                            <hr>
@@ -120,8 +120,8 @@
                   </div>
                </div>
             </div>
-         
-                    
+
+
          <div class="col-sm-12">
             <div class="card card-block card-stretch card-height">
                <div class="card-body">
@@ -133,7 +133,7 @@
                         <div class="w-100">
                            <div class="d-flex justify-content-between">
                               <div class="">
-                                 <h5 class="mb-0 d-inline-block">Anna Sthesia</h5>
+                                 <h5 class="mb-0 d-inline-block"><a href="/profile">Anna Sthesia</a></h5>
                                  <span class="mb-0 d-inline-block">Add New Post</span>
                                  <p class="mb-0 text-primary">Just Now</p>
                               </div>
@@ -163,7 +163,7 @@
                            <div class="d-flex align-items-center">
                               <div class="like-data">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <button class = "like-btn"><i class = "far fa-heart"></i></button> 
+                                    <button class = "like-btn"><i class = "far fa-heart"></i></button>
                                     </span>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -200,7 +200,7 @@
                   </div>
                </div>
             </div>
-         </div> 
+         </div>
          <div class="col-sm-12">
             <div class="card card-block card-stretch card-height">
                <div class="card-body">
@@ -212,7 +212,7 @@
                         <div class="w-100">
                            <div class="d-flex  justify-content-between">
                               <div class="">
-                                 <h5 class="mb-0 d-inline-block">Barb Ackue</h5>
+                                 <h5 class="mb-0 d-inline-block"><a href=/profile>Barb Ackue</a></h5>
                                  <span class="mb-0 d-inline-block">Added New Image in a Post</span>
                                  <p class="mb-0 text-primary">1 hour ago</p>
                               </div>
@@ -232,7 +232,7 @@
                            <div class="d-flex align-items-center">
                               <div class="like-data">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <button class = "like-btn"><i class = "far fa-heart"></i></button> 
+                                    <button class = "like-btn"><i class = "far fa-heart"></i></button>
                                     </span>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -270,9 +270,9 @@
                   </div>
                </div>
             </div>
-         
-      
-         
+
+
+
          <div class="col-sm-12">
             <div class="card card-block card-stretch card-height">
                <div class="card-body">
@@ -284,7 +284,7 @@
                         <div class="w-100">
                            <div class=" d-flex  justify-content-between">
                               <div class="">
-                                 <h5 class="mb-0 d-inline-block">Ira Membrit</h5>
+                                 <h5 class="mb-0 d-inline-block"><a href="/profile">Ira Membrit</a></h5>
                                  <p class="mb-0 d-inline-block">Update her Status</p>
                                  <p class="mb-0 text-primary">6 hour ago</p>
                               </div>
@@ -301,7 +301,7 @@
                            <div class="d-flex align-items-center">
                               <div class="like-data">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <button class = "like-btn"><i class = "far fa-heart"></i></button> 
+                                    <button class = "like-btn"><i class = "far fa-heart"></i></button>
                                     </span>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -351,7 +351,7 @@
                         <div class="w-100">
                            <div class="d-flex justify-content-between">
                               <div class="">
-                                 <h5 class="mb-0 d-inline-block">Bni Cyst</h5>
+                                 <h5 class="mb-0 d-inline-block"><a href="/profile">Bni Cyst</a></h5>
                                  <p class="ms-1 mb-0 d-inline-block">Changed Profile Picture</p>
                                  <p class="mb-0">3 day ago</p>
                               </div>
@@ -368,7 +368,7 @@
                            <div class="d-flex align-items-center">
                               <div class="like-data">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <button class = "like-btn"><i class = "far fa-heart"></i></button> 
+                                    <button class = "like-btn"><i class = "far fa-heart"></i></button>
                                     </span>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -406,7 +406,7 @@
                </div>
             </div>
          </div>
-        
+
 
          <div class="col-sm-12">
             <div class="card card-block card-stretch card-height">
@@ -419,7 +419,7 @@
                         <div class="w-100">
                            <div class="d-flex justify-content-between">
                               <div class="">
-                                 <h5 class="mb-0 d-inline-block">Paige Turner</h5>
+                                 <h5 class="mb-0 d-inline-block"><a href="/profile">Paige Turner</a></h5>
                                  <p class="mb-0 d-inline-block">Added New Video in his Timeline</p>
                                  <p class="mb-0 text-primary">1 day ago</p>
                               </div>
@@ -441,7 +441,7 @@
                            <div class="d-flex align-items-center">
                               <div class="like-data">
                                     <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
-                                    <button class = "like-btn"><i class = "far fa-heart"></i></button> 
+                                    <button class = "like-btn"><i class = "far fa-heart"></i></button>
                                     </span>
                               </div>
                               <div class="total-like-block ms-2 me-3">
