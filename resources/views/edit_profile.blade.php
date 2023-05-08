@@ -40,8 +40,8 @@
                                         <div class="form-group row align-items-center">
                                             <div class="col-md-12">
                                                 <div class="profile-img-edit">
-                                                <img class="profile-pic" src="/images/user/11.png" alt="profile-pic">
-                                                <div class="p-image">
+                                                <img class="profile-pic1" src="/images/user/11.png" alt="profile-pic1">
+                                                <div class="p-image1">
                                                     <i class="ri-pencil-line upload-button text-white"></i>
                                                     <input class="file-upload" type="file" accept="image/*"/>
                                                 </div>

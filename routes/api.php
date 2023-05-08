@@ -17,6 +17,10 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('post', [AuthController::class, 'post']);
 Route::get('getpost', [AuthController::class, 'getpost']);
+Route::post('getact', [AuthController::class, 'getact']);
+Route::post('update', [AuthController::class, 'update']);
+Route::post('addActivity', [AuthController::class, 'addActivity']);
+Route::post('updateStatus', [AuthController::class, 'updateStatus']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

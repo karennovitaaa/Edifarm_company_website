@@ -1056,7 +1056,7 @@
 }
 .fa-comment:before {
     content: "\f075";
-    font-size: 30px;
+    font-size: 25px;
     margin-left: -15px;
 
 }
@@ -1698,7 +1698,7 @@
 }
 .fa-flag:before {
     content: "\f024";
-    font-size: 30px;
+    font-size: 25px;
     margin-left: -15px;
 }
 .fa-flag-checkered:before {
@@ -2159,7 +2159,7 @@
 }
 .fa-heart:before {
     content: "\f004";
-    font-size: 30px;
+    font-size: 25px;
 }
 .fa-heart-broken:before {
     content: "\f7a9";
@@ -2907,7 +2907,7 @@
 }
 .fa-paper-plane:before {
     content: "\f1d8";
-    margin-right: 10px;
+    margin-right: -10px;
 }
 .fa-paperclip:before {
     content: "\f0c6";
