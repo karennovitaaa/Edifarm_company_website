@@ -155,6 +155,7 @@ h6 {
 }
 
 p {
+    color: #000;
     margin-top: 0;
     margin-bottom: 1rem
 }
@@ -239,7 +240,7 @@ sup {
 }
 
 a {
-    color: #777d74;
+    color: #000;
     text-decoration: none
 }
 
@@ -23075,7 +23076,7 @@ button.bg-soft-dark:hover {
 .avatar-60 {
     height: 60px;
     width: 60px;
-    line-height: 60px
+    line-height: 60px;
 }
 
 .avatar-65 {
@@ -29811,7 +29812,12 @@ button [class = "fas fa-arrow-up"]{
   }
 
   .far:hover {
+
+    color: #93989A;
+
+
     color: gray;
+
 
   }
 
@@ -29827,4 +29833,27 @@ button [class = "fas fa-arrow-up"]{
     color:#000;
   }
 
+
+.posting {
+    height: 130px;
+    width: 130px;
+    margin-left: 165px;
+}
+
+.gambarposting {
+    font-size: .800rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #777d74;
+    background-color: #fff;
+}
+
+.location {
+    height: 22px;
+    width: 22px;
+}
+
+.fotopostingan {
+    margin-left: 100px;
+}
 

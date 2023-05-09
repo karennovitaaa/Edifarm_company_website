@@ -143,29 +143,6 @@ class AuthController extends Controller
 //         'data'=> $user
 //     ], 200);
 // }
-// public function update(Request $request)
-// {
-//     $validator = Validator::make($request->all(), [
-//         'id' => 'required',
-//     ]);
-
-//     if ($validator->fails()) {
-//         return response()->json([
-//             'success' => false,
-//             'message' => $validator->errors()->first(),
-//             'data' => $validator->errors()->first()
-//         ], 404);
-//     }
-
-//     $input = $request->except('id');
-//     $blog = User::where('id', $request->id)->update($input);
-
-//     return response()->json([
-//         'success' => true,
-//         'message' => 'Sukses update pengguna',
-//         'data' => $input
-//     ]);
-// }
 
 
 public function update(Request $request)
@@ -187,6 +164,21 @@ public function update(Request $request)
             'data' => $validator->errors()->first()
         ], 404);
     }
+
+    // $input = $request->only(['username', 'name', 'email', 'phone', 'address', 'born_date']);
+
+    // $user = User::find($request->input('id'));
+
+    // if (!$user) {
+    //     return response()->json([
+    //         'success' => false,
+    //         'message' => 'pengguna tidak ditemukan',
+    //         'data' => null
+    //     ]);
+    // }
+
+    // $user->fill($input);
+    // $user->save();
 
     $input = $request->all();
     $blog= User::where('id', $input['id'])->update([
@@ -218,35 +210,26 @@ public function update(Request $request)
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     ]);
 
-    if ($validator->fails()) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Ada kesalahan',
-            'data' => $validator->errors()->first()
-        ], 422);
-    }
+        if($validator->fails()){
+            return response()->json([
+                'success'=> false,
+                'massage' => 'ada kesalahan',
+                'data'=> $validator -> errors()->first()
+            ], 403);
+        }
+        $imageName = time().'.'.request()->image->extension();
+        request()->image->move(public_path('images/post'), $imageName);
+        $path = "images/post/$imageName";
 
-    // Proses upload gambar
-    $image = $request->file('image');
-    $fileName = time() . '.' . $image->getClientOriginalExtension();
-    $path = $image->storeAs('public/images', $fileName);
-    $url = Storage::url($path);
+        $input = $request->all();
+        $input['image'] = $path;
 
-    // Simpan data post ke database
-    $input = $request->all();
-    $input['image_path'] = $fileName;
-    $post = Post::create($input);
-
-    $success = [
-        'id' => $post->id,
-        'caption' => $post->caption,
-        'image' => $url
-    ];
+        $user = Post::create($input);
 
     return response()->json([
         'success' => true,
         'message' => 'Sukses membuat post',
-        'data' => $success
+        'data' => $user
     ]);
 }
 
