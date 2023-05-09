@@ -143,6 +143,29 @@ class AuthController extends Controller
 //         'data'=> $user
 //     ], 200);
 // }
+// public function update(Request $request)
+// {
+//     $validator = Validator::make($request->all(), [
+//         'id' => 'required',
+//     ]);
+
+//     if ($validator->fails()) {
+//         return response()->json([
+//             'success' => false,
+//             'message' => $validator->errors()->first(),
+//             'data' => $validator->errors()->first()
+//         ], 404);
+//     }
+
+//     $input = $request->except('id');
+//     $blog = User::where('id', $request->id)->update($input);
+
+//     return response()->json([
+//         'success' => true,
+//         'message' => 'Sukses update pengguna',
+//         'data' => $input
+//     ]);
+// }
 
 
 public function update(Request $request)
@@ -164,21 +187,6 @@ public function update(Request $request)
             'data' => $validator->errors()->first()
         ], 404);
     }
-
-    // $input = $request->only(['username', 'name', 'email', 'phone', 'address', 'born_date']);
-
-    // $user = User::find($request->input('id'));
-
-    // if (!$user) {
-    //     return response()->json([
-    //         'success' => false,
-    //         'message' => 'pengguna tidak ditemukan',
-    //         'data' => null
-    //     ]);
-    // }
-
-    // $user->fill($input);
-    // $user->save();
 
     $input = $request->all();
     $blog= User::where('id', $input['id'])->update([
@@ -403,7 +411,7 @@ public function addActivity(Request $request)
         ], 403);
     }
     $activity = new Activity();
-  
+    $activity->timestamps = false; // tambahkan baris ini
   
     $activity->activity_name = $request->activity_name;
     $activity->status = $request->status;
@@ -419,13 +427,11 @@ public function addActivity(Request $request)
     ]);
 }
 
-
 public function updateStatus(Request $request)
 {
     $validator = Validator::make($request->all(), [
-        'id' => 'required',
         'user_id' => 'required',
-        'status' => 'required'
+        'id' => 'required'
     ]);
 
     if ($validator->fails()) {
@@ -447,7 +453,7 @@ public function updateStatus(Request $request)
     }
 
     $activity->user_id = $request->user_id;
-    $activity->status = $request->status;
+    $activity->status = 'selesai'; // Set status ke "selesai" secara otomatis
     $activity->save();
 
     return response()->json([
