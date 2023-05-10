@@ -10,6 +10,7 @@ Route::get('/lapor', [BlogController::class, 'lapor']);
 Route::get('/adminprofile', [BlogController::class, 'adminprofile']);
 Route::delete('/category/{id}', [BlogController::class,'destroy'])->name('nieuws.destroy');
 Route::post('profileup/{id}', [BlogController::class,'profileup']);
+Route::post('postup', [BlogController::class,'postup']);
 Route::post('passwordup', [BlogController::class,'passwordup']);
 Route::get('/postingan', [BlogController::class, 'post']);
 Route::get('/profile', [BlogController::class, 'profile']);
@@ -25,22 +26,9 @@ Route::get('/login', function() {
 Route::get('/register', function() {
     return view('register');
 });
-Route::get('/postingan', function() {
-    return view('postingan');
-});
-Route::get('/profile', function() {
-    return view('profile');
-});
-
 Route::get('/tentang', function() {
     return view('tentang');
 });
-Route::get('/landingpage', function() {
+Route::get('/', function() {
     return view('landingpage');
-});
-Route::get('/komen', function() {
-    return view('komen');
-});
-Route::get('/like', function() {
-    return view('like');
 });

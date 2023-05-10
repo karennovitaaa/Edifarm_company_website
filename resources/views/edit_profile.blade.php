@@ -40,11 +40,11 @@
                                         <div class="form-group row align-items-center">
                                             <div class="col-md-12">
                                                 <div class="profile-img-edit">
-                                                <img class="profile-pic" src="/images/user/11.png" alt="profile-pic">
-                                                <div class="p-image">
-                                                    <i class="ri-pencil-line upload-button text-white"></i>
-                                                    <input class="file-upload" name="photo" type="file" value="{{ $report->photo }}"/>
-                                                </div>
+                                                    <img class="profile-pic" src="{{ $report->photo }}">
+                                                    <div class="p-image">
+                                                        <i class="ri-pencil-line upload-button text-white"></i>
+                                                        <input class="file-upload" name="photo" type="file" value="{{ $report->photo }}"/>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

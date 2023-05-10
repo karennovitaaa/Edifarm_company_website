@@ -8,7 +8,7 @@
 
       <link rel="shortcut icon" href="images/logo.png" />
       <link rel="stylesheet" href="css/libs.min.css">
-      <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
+      <link rel="stylesheet" href="css/socialv.css">
       <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
       <link rel="stylesheet" href="vendor/remixicon/fonts/remixicon.css">
       <link rel="stylesheet" href="vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
