@@ -1,8 +1,8 @@
 @extends ('sidebar')
 @section('content')
 <div id="content-page" class="content-page">
-<div class="container">
-   <div class="row">
+   <div class="container">
+      <div class="row">
          <div class="col-sm-12">
             <div id="post-modal-data" class="card card-block card-stretch card-height">
                <div class="card-header d-flex justify-content-between">
@@ -84,8 +84,23 @@
                               </div>
                            </div>
                         </div>
-                     </div>
-                  </div>
+
+=======
+         <div class="col-sm-12">
+            <div class="card card-block card-stretch card-height">
+               <div class="card-body">
+                  <div class="user-post-data">
+                     <div class="d-flex justify-content-between">
+                        <div class="me-3">
+                           <img class="rounded-circle img-fluid" src="images/user/02.jpg" alt="">
+                        </div>
+                        <div class="w-100">
+                           <div class="d-flex justify-content-between">
+                              <div class="">
+                                 <h5 class="mb-0 d-inline-block"><a href="/profile">Paige Turner</a></h5>
+                                 <p class="mb-0 d-inline-block">Added New Video in his Timeline</p>
+                                 <p class="mb-0 text-primary">1 day ago</p>
+                              </div>
                   <div class="mt-3">
                      <p>{{ $post->caption }}</p>
                   </div>

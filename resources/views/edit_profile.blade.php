@@ -36,15 +36,15 @@
                                 @foreach($reports as $report)
                                 <div class="card-body">
                                     <form action="{{ url('profileup/'. $report->id) }}" method="post" enctype="multipart/form-data">
-                                    @csrf 
+                                    @csrf
                                         <div class="form-group row align-items-center">
                                             <div class="col-md-12">
                                                 <div class="profile-img-edit">
-                                                    <img class="profile-pic" src="{{ $report->photo }}">
-                                                    <div class="p-image">
-                                                        <i class="ri-pencil-line upload-button text-white"></i>
-                                                        <input class="file-upload" name="photo" type="file" value="{{ $report->photo }}"/>
-                                                    </div>
+                                                <img class="profile-pic" src="{{ $report->photo }}" alt="profile-pic">
+                                                <div class="p-image">
+                                                    <i class="ri-pencil-line upload-button text-white"></i>
+                                                    <input class="file-upload" name="photo" type="file" value="{{ $report->photo }}"/>
+                                                </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -84,7 +84,7 @@
                                                 <label class="form-label">Alamat:</label>
                                                 <textarea class="form-control" name="address" rows="5" style="line-height: 22px;">{{ $report->address }}</textarea>
                                             </div>
-                                            
+
                                         </div>
                                         <button type="submit" class="btn btn-primary me-2">Submit</button>
                                         <button type="reset" class="btn bg-soft-danger">Cancle</button>
@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="card-body">
                                 <form action="{{ url('passwordup') }}" method="post">
-                                @csrf 
+                                @csrf
                                     <div class="form-group">
                                         <label for="cpass" class="form-label">Current Password:</label>
                                         <a href="#" class="float-end">Forgot Password</a>
