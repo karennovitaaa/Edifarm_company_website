@@ -326,8 +326,11 @@ public function update(Request $request)
     public function getact(Request $request)
     {
         $id = $request->input('id');
-        $user = Activity::where('user_id', $id)->get();
-    
+        $today = date('Y-m-d');
+
+        $user = Activity::where('user_id', $id)
+        ->whereDate('end', '<=', $today)->whereDate('start', '>=', $today)
+        ->get();
         return response()->json([
             'success'=> true,
             'message'=> 'sukses mendapatkan data',
