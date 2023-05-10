@@ -13,7 +13,7 @@
                <div class="card-body">
                   <div class="d-flex align-items-center">
                      <div class="user-img">
-                        <img src="{{session()->get('photo') }}" alt="userimg" class="avatar-60 rounded-circle">
+                        <img src="images/user/1.jpg" alt="userimg" class="avatar-60 rounded-circle">
                      </div>
                      <form class="post-text ms-3 w-100 "  data-bs-toggle="modal" data-bs-target="#post-modal" action="javascript:void();">
                         <input type="text" class="form-control rounded" placeholder="Buat postingan disini..." style="border:none;">
@@ -145,18 +145,8 @@
                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus</p>
                   </div>
                   <div class="user-post">
-                     <div class=" d-grid grid-rows-2 grid-flow-col gap-3">
-                        <div class="row-span-2 row-span-md-1">
-                           <img src="images/page-img/p2.jpg" alt="post-image" class="img-fluid rounded w-100">
-                        </div>
-                        <div class="row-span-1">
-                           <img src="images/page-img/p1.jpg" alt="post-image" class="img-fluid rounded w-100">
-                        </div>
-                        <div class="row-span-1 ">
-                           <img src="images/page-img/p3.jpg" alt="post-image" class="img-fluid rounded w-100">
-                        </div>
-                     </div>
-                  </div>
+                    <a href="javascript:void();"><img src="images/user/petani1.jpg" alt="post-image" class="img-fluid rounded w-100"></a>
+                 </div>
                   <div class="comment-area mt-3">
                      <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <div class="like-block position-relative d-flex align-items-center">
@@ -173,7 +163,7 @@
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="/komen"><i class="far fa-comment"></i></a>
+                                    <input type="button" style="border:none;height:10px;width:10px;margin-bottom:5px;color:white;"><a href="/komen"><i class="far fa-comment"></i></a>
                                  </form>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -183,7 +173,7 @@
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#lapor-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
+                                    <input type="button" style="border:none;height:10px;width:10px;margin-bottom:5px;color:white;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
                                  </form>
                            </div>
                            <div class="total-like-block ms-2 me-3">
@@ -200,8 +190,7 @@
                   </div>
                </div>
             </div>
-         </div> 
-         
+         </div>
          <div class="col-sm-12">
             <div class="card card-block card-stretch card-height">
                <div class="card-body">
@@ -222,13 +211,11 @@
                      </div>
                   </div>
                   <div class="mt-3">
-                     <p>CAPTIOKN</p>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus</p>
                   </div>
-
                   <div class="user-post">
-                     <a href="javascript:void();"><img src="images/page-img/p4.jpg" alt="post-image" class="img-fluid rounded w-100"></a>
+                     <a href="javascript:void();"><img src="images/user/petani2.jpeg" alt="post-image" class="img-fluid rounded w-100"></a>
                   </div>
-
                   <div class="comment-area mt-3">
                      <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <div class="like-block position-relative d-flex align-items-center">
@@ -245,7 +232,7 @@
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-comment"></i></a>
+                                    <input type="button" style="border:none;height:10px;width:10px;margin-bottom:5px;color:white;"><a href="/komen"><i class="far fa-comment"></i></a>
                                  </form>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -255,7 +242,7 @@
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#lapor-modal">
-                                    <input type="button" style="border:none;"><a href="/komen"><i class="far fa-flag"></i></a>
+                                    <input type="button" style="border:none;height:10px;width:10px;margin-bottom:5px;color:white;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
                                  </form>
                            </div>
                            <div class="total-like-block ms-2 me-3">
@@ -314,7 +301,7 @@
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal">
-                                    <input type="button" style="border:none;"><a href="/komen"><i class="far fa-comment"></i></a>
+                                    <input type="button" style="border:none;height:10px;width:10px;margin-bottom:5px;color:white;"><a href="/komen"><i class="far fa-comment"></i></a>
                                  </form>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -324,7 +311,7 @@
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#lapor-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
+                                    <input type="button" style="border:none;height:10px;width:10px;margin-bottom:5px;color:white;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
                                  </form>
                            </div>
                            <div class="total-like-block ms-2 me-3">
@@ -363,7 +350,7 @@
                      </div>
                   </div>
                   <div class="user-post text-center">
-                     <a href="javascript:void();"><img src="images/page-img/p5.jpg" alt="post-image" class="img-fluid rounded w-100 mt-3"></a>
+                     <a href="javascript:void();"><img src="images/user/petani3.jpg" alt="post-image" class="img-fluid rounded w-100 mt-3"></a>
                   </div>
                   <div class="comment-area mt-3">
                      <div class="d-flex justify-content-between align-items-center flex-wrap">
@@ -381,7 +368,7 @@
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal">
-                                    <input type="button" style="border:none;"><a href="/komen"><i class="far fa-comment"></i></a>
+                                    <input type="button" style="border:none;height:10px;width:10px;margin-bottom:5px;color:white;"><a href="/komen"><i class="far fa-comment"></i></a>
                                  </form>
                               </div>
                               <div class="total-like-block ms-2 me-3">
@@ -391,7 +378,7 @@
                               </div>
                               <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#lapor-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
+                                    <input type="button" style="border:none;height:10px;width:10px;margin-bottom:5px;color:white;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
                                  </form>
                            </div>
                            <div class="total-like-block ms-2 me-3">
@@ -433,11 +420,9 @@
                   <div class="mt-3">
                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus</p>
                   </div>
-                  <div class="user-post">
-                     <div class="ratio ratio-16x9">
-                        <iframe  src="https://www.youtube.com/embed/j_GsIanLxZk?rel=0" allowfullscreen></iframe>
-                     </div>
-                  </div>
+                  <div class="user-post text-center">
+                    <a href="javascript:void();"><img src="images/user/petani4.jpg" alt="post-image" class="img-fluid rounded w-100 mt-3"></a>
+                 </div>
                   <div class="comment-area mt-3">
                      <div class="d-flex justify-content-between align-items-center flex-wrap">
                         <div class="like-block position-relative d-flex align-items-center">
@@ -454,7 +439,7 @@
                               </div>
                            <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#komen-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="/komen"><i class="far fa-comment"></i></a>
+                                    <input type="button" style="border:none;height:10px;width:10px;margin-bottom:5px;color:white;"><a href="/komen"><i class="far fa-comment"></i></a>
                                  </form>
                            </div>
                            <div class="total-like-block ms-2 me-3">
@@ -464,7 +449,7 @@
                            </div>
                            <div class="total-comment-block">
                                  <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#lapor-modal" action="javascript:void();">
-                                    <input type="button" style="border:none;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
+                                    <input type="button" style="border:none;height:10px;width:10px;margin-bottom:5px;color:white;"><a href="javascript:void();"><i class="far fa-flag"></i></a>
                                  </form>
                            </div>
                            <div class="total-like-block ms-2 me-3">
