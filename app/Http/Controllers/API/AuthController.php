@@ -210,35 +210,26 @@ public function update(Request $request)
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     ]);
 
-    if ($validator->fails()) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Ada kesalahan',
-            'data' => $validator->errors()->first()
-        ], 422);
-    }
+        if($validator->fails()){
+            return response()->json([
+                'success'=> false,
+                'massage' => 'ada kesalahan',
+                'data'=> $validator -> errors()->first()
+            ], 403);
+        }
+        $imageName = time().'.'.request()->image->extension();
+        request()->image->move(public_path('images/post'), $imageName);
+        $path = "images/post/$imageName";
 
-    // Proses upload gambar
-    $image = $request->file('image');
-    $fileName = time() . '.' . $image->getClientOriginalExtension();
-    $path = $image->storeAs('public/images', $fileName);
-    $url = Storage::url($path);
+        $input = $request->all();
+        $input['image'] = $path;
 
-    // Simpan data post ke database
-    $input = $request->all();
-    $input['image_path'] = $fileName;
-    $post = Post::create($input);
-
-    $success = [
-        'id' => $post->id,
-        'caption' => $post->caption,
-        'image' => $url
-    ];
+        $user = Post::create($input);
 
     return response()->json([
         'success' => true,
         'message' => 'Sukses membuat post',
-        'data' => $success
+        'data' => $user
     ]);
 }
 
@@ -335,8 +326,11 @@ public function update(Request $request)
     public function getact(Request $request)
     {
         $id = $request->input('id');
-        $user = Activity::where('user_id', $id)->get();
-    
+        $today = date('Y-m-d');
+
+        $user = Activity::where('user_id', $id)
+        ->whereDate('end', '<=', $today)->whereDate('start', '>=', $today)
+        ->get();
         return response()->json([
             'success'=> true,
             'message'=> 'sukses mendapatkan data',
@@ -403,7 +397,7 @@ public function addActivity(Request $request)
         ], 403);
     }
     $activity = new Activity();
-  
+    $activity->timestamps = false; // tambahkan baris ini
   
     $activity->activity_name = $request->activity_name;
     $activity->status = $request->status;
@@ -419,13 +413,11 @@ public function addActivity(Request $request)
     ]);
 }
 
-
 public function updateStatus(Request $request)
 {
     $validator = Validator::make($request->all(), [
-        'id' => 'required',
         'user_id' => 'required',
-        'status' => 'required'
+        'id' => 'required'
     ]);
 
     if ($validator->fails()) {
@@ -447,7 +439,7 @@ public function updateStatus(Request $request)
     }
 
     $activity->user_id = $request->user_id;
-    $activity->status = $request->status;
+    $activity->status = 'selesai'; // Set status ke "selesai" secara otomatis
     $activity->save();
 
     return response()->json([

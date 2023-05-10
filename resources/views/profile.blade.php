@@ -8,13 +8,14 @@
             <div class="card-body profile-page p-0">
                <div class="profile-header">
                   <div class="position-relative">
-                        <div class="profile-img-edit">
-                        <img class="profile-pic" src="/images/user/11.png" alt="profile-pic">
-                        </div>
+                     <img src="/images/user/foto_edifarm.jpg" alt="profile-bg" class="rounded img-fluid">
                   </div>
-               </div>
+                  <div class="user-detail text-center mb-3">
+                     <div class="profile-img">
+                        <img src="{{session()->get('photo') }}" alt="profile-img" class="avatar-130 img-fluid" />
+                     </div>
                      <div class="profile-detail">
-                        <h3 class="">{{session()->get('nama') }}</h3>
+                        <h3 class="">{{session()->get('username') }}</h3>
                      </div>
                   </div>
                   <div class="profile-info p-3 d-flex align-items-center justify-content-between position-relative">
@@ -69,41 +70,42 @@
                            </ul>
                         </div>
                         <div class="col-md-9 ps-4">
+                           @foreach($reports as $report)
                            <div class="tab-content" >
                               <div class="tab-pane fade active show" id="v-pills-basicinfo-tab" role="tabpanel"  aria-labelledby="v-pills-basicinfo-tab">
-                                 <h4>Contact Information</h4>
+                              <h4 >Informasi Pribadi</h4>
+                                 <hr>
+                                 <div class="row">
+                                    <div class="col-3">
+                                       <h6>Nama</h6>
+                                    </div>
+                                    <div class="col-9">
+                                       <p class="mb-0">{{ $report->name }}</p>
+                                    </div>
+                                    <div class="col-3">
+                                       <h6>Tanggal Lahir</h6>
+                                    </div>
+                                    <div class="col-9">
+                                       <p class="mb-0">{{ $report->born_date }}</p>
+                                    </div>
+                                    <div class="col-3">
+                                       <h6>Jenis Kelamin</h6>
+                                    </div>
+                                    <div class="col-9">
+                                       <p class="mb-0">{{ $report->gender }}</p>
+                                    </div>
+                                 </div>   
+                              <h4 class="mt-3">Contact Information</h4>
                                  <hr>
                                  <div class="row">
                                     <div class="col-3">
                                        <h6>Email</h6>
                                     </div>
                                     <div class="col-9">
-                                       <p class="mb-0">Bnijohn@gmail.com</p>
+                                       <p class="mb-0">{{ $report->email }}</p>
                                     </div>
                                     <div class="col-3">
-                                       <h6>Mobile</h6>
-                                    </div>
-                                    <div class="col-9">
-                                       <p class="mb-0">(001) 4544 565 456</p>
-                                    </div>
-                                    <div class="col-3">
-                                       <h6>Address</h6>
-                                    </div>
-                                    <div class="col-9">
-                                       <p class="mb-0">United States of America</p>
-                                    </div>
-                                 </div>
-                                 <h4 class="mt-3">Websites and Social Links</h4>
-                                 <hr>
-                                 <div class="row">
-                                    <div class="col-3">
-                                       <h6>Website</h6>
-                                    </div>
-                                    <div class="col-9">
-                                       <p class="mb-0">www.bootstrap.com</p>
-                                    </div>
-                                    <div class="col-3">
-                                       <h6>Social Link</h6>
+                                       <h6>Nomor HP</h6>
                                     </div>
                                     <div class="col-9">
                                        <p class="mb-0">www.bootstrap.com</p>
@@ -154,6 +156,7 @@
                                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
                               </div>
                            </div>
+                           @endforeach
                         </div>
                      </div>
                   </div>
@@ -425,66 +428,225 @@
                                     </div>
                                     <div class="">
                                        <div class="user-images position-relative overflow-hidden">
-                                          <a href="/postingan_profile">
+                                          <a href="#">
                                           <img src="/images/page-img/52.jpg" class="img-fluid rounded" alt="Responsive image">
                                           </a>
                                           <div class="image-hover-data">
                                              <div class="product-elements-icon">
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
-                                                   <li><a href="/like" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
-                                                   <li><a href="/komen" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
-                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Hapus Postingan"><i class="ri-delete-bin-6-line"></i></a>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
                                        </div>
                                     </div>
                                     <div class="">
                                        <div class="user-images position-relative overflow-hidden">
-                                          <a href="/postingan_profile">
+                                          <a href="#">
                                           <img src="/images/page-img/53.jpg" class="img-fluid rounded" alt="Responsive image">
                                           </a>
                                           <div class="image-hover-data">
                                              <div class="product-elements-icon">
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
-                                                   <li><a href="/like" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
-                                                   <li><a href="/komen" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
-                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Hapus Postingan"><i class="ri-delete-bin-6-line"></i></a>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
                                        </div>
                                     </div>
                                     <div class="">
                                        <div class="user-images position-relative overflow-hidden">
-                                          <a href="/postingan_profile">
+                                          <a href="#">
                                           <img src="/images/page-img/54.jpg" class="img-fluid rounded" alt="Responsive image">
                                           </a>
                                           <div class="image-hover-data">
                                              <div class="product-elements-icon">
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
-                                                   <li><a href="/like" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
-                                                   <li><a href="/komen" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
-                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Hapus Postingan"><i class="ri-delete-bin-6-line"></i></a>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
                                        </div>
                                     </div>
                                     <div class="">
                                        <div class="user-images position-relative overflow-hidden">
-                                          <a href="/postingan_profile">
+                                          <a href="#">
                                           <img src="/images/page-img/55.jpg" class="img-fluid rounded" alt="Responsive image">
                                           </a>
                                           <div class="image-hover-data">
                                              <div class="product-elements-icon">
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
-                                                   <li><a href="/like" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
-                                                   <li><a href="/komen" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
+                                       </div>
+                                    </div>
+                                    <div class="">
+                                       <div class="user-images position-relative overflow-hidden">
+                                          <a href="#">
+                                          <img src="/images/page-img/56.jpg" class="img-fluid rounded" alt="Responsive image">
+                                          </a>
+                                          <div class="image-hover-data">
+                                             <div class="product-elements-icon">
+                                                <ul class="d-flex align-items-center m-0 p-0 list-inline">
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
+                                       </div>
+                                    </div>
+                                    <div class="">
+                                       <div class="user-images position-relative overflow-hidden">
+                                          <a href="#">
+                                          <img src="/images/page-img/57.jpg" class="img-fluid rounded" alt="Responsive image">
+                                          </a>
+                                          <div class="image-hover-data">
+                                             <div class="product-elements-icon">
+                                                <ul class="d-flex align-items-center m-0 p-0 list-inline">
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
+                                       </div>
+                                    </div>
+                                    <div class="">
+                                       <div class="user-images position-relative overflow-hidden">
+                                          <a href="#">
+                                          <img src="/images/page-img/58.jpg" class="img-fluid rounded" alt="Responsive image">
+                                          </a>
+                                          <div class="image-hover-data">
+                                             <div class="product-elements-icon">
+                                                <ul class="d-flex align-items-center m-0 p-0 list-inline">
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
+                                       </div>
+                                    </div>
+                                    <div class="">
+                                       <div class="user-images position-relative overflow-hidden">
+                                          <a href="#">
+                                          <img src="/images/page-img/59.jpg" class="img-fluid rounded" alt="Responsive image">
+                                          </a>
+                                          <div class="image-hover-data">
+                                             <div class="product-elements-icon">
+                                                <ul class="d-flex align-items-center m-0 p-0 list-inline">
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="tab-pane fade" id="your-photos" role="tabpanel">
+                              <div class="card-body p-0">
+                                 <div class="d-grid gap-2 d-grid-template-1fr-13 ">
+                                    <div class="">
+                                       <div class="user-images position-relative overflow-hidden">
+                                          <a href="#">
+                                          <img src="/images/page-img/51.jpg" class="img-fluid rounded" alt="Responsive image">
+                                          </a>
+                                          <div class="image-hover-data">
+                                             <div class="product-elements-icon">
+                                                <ul class="d-flex align-items-center m-0 p-0 list-inline">
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
+                                       </div>
+                                    </div>
+                                    <div class="">
+                                       <div class="user-images position-relative overflow-hidden">
+                                          <a href="#">
+                                          <img src="/images/page-img/52.jpg" class="img-fluid rounded" alt="Responsive image">
+                                          </a>
+                                          <div class="image-hover-data">
+                                             <div class="product-elements-icon">
+                                                <ul class="d-flex align-items-center m-0 p-0 list-inline">
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
+                                       </div>
+                                    </div>
+                                    <div class="">
+                                       <div class="user-images position-relative overflow-hidden">
+                                          <a href="#">
+                                          <img src="/images/page-img/53.jpg" class="img-fluid rounded" alt="Responsive image">
+                                          </a>
+                                          <div class="image-hover-data">
+                                             <div class="product-elements-icon">
+                                                <ul class="d-flex align-items-center m-0 p-0 list-inline">
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
+                                       </div>
+                                    </div>
+                                    <div class="">
+                                       <div class="user-images position-relative overflow-hidden">
+                                          <a href="#">
+                                          <img src="/images/page-img/54.jpg" class="img-fluid rounded" alt="Responsive image">
+                                          </a>
+                                          <div class="image-hover-data">
+                                             <div class="product-elements-icon">
+                                                <ul class="d-flex align-items-center m-0 p-0 list-inline">
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                </ul>
+                                             </div>
+                                          </div>
+                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
+                                       </div>
+                                    </div>
+                                    <div class="">
+                                       <div class="user-images position-relative overflow-hidden">
+                                          <a href="#">
+                                          <img src="/images/page-img/55.jpg" class="img-fluid rounded" alt="Responsive image">
+                                          </a>
+                                          <div class="image-hover-data">
+                                             <div class="product-elements-icon">
+                                                <ul class="d-flex align-items-center m-0 p-0 list-inline">
+                                                   <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>

@@ -35,15 +35,15 @@
                                 </div>
                                 @foreach($reports as $report)
                                 <div class="card-body">
-                                    <form action="{{ url('profileup/'. $report->id) }}" method="post" >
+                                    <form action="{{ url('profileup/'. $report->id) }}" method="post" enctype="multipart/form-data">
                                     @csrf 
                                         <div class="form-group row align-items-center">
                                             <div class="col-md-12">
                                                 <div class="profile-img-edit">
-                                                <img class="profile-pic1" src="/images/user/11.png" alt="profile-pic1">
-                                                <div class="p-image1">
+                                                <img class="profile-pic" src="/images/user/11.png" alt="profile-pic">
+                                                <div class="p-image">
                                                     <i class="ri-pencil-line upload-button text-white"></i>
-                                                    <input class="file-upload" type="file" accept="image/*"/>
+                                                    <input class="file-upload" name="photo" type="file" value="{{ $report->photo }}"/>
                                                 </div>
                                                 </div>
                                             </div>
@@ -101,19 +101,20 @@
                                 </div>
                                 </div>
                                 <div class="card-body">
-                                <form>
+                                <form action="{{ url('passwordup') }}" method="post">
+                                @csrf 
                                     <div class="form-group">
                                         <label for="cpass" class="form-label">Current Password:</label>
                                         <a href="#" class="float-end">Forgot Password</a>
-                                        <input type="Password" class="form-control" id="cpass" value="">
+                                        <input type="Password" name="cpassword" class="form-control" id="cpass" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="npass" class="form-label">New Password:</label>
-                                        <input type="Password" class="form-control" id="npass" value="">
+                                        <input type="Password" name="npassword" class="form-control" id="npass" value="">
                                     </div>
                                     <div class="form-group">
                                         <label for="vpass" class="form-label">Verify Password:</label>
-                                        <input type="Password" class="form-control" id="vpass" value="">
+                                        <input type="Password" name="vpassword" class="form-control" id="vpass" value="">
                                     </div>
                                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                                     <button type="reset" class="btn bg-soft-danger">Cancle</button>
