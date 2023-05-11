@@ -8,14 +8,11 @@
             <div class="card-body profile-page p-0">
                <div class="profile-header">
                   <div class="position-relative">
-                     <img src="/images/user/foto_edifarm.jpg" alt="profile-bg" class="rounded img-fluid">
-                  </div>
-                  <div class="user-detail text-center mb-3">
                      <div class="profile-img">
                         <img src="{{session()->get('photo') }}" alt="profile-img" class="avatar-130 img-fluid" />
                      </div>
                      <div class="profile-detail">
-                        <h3 class="">{{session()->get('username') }}</h3>
+                        <h3 class="profile">{{session()->get('username') }}</h3>
                      </div>
                   </div>
                   <div class="profile-info p-3 d-flex align-items-center justify-content-between position-relative">
@@ -94,7 +91,7 @@
                                     <div class="col-9">
                                        <p class="mb-0">{{ $report->gender }}</p>
                                     </div>
-                                 </div>   
+                                 </div>
                               <h4 class="mt-3">Contact Information</h4>
                                  <hr>
                                  <div class="row">

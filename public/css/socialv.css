@@ -124,7 +124,7 @@ h2 {
 
 .h3,
 h3 {
-    margin-left: 437px;
+    margin-left: 405px;
     margin-top: 60px;
     margin-bottom: -50px;
     font-size: -webkit-calc(1.29589rem + .55065vw);
@@ -8627,13 +8627,16 @@ fieldset:disabled .btn {
 }
 
 .d-flex {
-    margin-right:20px;
-    margin-top: 5px;
+    /* margin-right:20px;
+    margin-top: 5px; */
     display: -webkit-box !important;
     display: -webkit-flex !important;
     display: -ms-flexbox !important;
     display: flex !important
 
+}
+.invisiblefile > input{
+    display:none;
 }
 
 .d-inline-flex {
@@ -14042,6 +14045,12 @@ fieldset:disabled .btn {
 .navbar-list li>a>img {
     width: 3.125rem;
     height: 3.125rem
+}
+.navbar-list1 li>a>img {
+    margin-right: 30px;
+    margin-top: 25px;
+    width: 1.125rem;
+    height: 1.125rem
 }
 
 .navbar-list li:last-child>a {
@@ -19777,7 +19786,8 @@ body.sidebar-main .iq-menu-bt-sidebar .iq-menu-bt {
     -webkit-border-radius: 50rem;
     border-radius: 50rem;
     border: 1px solid rgba(0, 0, 0, .1);
-    height: auto
+    margin-top: 40px;
+    margin-left: 400px;
 }
 
 ul.header-nav {
@@ -20277,12 +20287,14 @@ ul.request-list>li:last-child {
 }
 
 .profile-pic {
-    margin-top: 40%;
-    margin-left: 260%;
+    margin-top: 0%;
+    margin-left: 250%;
     max-width: 100%;
     display: block;
     border-radius: 50%;
+    height:-webkit-fill-available;
     -webkit-border-radius: 50%
+
 }
 .profile-pic1 {
     margin-left: 230%;
@@ -20307,8 +20319,8 @@ ul.request-list>li:last-child {
 .p-image {
     position: absolute;
     top: auto;
-    left: 110px;
-    bottom: -20px;
+    left: 480px;
+    bottom: 0px;
     -webkit-transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
     -o-transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
     transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
@@ -23160,6 +23172,7 @@ button.bg-soft-dark:hover {
 .avatar-130 {
     height: 130px;
     width: 130px;
+    margin-bottom: -50px;
     line-height: 130px
 }
 
@@ -29812,13 +29825,13 @@ button [class = "fas fa-arrow-up"]{
   }
 
   .far:hover {
-
+<<<<<<< HEAD
     color: #93989A;
-
-
+    
+=======
     color: gray;
 
-
+>>>>>>> a2574e7c475776bd7249d1d7c4af8cc809127b88
   }
 
   .fas {
@@ -29832,7 +29845,6 @@ button [class = "fas fa-arrow-up"]{
   .lapor {
     color:#000;
   }
-
 
 .posting {
     height: 130px;
@@ -29854,6 +29866,12 @@ button [class = "fas fa-arrow-up"]{
 }
 
 .fotopostingan {
-    margin-left: 100px;
+    margin-left: 10px;
 }
 
+.postingan {
+    height: 17px;
+    weight: 17px;
+}
+
+>>>>>>> a2574e7c475776bd7249d1d7c4af8cc809127b88
