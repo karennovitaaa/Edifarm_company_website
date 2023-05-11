@@ -8627,13 +8627,16 @@ fieldset:disabled .btn {
 }
 
 .d-flex {
-    margin-right:20px;
-    margin-top: 5px;
+    /* margin-right:20px;
+    margin-top: 5px; */
     display: -webkit-box !important;
     display: -webkit-flex !important;
     display: -ms-flexbox !important;
     display: flex !important
 
+}
+.invisiblefile > input{
+    display:none;
 }
 
 .d-inline-flex {
