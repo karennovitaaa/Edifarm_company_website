@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('sessions', function (Blueprint $table) {
             $table->id();
-            $table->string('activity_name');
-            $table->enum('status', ['selesai', 'belum']);
+            $table->string('plant_name');
             $table->date('start');
             $table->date('end');
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('session_id')->constrained('sessions')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->enum('status', ['selesai', 'belum']);
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activities');
+        //
     }
 };
