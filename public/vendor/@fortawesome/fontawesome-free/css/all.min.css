@@ -2907,7 +2907,7 @@
 }
 .fa-paper-plane:before {
     content: "\f1d8";
-    margin-right: -10px;
+    margin-right: 10px;
 }
 .fa-paperclip:before {
     content: "\f0c6";

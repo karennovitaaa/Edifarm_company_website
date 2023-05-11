@@ -75,7 +75,8 @@ class BlogController extends Controller
         'address'=> $request->address,
         'phone'=> $request->phone,
         'born_date'=> $request->born_date,
-        'email'=> $request->email
+        'email'=> $request->email,
+        'bio'=> $request->bio
 	]);
 		$request->session()->put('nama',$request->name);
 		$request->session()->put('photo',$path);
@@ -116,7 +117,7 @@ class BlogController extends Controller
 			$imageName = time().'.'.request()->image->extension();
 			request()->image->move(public_path('images/post'), $imageName);
 			$input['image'] = "images/post/$imageName";
-			
+
 		}
 		$user = Post::create($input);
 		return redirect('/postingan');
