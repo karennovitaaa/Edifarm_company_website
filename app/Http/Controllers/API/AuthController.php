@@ -327,16 +327,49 @@ public function update(Request $request)
     {
         $id = $request->input('id');
         $today = date('Y-m-d');
+    
+        $activities = Activity::where('user_id', $id)
+            ->whereDate('end', '>=', $today)
+            ->whereDate('start', '<=', $today)
+            ->get();
+    
+        if ($activities->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tidak ada data Activity untuk user dengan ID tersebut',
+                'data' => []
+            ]);
+        } else {
+            return response()->json([
+                'success' => true,
+                'message' => 'Sukses mendapatkan data',
+                'data' => $activities
+            ]);
+        }
+    }
+    
 
-        $user = Activity::where('user_id', $id)
-        ->whereDate('end', '<=', $today)->whereDate('start', '>=', $today)
-        ->get();
+    public function getActFull(Request $request)
+    {
+        $id = $request->input('id');
+        
+        $activities = Activity::where('user_id', $id)->get();
+        
+        if ($activities->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tidak ada data Activity untuk user dengan ID tersebut',
+                'data' => []
+            ]);
+        }
+    
         return response()->json([
-            'success'=> true,
-            'message'=> 'sukses mendapatkan data',
-            'data'=> $user
+            'success' => true,
+            'message' => 'Sukses mendapatkan data Activity',
+            'data' => $activities
         ]);
     }
+    
     
 
 // public function updateUser(Request $request, $id)
@@ -412,6 +445,50 @@ public function addActivity(Request $request)
         'data' => $activity
     ]);
 }
+public function updateActivity(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'id' => 'required',
+        'user_id' => 'required',
+        'activity_name' => 'required',
+        'status' => 'required',
+        'start' => 'required',
+        'end' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 403);
+    }
+
+    $activity = Activity::where('user_id', $request->user_id)
+                        ->where('id', $request->id)
+                        ->first();
+
+    if (!$activity) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Tidak ada data Activity untuk user dengan ID dan Activity ID tersebut',
+            'data' => []
+        ]);
+    }
+
+    $activity->activity_name = $request->activity_name;
+    $activity->status = $request->status;
+    $activity->start = $request->start;
+    $activity->end = $request->end;
+    $activity->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses mengupdate data Activity',
+        'data' => $activity
+    ]);
+}
+
 
 public function updateStatus(Request $request)
 {
@@ -448,5 +525,55 @@ public function updateStatus(Request $request)
         'data' => $activity
     ]);
 }
+
+public function filterActivity(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required',
+        'activity_name' => 'nullable',
+        'status' => 'nullable',
+        'input_tanggal' => 'nullable|date'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 400);
+    }
+
+    $user_id = $request->user_id;
+    $activity_name = $request->activity_name;
+    $status = $request->status;
+    $input_tanggal = $request->input_tanggal;
+
+    $query = Activity::where('user_id', $user_id);
+
+    if (!empty($activity_name)) {
+        $query->where('activity_name', 'like', "%$activity_name%");
+    }
+
+    if (!empty($status)) {
+        $query->where('status', $status);
+    }
+
+    if (!empty($input_tanggal)) {
+        $query->where(function ($query) use ($input_tanggal) {
+            $query->whereDate('start', '<=', $input_tanggal)
+                ->whereDate('end', '>=', $input_tanggal);
+        });
+    }
+
+    $activities = $query->get();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses menampilkan data aktivitas',
+        'data' => $activities
+    ]);
+}
+
+
 
 }
