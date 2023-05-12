@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -108,43 +110,6 @@ class AuthController extends Controller
     }
 
 
-
-
-//     public function update(Request $request)
-//     {   
-//     $input = $request->all();
-//     $user = User::find($input['id']);
-//     $validator = Validator::make($request->json()->all(), [
-//         'username' => 'required',
-//         'name' => 'required',
-//         'email' => 'required|email',
-//         'phone' => 'required',
-//         'address' => 'required',
-//         'born_date' => 'required',
-//     ]);
-//     if(!$user){
-//         return response()->json([
-//             'success'=> false,
-//             'message'=> 'User not found',
-//             'data'=> null
-//         ], 404);
-//     }
-
-
-//     if(isset($input['password'])){
-//         $input['password'] = bcrypt($input['password']);
-//     }
-
-//     $user->update($input);
-    
-//     return response()->json([
-//         'success'=> true,
-//         'message'=> 'User updated successfully',
-//         'data'=> $user
-//     ], 200);
-// }
-
-
 public function update(Request $request)
 {
     $validator = Validator::make($request->all(), [
@@ -164,21 +129,6 @@ public function update(Request $request)
             'data' => $validator->errors()->first()
         ], 404);
     }
-
-    // $input = $request->only(['username', 'name', 'email', 'phone', 'address', 'born_date']);
-
-    // $user = User::find($request->input('id'));
-
-    // if (!$user) {
-    //     return response()->json([
-    //         'success' => false,
-    //         'message' => 'pengguna tidak ditemukan',
-    //         'data' => null
-    //     ]);
-    // }
-
-    // $user->fill($input);
-    // $user->save();
 
     $input = $request->all();
     $blog= User::where('id', $input['id'])->update([
@@ -233,92 +183,13 @@ public function update(Request $request)
     ]);
 }
 
-    // public function post(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-           
-    //         'caption' => 'required',
-    //         'post_latitude' => 'required',
-    //         'post_longitude' => 'required',
-    //         'user_id' => 'required',
-    //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-    //     ]);
-    
-    //     if($validator->fails()){
-    //         return response()->json([
-    //             'success'=> false,
-    //             'message' => 'Ada kesalahan',
-    //             'data'=> $validator->errors()->first()
-    //         ], 404);
-    //     }
-    
-    //     // Proses upload gambar
-    //     $image = $request->file('image');
-    //     $fileName = time() . '.' . $image->getClientOriginalExtension();
-    //     $path = $image->storeAs('public/images', $fileName);
-    //     $url = Storage::url($path);
-    
-    //     // Simpan data post ke database
-    //     $input = $request->all();
-    //     $input['image_path'] = $fileName; // mengupdate nama file ke database
-    //     $post = Post::create($input);
-    
-    //     $success = [
-    //         'id' => $post->id,
-    //         'caption' => $post->caption,
-    //         'image' => $url
-    //     ];
-    
-    //     return response()->json([
-    //         'success'=> true,
-    //         'message'=> 'Sukses membuat ',
-    //         'data'=> $success
-    //     ]);
-    // }
-//     public function post(Request $request)
-//     {
-//         $validator = Validator::make($request->all(),[
-//             'image' => 'required|file|max:7000', // max 7MB
-//             'caption' => 'required',
-//             'post_latitude' => 'required',
-//             'post_longitude' => 'required',
-//             'user_id' => 'required'
-//         ]);
-
-//         if($validator->fails()){
-//             return response()->json([
-//                 'success'=> false,
-//                 'massage' => 'ada kesalahan',
-//                 'data'=> $validator -> errors()->first()
-//             ], 403);
-//         }
-//         $file = $request->file('image');
-//         $name = $file->getClientOriginalName();
-//         $path = $file->store('public/images');
-//         $url = Storage::url($path);
-
-//         // $path = Storage::putFile(
-//         //     'public/images',
-//         //     $request->file('image'),
-//         // );
-
-//         $input = $request->all();
-//         $input['image'] = $path;
-//         $user = Post::create($input);
-
-//         return response()->json([
-//             'success'=> true,
-//             'massage'=> 'sukses post'
-//         ]);
-//     }
-
-    public function getpost()
+    public function getpost(Request $request)
     {
-        $users = Post::get();
+        $users = DB::table('posts')->join('users','users.id','=','posts.user_id')->get();
  
         return response()->json([
             'success'=> true,
-            'massage'=> 'sukses register',
+            'massage'=> 'sukses',
             'data'=> $users
         ]);
     }
@@ -370,47 +241,6 @@ public function update(Request $request)
         ]);
     }
     
-    
-
-// public function updateUser(Request $request, $id)
-// {
-//     $validator = Validator::make($request->all(), [
-//         'username' => 'required',
-//         'name' => 'required',
-//         'email' => 'required|email',
-//         'phone' => 'required',
-//         'address' => 'required',
-//         'born_date' => 'required'
-//     ]);
-
-//     if ($validator->fails()) {
-//         return response()->json([
-//             'success' => false,
-//             'message' => 'Ada kesalahan',
-//             'data' => $validator->errors()->first()
-//         ], 403);
-//     }
-
-//     $user = User::find($id);
-
-//     if (!$user) {
-//         return response()->json([
-//             'success' => false,
-//             'message' => 'User tidak ditemukan',
-//         ], 404);
-//     }
-
-//     $input = $request->only(['username', 'name', 'email', 'phone', 'address', 'born_date']);
-
-//     $user->fill($input);
-//     $user->save();
-
-//     return response()->json([
-//         'success' => true,
-//         'message' => 'Data user berhasil diupdate',
-//         'data' => $user
-//     ]);
-// }
 
 public function addActivity(Request $request)
 {
@@ -445,6 +275,29 @@ public function addActivity(Request $request)
         'data' => $activity
     ]);
 }
+
+public function deleteData(Request $request)
+{$id = $request->input('id');
+    $userId = $request->input('user_id');
+    
+
+    $activity = Activity::where('user_id', $userId)->find($id);
+
+    if (!$activity) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Data tidak ditemukan'
+        ], 404);
+    }
+
+    $activity->delete();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Data berhasil dihapus'
+    ]);
+}
+
 public function updateActivity(Request $request)
 {
     $validator = Validator::make($request->all(), [
@@ -530,9 +383,7 @@ public function filterActivity(Request $request)
 {
     $validator = Validator::make($request->all(), [
         'user_id' => 'required',
-        'activity_name' => 'nullable',
-        'status' => 'nullable',
-        'input_tanggal' => 'nullable|date'
+        'search' => 'required'
     ]);
 
     if ($validator->fails()) {
@@ -544,28 +395,14 @@ public function filterActivity(Request $request)
     }
 
     $user_id = $request->user_id;
-    $activity_name = $request->activity_name;
-    $status = $request->status;
-    $input_tanggal = $request->input_tanggal;
+    $search = $request->search;
 
-    $query = Activity::where('user_id', $user_id);
-
-    if (!empty($activity_name)) {
-        $query->where('activity_name', 'like', "%$activity_name%");
-    }
-
-    if (!empty($status)) {
-        $query->where('status', $status);
-    }
-
-    if (!empty($input_tanggal)) {
-        $query->where(function ($query) use ($input_tanggal) {
-            $query->whereDate('start', '<=', $input_tanggal)
-                ->whereDate('end', '>=', $input_tanggal);
-        });
-    }
-
-    $activities = $query->get();
+    $activities = Activity::where('user_id', $user_id)
+        ->where(function ($query) use ($search) {
+            $query->where('activity_name', 'like', "%$search%")
+                ->orWhere('status', $search);
+        })
+        ->get();
 
     return response()->json([
         'success' => true,
@@ -575,5 +412,31 @@ public function filterActivity(Request $request)
 }
 
 
+
+public function addSession(Request $request) {
+    
+    $validator = Validator::make($request->all(), [
+        'plant_name' => 'required',
+        'start' => 'required',
+        'end' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 400);
+    }
+    $input = $request->all();
+    $input['status'] = "belum";
+    $user = Session::create($input);
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses menampilkan data aktivitas',
+        'data' => $user
+    ]);
+}
 
 }

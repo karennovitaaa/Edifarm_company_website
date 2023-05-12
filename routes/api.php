@@ -16,15 +16,16 @@ use App\Http\Controllers\API\AuthController;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('post', [AuthController::class, 'post']);
-Route::get('getpost', [AuthController::class, 'getpost']);
+Route::post('getpost', [AuthController::class, 'getpost']);
 Route::post('getact', [AuthController::class, 'getact']);
 Route::post('getActFull', [AuthController::class, 'getActFull']);
 Route::post('update', [AuthController::class, 'update']);
 Route::post('addActivity', [AuthController::class, 'addActivity']);
 Route::post('updateStatus', [AuthController::class, 'updateStatus']);
 Route::post('updateActivity', [AuthController::class, 'updateActivity']);
-Route::post('updateActivity', [AuthController::class, 'updateActivity']);
+Route::post('deleteData', [AuthController::class, 'deleteData']);
 Route::post('filterActivity', [AuthController::class, 'filterActivity']);
+Route::post('addSession', [AuthController::class, 'addSession']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

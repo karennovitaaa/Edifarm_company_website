@@ -560,6 +560,7 @@ class ComposerStaticInita54cffd84cb3e9b38160ef0e0bbd0757
         'App\\Models\\Like' => __DIR__ . '/../..' . '/app/Models/Like.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
         'App\\Models\\Report' => __DIR__ . '/../..' . '/app/Models/Report.php',
+        'App\\Models\\Session' => __DIR__ . '/../..' . '/app/Models/Session.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
