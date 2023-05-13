@@ -47,7 +47,7 @@
                         </li>
                         <li>
                             <form class="d-flex align-items-center-mt" data-bs-toggle="modal" data-bs-target="#post-modal" action="javascript:void();">
-                                <input type="button" style="border:none; height: 17px; width: 17px; margin-top: -20px; margin-right: 35px; margin-left: -25px;"><a href="javascript:void();"><img src="images/addijo.png" class="addposting" style="height: 17px; width: 17px; margin-top: -6px; margin-right: 35px; margin-left: -15px;"></a>
+                                <input type="button"style="height: 10px; width: 10px;margin-top: 30px;margin-left: 10px;"><a href="javascript:void();"><img src="images/addijo.png" class="addposting" style="height: 17px; width: 17px; margin-top: -6px; margin-right: 35px; margin-left: -15px;"></a>
                             </form>
                         </li>
                         <li>
