@@ -84,7 +84,10 @@
                                                 <label class="form-label">Alamat:</label>
                                                 <textarea class="form-control" name="address" rows="5" style="line-height: 22px;">{{ $report->address }}</textarea>
                                             </div>
-
+                                            <div class="form-group col-sm-12">
+                                                <label class="form-label">Bio:</label>
+                                                <textarea class="form-control" name="bio" rows="5" style="line-height: 22px;">{{ $report->bio }}</textarea>
+                                            </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary me-2">Submit</button>
                                         <button type="reset" class="btn bg-soft-danger">Cancle</button>
