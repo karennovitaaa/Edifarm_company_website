@@ -25,10 +25,11 @@ Route::post('updateStatus', [AuthController::class, 'updateStatus']);
 Route::post('updateActivity', [AuthController::class, 'updateActivity']);
 Route::post('deleteData', [AuthController::class, 'deleteData']);
 Route::post('filterActivity', [AuthController::class, 'filterActivity']);
+Route::post('getSessionByUserId', [AuthController::class, 'getSessionByUserId']);
 Route::post('addSession', [AuthController::class, 'addSession']);
+Route::post('updateSession', [AuthController::class, 'updateSession']);
+Route::post('updateStatusSession', [AuthController::class, 'updateStatusSession']);
+Route::post('deleteStatusSession', [AuthController::class, 'deleteStatusSession']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-
-
