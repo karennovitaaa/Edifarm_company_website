@@ -22,7 +22,7 @@ Route::post('getActFull', [AuthController::class, 'getActFull']);
 Route::post('update', [AuthController::class, 'update']);
 Route::post('addActivity', [AuthController::class, 'addActivity']);
 Route::post('updateStatus', [AuthController::class, 'updateStatus']);
-<<<<<<< HEAD
+
 Route::post('updateActivity', [AuthController::class, 'updateActivity']);
 Route::post('deleteData', [AuthController::class, 'deleteData']);
 Route::post('filterActivity', [AuthController::class, 'filterActivity']);
@@ -31,9 +31,8 @@ Route::post('addSession', [AuthController::class, 'addSession']);
 Route::post('updateSession', [AuthController::class, 'updateSession']);
 Route::post('updateStatusSession', [AuthController::class, 'updateStatusSession']);
 Route::post('deleteStatusSession', [AuthController::class, 'deleteStatusSession']);
-=======
+
 Route::post('getpostuse', [AuthController::class, 'getpostuse']);
->>>>>>> bea50005391597c142c32a02587e2a47ee5f3d94
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

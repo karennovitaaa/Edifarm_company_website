@@ -327,9 +327,9 @@ public function update(Request $request)
         $id = $request->input('id');
         $today = date('Y-m-d');
     
-        $activities = Activity::where('user_id', $id)
-            ->whereDate('end', '>=', $today)
-            ->whereDate('start', '<=', $today)
+        $activities = DB::table('activities')->join('sessions','sessions.id','=','activities.session_id')->where('sessions.user_id', $id)
+            ->whereDate('activities.end', '>=', $today)
+            ->whereDate('activities.start', '<=', $today)
             ->get();
     
         if ($activities->isEmpty()) {
@@ -378,7 +378,6 @@ public function addActivity(Request $request)
         'status' => 'required',
         'start' => 'required',
         'end' => 'required',
-        'user_id' => 'required',
     ]);
 
     if ($validator->fails()) {
@@ -395,7 +394,6 @@ public function addActivity(Request $request)
     $activity->status = $request->status;
     $activity->start = $request->start;
     $activity->end = $request->end;
-    $activity->user_id = $request->user_id;
     $activity->save();
 
     return response()->json([
@@ -406,11 +404,12 @@ public function addActivity(Request $request)
 }
 
 public function deleteData(Request $request)
-{$id = $request->input('id');
+{
+    $id = $request->input('id');
     $userId = $request->input('user_id');
     
 
-    $activity = Activity::where('user_id', $userId)->find($id);
+    $activity = DB::table('activities')->join('sessions','sessions.id','=','activities.session_id')->where('sessions.user_id', $userId)->find($id);
 
     if (!$activity) {
         return response()->json([
@@ -446,8 +445,8 @@ public function updateActivity(Request $request)
         ], 403);
     }
 
-    $activity = Activity::where('user_id', $request->user_id)
-                        ->where('id', $request->id)
+    $activity = DB::table('activities')->join('sessions','sessions.id','=','activities.session_id')->where('sessions.user_id', $request->user_id)
+                        ->where('activities.id', $request->id)
                         ->first();
 
     if (!$activity) {
@@ -475,7 +474,6 @@ public function updateActivity(Request $request)
 public function updateStatus(Request $request)
 {
     $validator = Validator::make($request->all(), [
-        'user_id' => 'required',
         'id' => 'required'
     ]);
 
@@ -487,7 +485,7 @@ public function updateStatus(Request $request)
         ], 403);
     }
 
-    $activity = Activity::find($request->id);
+    $activity = DB::table('activities')->join('sessions','sessions.id','=','activities.session_id')->find($request->id);
 
     if (!$activity) {
         return response()->json([
@@ -497,7 +495,6 @@ public function updateStatus(Request $request)
         ], 404);
     }
 
-    $activity->user_id = $request->user_id;
     $activity->status = 'selesai'; // Set status ke "selesai" secara otomatis
     $activity->save();
 
@@ -526,10 +523,10 @@ public function filterActivity(Request $request)
     $user_id = $request->user_id;
     $search = $request->search;
 
-    $activities = Activity::where('user_id', $user_id)
+    $activities = DB::table('activities')->join('sessions','sessions.id','=','activities.session_id')->where('sessions.user_id', $user_id)
         ->where(function ($query) use ($search) {
-            $query->where('activity_name', 'like', "%$search%")
-                ->orWhere('status', $search);
+            $query->where('activities.activity_name', 'like', "%$search%")
+                ->orWhere('activities.status', $search);
         })
         ->get();
 
