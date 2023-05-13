@@ -6,7 +6,7 @@
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Edifarm</title>
-      
+
       <link rel="shortcut icon" href="images/logo.png" />
       <link rel="stylesheet" href="css/libs.min.css">
       <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
@@ -15,10 +15,10 @@
       <link rel="stylesheet" href="vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
       <link rel="stylesheet" href="vendor/font-awesome-line-awesome/css/all.min.css">
       <link rel="stylesheet" href="vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
-      
+
   </head>
   <body class=" ">
-   
+
       <div class="wrapper">
     <section class="sign-in-page">
         <div id="container-inside">
@@ -32,7 +32,7 @@
             <div class="row no-gutters">
                 <div class="col-md-6 text-center pt-5">
                     <div class="sign-in-detail text-white">
-                        <a class="sign-in-logo mb-5" href="#"><img src="images/logo1.png" class="img-fluid" alt="logo"></a>
+                        <a class="sign-in-logo mb-5" href="#"><img src="images/EDIFARM.png" class="img-fluid" alt="logo"></a>
                         <div class="sign-slider overflow-hidden ">
                             <ul  class="swiper-wrapper list-inline m-0 p-0 ">
                                 <li class="swiper-slide">
@@ -41,7 +41,7 @@
                                     <p>It is a long established fact that a reader will be distracted by the readable content.</p>
                                 </li>
                                 <li class="swiper-slide">
-                                    <img src="images/login/tani2.jpeg" class="img-fluid mb-4" alt="logo"> 
+                                    <img src="images/login/tani2.jpeg" class="img-fluid mb-4" alt="logo">
                                     <h4 class="mb-1 text-white">Connect with the world</h4>
                                     <p>It is a long established fact that a reader will be distracted by the readable content.</p>
                                 </li>
@@ -96,11 +96,6 @@
                             </div>
                             <div class="sign-info">
                                 <span class="dark-color d-inline-block line-height-2">Already Have Account ? <a href="login">Log In</a></span>
-                                <ul class="iq-social-media">
-                                    <li><a href="https://www.facebook.com/profile.php?id=100088522217152"><i class="ri-facebook-box-line"></i></a></li>
-                                    <li><a href="https://www.twitter.com/@Edifarm21"><i class="ri-twitter-line"></i></a></li>
-                                    <li><a href="https://www.instagram.com/edifarmm_"><i class="ri-instagram-line"></i></a></li>
-                                </ul>
                             </div>
                         </form>
                     </div>
@@ -109,12 +104,12 @@
         </div>
     </section>
       </div>
-    
+
     <!-- Backend Bundle JavaScript -->
     <script src="js/libs.min.js"></script>
     <!-- slider JavaScript -->
     <script src="js/slider.js"></script>
-    <!-- masonry JavaScript --> 
+    <!-- masonry JavaScript -->
     <script src="js/masonry.pkgd.min.js"></script>
     <!-- SweetAlert JavaScript -->
     <script src="js/enchanter.js"></script>

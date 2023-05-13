@@ -28,7 +28,7 @@ class AuthController extends Controller
             'phone' => 'required',
             'address' => 'required',
             'born_date' => 'required',
-        
+
         ]);
 
         if($validator->fails()){
@@ -61,7 +61,7 @@ class AuthController extends Controller
     {
         if(Auth::attempt(['username'=> $request->username, 'password'=> $request->password, 'level'=>'admin'])){
             $auth = Auth::user();
-          
+
             $success['name']=$auth->name;
             $success['username']=$auth->username;
             $success['photo']=$auth->photo;
@@ -97,7 +97,7 @@ class AuthController extends Controller
                 'massage'=> 'login user sukses',
                 'data'=> $success
             ]);
-            //return redirect('postingan'); 
+            //return redirect('postingan');
         } else{
             return response()->json([
                 'success'=> false,
@@ -111,7 +111,7 @@ class AuthController extends Controller
 
 
 //     public function update(Request $request)
-//     {   
+//     {
 //     $input = $request->all();
 //     $user = User::find($input['id']);
 //     $validator = Validator::make($request->json()->all(), [
@@ -136,7 +136,7 @@ class AuthController extends Controller
 //     }
 
 //     $user->update($input);
-    
+
 //     return response()->json([
 //         'success'=> true,
 //         'message'=> 'User updated successfully',
@@ -182,11 +182,11 @@ public function update(Request $request)
 
     $input = $request->all();
     $blog= User::where('id', $input['id'])->update([
-        'username'=>$request->username, 
-        'name'=>$request->name, 
-        'email'=>$request->email, 
-        'phone'=>$request->phone, 
-        'address'=>$request->address, 
+        'username'=>$request->username,
+        'name'=>$request->name,
+        'email'=>$request->email,
+        'phone'=>$request->phone,
+        'address'=>$request->address,
         'born_date'=>$request->born_date
     ]);
 
@@ -233,17 +233,19 @@ public function update(Request $request)
     ]);
 }
 
+
+
     // public function post(Request $request)
     // {
     //     $validator = Validator::make($request->all(), [
-           
+
     //         'caption' => 'required',
     //         'post_latitude' => 'required',
     //         'post_longitude' => 'required',
     //         'user_id' => 'required',
     //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     //     ]);
-    
+
     //     if($validator->fails()){
     //         return response()->json([
     //             'success'=> false,
@@ -251,24 +253,24 @@ public function update(Request $request)
     //             'data'=> $validator->errors()->first()
     //         ], 404);
     //     }
-    
+
     //     // Proses upload gambar
     //     $image = $request->file('image');
     //     $fileName = time() . '.' . $image->getClientOriginalExtension();
     //     $path = $image->storeAs('public/images', $fileName);
     //     $url = Storage::url($path);
-    
+
     //     // Simpan data post ke database
     //     $input = $request->all();
     //     $input['image_path'] = $fileName; // mengupdate nama file ke database
     //     $post = Post::create($input);
-    
+
     //     $success = [
     //         'id' => $post->id,
     //         'caption' => $post->caption,
     //         'image' => $url
     //     ];
-    
+
     //     return response()->json([
     //         'success'=> true,
     //         'message'=> 'Sukses membuat ',
@@ -315,7 +317,19 @@ public function update(Request $request)
     public function getpost()
     {
         $users = Post::get();
- 
+
+        return response()->json([
+            'success'=> true,
+            'massage'=> 'sukses register',
+            'data'=> $users
+        ]);
+    }
+
+    public function getpostuse(Request $request)
+    { $validator = Validator::make($request->all(),[
+            'id' => 'required']);
+        $users = Post::where($users->id = $request -> id)->get();
+
         return response()->json([
             'success'=> true,
             'massage'=> 'sukses register',
@@ -337,7 +351,7 @@ public function update(Request $request)
             'data'=> $user
         ]);
     }
-    
+
 
 // public function updateUser(Request $request, $id)
 // {
@@ -398,7 +412,7 @@ public function addActivity(Request $request)
     }
     $activity = new Activity();
     $activity->timestamps = false; // tambahkan baris ini
-  
+
     $activity->activity_name = $request->activity_name;
     $activity->status = $request->status;
     $activity->start = $request->start;
