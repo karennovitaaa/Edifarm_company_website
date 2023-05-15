@@ -209,12 +209,12 @@
                                     <p>{{ $post->caption }}</p>
                                 </div>
 
-                                <div class="user-post">
-                                    <a href="javascript:void();"><img
-                                            src="{{ asset($post->image) }}"
-                                            alt="post-image"
-                                            class="img-fluid rounded w-100"></a>
-                                </div>
+                                                                    <div class="user-post">
+                                                                        <a href="javascript:void();"><img
+                                                                                src="{{ $post->image }}"
+                                                                                alt="post-image"
+                                                                                class="img-fluid rounded w-100"></a>
+                                                                    </div>
 
                                 <div class="comment-area mt-3">
                                     <div

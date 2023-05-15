@@ -6,8 +6,8 @@
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Edifarm</title>
-      
-      <link rel="shortcut icon" href="images/logo.png" />
+
+      <link rel="shortcut icon" href="images/EDIFARM.png" />
       <link rel="stylesheet" href="css/libs.min.css">
       <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
       <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
@@ -18,7 +18,7 @@
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body class=" ">
-    
+
       <div class="wrapper">
     <section class="sign-in-page">
         <div id="container-inside">
@@ -32,23 +32,23 @@
             <div class="row no-gutters">
                 <div class="col-md-6 text-center pt-5">
                     <div class="sign-in-detail text-white">
-                        <a class="sign-in-logo mb-5" href="#"><img src="images/logo1.png" class="img-fluid" alt="logo"></a>
+                        <a class="sign-in-logo mb-5" href="#"><img src="images/logo_baru2.png" class="img-fluid" alt="logo"></a>
                         <div class="sign-slider overflow-hidden ">
                             <ul  class="swiper-wrapper list-inline m-0 p-0 ">
-                                <li class="swiper-slide">
-                                    <img src="images/login/tani1.jpeg" class="img-fluid mb-4" alt="logo">
-                                    <h4 class="mb-1 text-white">Find new friends</h4>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content.</p>
+                                <li class="swiper-slide">   
+                                <img src="images/login/tani1.jpeg" class="img-fluid mb-4" alt="logo">
+                                    <h4 class="mb-1 text-white">Temukan Teman Baru</h4>
+                                    <p>Belum terlambat untuk mengembangkan persahabatan baru atau berhubungan kembali dengan orang-orang.</p>
                                 </li>
                                 <li class="swiper-slide">
-                                    <img src="images/login/tani2.jpeg" class="img-fluid mb-4" alt="logo"> 
-                                    <h4 class="mb-1 text-white">Connect with the world</h4>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content.</p>
+                                    <img src="images/login/tani2.jpeg" class="img-fluid mb-4" alt="logo">
+                                    <h4 class="mb-1 text-white">Jelajahi Dunia Baru</h4>
+                                    <p>Dunia adalah milikmu dan semua yang ada di dalamnya, ada di luar sana- kerjakan pekerjaanmu dan dapatkan itu.</p>
                                 </li>
                                 <li class="swiper-slide">
                                     <img src="images/login/tani3.jpg" class="img-fluid mb-4" alt="logo">
-                                    <h4 class="mb-1 text-white">Create new events</h4>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content.</p>
+                                    <h4 class="mb-1 text-white">Buat Aktivitas Baru</h4>
+                                    <p>Cara untuk memulai adalah dengan berhenti berbicara dan mulai melakukan.</p>
                                 </li>
                             </ul>
                         </div>
@@ -59,7 +59,7 @@
                         <h1 class="mb-0">Sign in</h1>
                         <p>Enter your email address and password to access admin panel.</p>
                         <form class="mt-4" method="POST" action="/authLogin">
-                        @csrf    
+                        @csrf
                         <div class="form-group">
                                 <label class="form-label" for="exampleInputEmail1">Username</label>
                                 <input type="text" name="username" class="form-control mb-0" id="exampleInputEmail1" placeholder="Enter username" required>
@@ -69,29 +69,24 @@
                                 <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" required>
                             </div>
                             <div class="d-inline-block w-100">
-                                <button type="submit" class="btn btn-primary float-end">Sign in</button>
+                                <button type="submit" class="btn btn-primary float-end">Log In</button>
                             </div>
                             <div class="sign-info">
-                                <span class="dark-color d-inline-block line-height-2">Don't have an account? <a href="register">Sign up</a></span>
-                                <ul class="iq-social-media">
-                                    <li><a href="https://www.facebook.com/profile.php?id=100088522217152"><i class="ri-facebook-box-line"></i></a></li>
-                                    <li><a href="https://www.twitter.com/@Edifarm21"><i class="ri-twitter-line"></i></a></li>
-                                    <li><a href="https://www.instagram.com/edifarmm_"><i class="ri-instagram-line"></i></a></li>
-                                </ul>
+                                <span class="dark-color d-inline-block line-height-2">Anda tidak memiliki akun? <a href="register">Register</a></span>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </section>   
+    </section>
       </div>
-    
+
     <!-- Backend Bundle JavaScript -->
     <script src= "js/libs.min.js"></script>
     <!-- slider JavaScript -->
     <script src="js/slider.js"></script>
-    <!-- masonry JavaScript --> 
+    <!-- masonry JavaScript -->
     <script src="js/masonry.pkgd.min.js"></script>
     <!-- SweetAlert JavaScript -->
     <script src="js/enchanter.js"></script>

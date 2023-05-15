@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('gender', ['Laki-laki', 'Perempuan']);
             $table->string('photo');
             $table->string('address');
+            $table->string('bio');
             $table->string('phone', 13);
             $table->date('born_date');
             $table->string('bio')->nullable();

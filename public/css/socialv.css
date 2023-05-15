@@ -621,8 +621,9 @@ progress {
 }
 
 .img-fluid {
+    border-radius:2rem;
     max-width: 100%;
-    height: auto
+    height: auto;
 }
 
 .img-thumbnail {
@@ -14199,6 +14200,7 @@ fieldset:disabled .btn {
 
 .iq-navbar-logo a span {
     font-family: Poppins, sans-serif;
+    margin-top: 20px;
     margin-left: .625rem;
     font-size: 1.75rem;
     line-height: 2.813rem;
@@ -14221,7 +14223,7 @@ fieldset:disabled .btn {
 }
 
 .iq-navbar-logo img {
-    height: 2.813rem
+    height: 5.813rem
 }
 
 .iq-top-navbar .sub-drop {
@@ -15456,8 +15458,8 @@ body.sidebar-main .iq-menu-bt-sidebar .iq-menu-bt {
 }
 
 .sign-in-logo img {
-    height: 12rem;
-    margin-top: -30%;
+    height: 17rem;
+    margin-top: -50%;
 }
 
 .sign-in-from {

@@ -26,7 +26,7 @@
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <div class="iq-navbar-logo d-flex justify-content-between">
                     <a href="postingan">
-                        <img src="/images/logo.png" class="img-fluid" alt="">
+                        <img src="/images/EDIFARM.png" class="img-fluid" alt="">
                         <span>Edifarm</span>
                     </a>
 
@@ -47,7 +47,7 @@
                         </li>
                         <li>
                             <form class="d-flex align-items-center-mt" data-bs-toggle="modal" data-bs-target="#post-modal" action="javascript:void();">
-                                <input type="button" style="border:none; height: 17px; width: 17px; margin-top: -20px; margin-right: 35px; margin-left: -25px;"><a href="javascript:void();"><img src="images/addijo.png" class="addposting" style="height: 17px; width: 17px; margin-top: -6px; margin-right: 35px; margin-left: -15px;"></a>
+                                <input type="button"style="height: 10px; width: 10px;margin-top: 30px;margin-left: 10px;"><a href="javascript:void();"><img src="images/addijo.png" class="addposting" style="height: 17px; width: 17px; margin-top: -6px; margin-right: 35px; margin-left: -15px;"></a>
                             </form>
                         </li>
                         <li>
@@ -80,8 +80,8 @@
                                                         <i class="ri-file-user-line"></qi>
                                                     </div>
                                                     <div class="ms-3">
-                                                        <h6 class="mb-0 ">My Profile</h6>
-                                                        <p class="mb-0 font-size-12">View personal profile details.</p>
+                                                        <h6 class="mb-0 ">Profil Saya</h6>
+                                                        <p class="mb-0 font-size-12">Lihat profil kamu disini.</p>
                                                     </div>
                                                 </div>
                                             </a>
@@ -91,8 +91,8 @@
                                                         <i class="ri-profile-line"></i>
                                                     </div>
                                                     <div class="ms-3">
-                                                        <h6 class="mb-0 ">Edit Profile</h6>
-                                                        <p class="mb-0 font-size-12">Modify your personal details.</p>
+                                                        <h6 class="mb-0 ">Edit Profil</h6>
+                                                        <p class="mb-0 font-size-12">Edit profil kamu disini.</p>
                                                     </div>
                                                 </div>
                                             </a>
@@ -209,40 +209,3 @@
          </div>
     <!-- offcanvas start -->
 
-    <div class="offcanvas offcanvas-bottom share-offcanvas" tabindex="-1" id="share-btn" aria-labelledby="shareBottomLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="shareBottomLabel">Share</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body small">
-            <div class="d-flex flex-wrap align-items-center">
-                <div class="text-center me-3 mb-3">
-                    <img src="images/icon/08.png" class="img-fluid rounded mb-2" alt="">
-                    <h6>Facebook</h6>
-                </div>
-                <div class="text-center me-3 mb-3">
-                    <img src="images/icon/09.png" class="img-fluid rounded mb-2" alt="">
-                    <h6>Twitter</h6>
-                </div>
-                <div class="text-center me-3 mb-3">
-                    <img src="images/icon/10.png" class="img-fluid rounded mb-2" alt="">
-                    <h6>Instagram</h6>
-                </div>
-                <div class="text-center me-3 mb-3">
-                    <img src="images/icon/11.png" class="img-fluid rounded mb-2" alt="">
-                    <h6>Google Plus</h6>
-                </div>
-                <div class="text-center me-3 mb-3">
-                    <img src="images/icon/13.png" class="img-fluid rounded mb-2" alt="">
-                    <h6>In</h6>
-                </div>
-                <div class="text-center me-3 mb-3">
-                    <img src="images/icon/12.png" class="img-fluid rounded mb-2" alt="">
-                    <h6>YouTube</h6>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-
-</html>
