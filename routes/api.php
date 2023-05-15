@@ -38,7 +38,8 @@ Route::post('updateStatusSession', [AuthController::class, 'updateStatusSession'
 Route::post('deleteStatusSession', [AuthController::class, 'deleteStatusSession']);
 Route::post('getses', [AuthController::class, 'getses']);
 
-Route::post('getPostlike', [AuthController::class, 'postLike']);
+Route::post('getPostLike', [AuthController::class, 'postLike']);
+Route::post('getPostUser', [AuthController::class, 'postUser']);
 Route::post('getComment', [AuthController::class, 'getComment']);
 Route::post('addComment', [AuthController::class, 'addComment']);
 Route::post('deleteComment', [AuthController::class, 'deleteComment']);

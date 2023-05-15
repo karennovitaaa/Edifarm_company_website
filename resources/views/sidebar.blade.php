@@ -33,8 +33,8 @@
                 </div>
                 <div class="iq-search-bar device-search">
                     <form action="#" class="searchbox">
-                        <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                         <input type="text" class="text search-input" placeholder="Search here...">
+                        <a class="search-link" href="#"><i class="ri-search-line"></i></a>
                     </form>
                 </div>
                 </button>
@@ -77,7 +77,7 @@
                                             <a href="/profile" class="iq-sub-card iq-bg-primary-hover">
                                                 <div class="d-flex align-items-center">
                                                     <div class="rounded card-icon bg-soft-primary">
-                                                        <i class="ri-file-user-line"></qi>
+                                                        <i class="ri-file-user-line"></i>
                                                     </div>
                                                     <div class="ms-3">
                                                         <h6 class="mb-0 ">Profil Saya</h6>

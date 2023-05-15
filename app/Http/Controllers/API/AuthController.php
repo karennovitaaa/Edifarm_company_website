@@ -777,17 +777,39 @@ public function deleteStatusSession(Request $request)
     ]);
 }
 
-public function postLike(Request $request)
+    public function postLike(Request $request)
     {
         $id = $request->input('user_id');
     
-        $posts = DB::table('likes')->join('posts','posts.id','=','likes.post_id')->where('likes.user_id', $id)
+        $posts = DB::table('likes')->join('posts','posts.id','=','likes.post_id')->join('users','users.id','=','posts.user_id')
+        ->where('likes.user_id', $id)
             ->get();
     
         if ($posts->isEmpty()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak ada data Postingan yang anda sukai',
+                'data' => []
+            ]);
+        } else {
+            return response()->json([
+                'success' => true,
+                'message' => 'Sukses mendapatkan data',
+                'data' => $posts
+            ]);
+        }
+    }
+
+    public function postUser(Request $request)
+    {
+        $id = $request->input('user_id');
+    
+        $posts = Post::where('user_id', $id)->get();
+    
+        if ($posts->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tidak ada data Postingan',
                 'data' => []
             ]);
         } else {
