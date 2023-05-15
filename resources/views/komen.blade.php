@@ -27,7 +27,8 @@
                         <div class="card-body profile-page p-0">
                             <div class="profile-header">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="post-modalLabel">Komentar</h5>
+                                    <h5 class="modal-title" id="post-modalLabel"><a href="javascript:history.go(-1)">
+                                        <i class="fas fa-arrow-left"></i></a>       Komentar</h5>
                                 </div>
                                 <div class="position-relative mt-2" style="height: 500px; overflow: scroll;">
                                     <div class="modal-content">
@@ -60,7 +61,7 @@
                                             <input type="text" class="form-control rounded"
                                                 placeholder="Ketikkan komenmu disini..." name="comment">
                                             <div class="comment-attagement d-flex2">
-                                                <button type="submit"><i class="far fa-paper-plane"></i></button>
+                                                <button type="submit" style="width: 10px; height:10px;margin-top:-35px;"><i class="far fa-paper-plane" style="border: none;margin-top:40px"></i></button>
                                             </div>
                                         </form>
                                     </div>
