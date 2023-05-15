@@ -59,7 +59,7 @@ class BlogController extends Controller
     {
         $post->load('comments');
         // dd($post['comments']['0']['pivot']['comment']);
-        
+
         return view('komen', compact('post'));
     }
 
@@ -69,7 +69,7 @@ class BlogController extends Controller
             'comment' => 'required|string',
             'post_id' => 'required',
         ]);
-        
+
         if ($validator->fails()) {
 
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
@@ -126,26 +126,38 @@ class BlogController extends Controller
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if ($request->has('image')) {
+        if ($request->has('photo')) {
             $imageName = time().'.'.request()->photo->extension();
             request()->photo->move(public_path('images/user'), $imageName);
             $path = "images/user/$imageName";
+
+            $blog = User::where('id', $id)->update([
+                'photo' => $path,
+                'username' => $request->username,
+                'name' => $request->name,
+                'gender' => $request->gender,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'born_date' => $request->born_date,
+                'email' => $request->email,
+                'bio' => $request->bio,
+
+            ]);
+            $request->session()->put('photo', $path);
+        }else{
+            $blog = User::where('id', $id)->update([
+                'username' => $request->username,
+                'name' => $request->name,
+                'gender' => $request->gender,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'born_date' => $request->born_date,
+                'email' => $request->email,
+                'bio' => $request->bio,
+            ]);
         }
 
-        $blog = User::where('id', $id)->update([
-            'photo' => $path,
-            'username' => $request->username,
-            'name' => $request->name,
-            'gender' => $request->gender,
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'born_date' => $request->born_date,
-            'email' => $request->email,
-            'bio' => $request->bio,
-        ]);
-
         $request->session()->put('nama', $request->name);
-        $request->session()->put('photo', $path);
 
         return redirect('/profile');
     }
@@ -157,7 +169,7 @@ class BlogController extends Controller
             'npassword' => 'required',
             'vpassword' => 'required|same:npassword',
         ]);
-        
+
         if ($validator->fails()) {
 
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
