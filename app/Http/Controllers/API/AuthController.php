@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Like;
+use App\Models\Comment;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -106,38 +109,22 @@ class AuthController extends Controller
 
 public function update(Request $request)
 {
-    $validator = Validator::make($request->all(), [
-        'id' => 'required',
-        'username' => 'required',
-        'name' => 'required',
-        'email' => 'required',
-        'phone' => 'required',
-        'address' => 'required',
-        'born_date' => 'required',
-    ]);
-
-    if ($validator->fails()) {
-        return response()->json([
-            'success' => false,
-            'message' => $validator->errors()->first(),
-            'data' => $validator->errors()->first(),
-        ], 404);
-    }
-
     $input = $request->all();
-    $blog = User::where('id', $input['id'])->update([
-        'username' => $request->username,
-        'name' => $request->name,
-        'email' => $request->email,
-        'phone' => $request->phone,
-        'address' => $request->address,
-        'born_date' => $request->born_date,
-    ]);
+    if ($request->has('photo')) {
+
+        $imageName = time().'.'.request()->photo->extension();
+        request()->photo->move(public_path('images/user'), $imageName);
+        $path = "images/user/$imageName";
+        $input['photo'] = $path;
+
+        $blog = User::where('id', $input['id'])->update($input);
+    }else{
+        $blog = User::where('id', $input['id'])->update($input);
+    }
 
     return response()->json([
         'success' => true,
         'message' => 'sukses update pengguna',
-        'data' => $input,
     ]);
 }
 
@@ -176,7 +163,7 @@ public function update(Request $request)
 
     public function getpost()
     {
-        $users = Post::with('likes', 'user')->latest()->get();
+        $users = Post::latest()->get();
  
         return response()->json([
             'success'=> true,
@@ -585,4 +572,132 @@ public function deleteStatusSession(Request $request)
         'data' => $activity
     ]);
 }
+
+public function postLike(Request $request)
+    {
+        $id = $request->input('user_id');
+    
+        $posts = DB::table('likes')->join('posts','posts.id','=','likes.post_id')->where('likes.user_id', $id)
+            ->get();
+    
+        if ($posts->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tidak ada data Postingan yang anda sukai',
+                'data' => []
+            ]);
+        } else {
+            return response()->json([
+                'success' => true,
+                'message' => 'Sukses mendapatkan data',
+                'data' => $posts
+            ]);
+        }
+    }
+
+    public function getComment(Request $request)
+    {
+        $postId = $request->input('post_id');
+    
+        $comment = DB::table('comments')->join('users','comments.user_id','=','users.id')->where('post_id', $postId)->get();
+    
+        if ($comment->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tidak ada data komentar',
+                'data' => []
+            ]);
+        } else {
+            return response()->json([
+                'success' => true,
+                'message' => 'Sukses mendapatkan data',
+                'data' => $comment
+            ]);
+        }
+    }
+
+    public function addComment(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'post_id' => 'required',
+            'user_id' => 'required',
+            'comment' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'massage' => 'data tdk lengkap',
+                'data' => $validator->errors()->first(),
+            ], 403);
+        }
+
+        $input = $request->all();
+        $user = Comment::create($input);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Sukses menambah komentar',
+            'data' => $user
+        ]);
+        
+    }
+
+    public function deleteComment(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'post_id' => 'required',
+            'user_id' => 'required',
+            'comment_id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'massage' => 'data tdk lengkap',
+                'data' => $validator->errors()->first(),
+            ], 403);
+        }
+
+        $user = Comment::where('user_id', $request['user_id'])->where('post_id', $request['post_id'])->where('id', $request['comment_id'])->get();
+        if ($user->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data tidak ditemukan'
+            ], 404);
+        }else{
+            Comment::where('id', $request['comment_id'])->delete();
+            return response()->json([
+                'success' => true,
+                'message' => 'Sukses menghapus data',
+            ]);
+        }
+    }
+
+    public function addReport(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'post_id' => 'required',
+            'user_id' => 'required',
+            'reason' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'massage' => 'data tdk lengkap',
+                'data' => $validator->errors()->first(),
+            ], 403);
+        }
+
+        $input = $request->all();
+        $report = Report::create($input);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Sukses menambah komentar',
+            'data' => $report
+        ]);
+        
+    }
 }

@@ -33,6 +33,13 @@ Route::post('updateSession', [AuthController::class, 'updateSession']);
 Route::post('updateStatusSession', [AuthController::class, 'updateStatusSession']);
 Route::post('deleteStatusSession', [AuthController::class, 'deleteStatusSession']);
 
+
+Route::post('getPostlike', [AuthController::class, 'postLike']);
+Route::post('getComment', [AuthController::class, 'getComment']);
+Route::post('addComment', [AuthController::class, 'addComment']);
+Route::post('deleteComment', [AuthController::class, 'deleteComment']);
+Route::post('addReport', [AuthController::class, 'addReport']);
+
 Route::post('getpostuse', [AuthController::class, 'getpostuse']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
