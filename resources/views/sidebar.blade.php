@@ -62,7 +62,7 @@
                                 <a href="#" class="   d-flex align-items-center dropdown-toggle" id="drop-down-arrow" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="{{session()->get('photo') }}"  class="img-fluid rounded-circle me-3" alt="user">
                                     <div class="caption">
-                                        <h6 class="mb-0 line-height">{{session()->get('usernamr') }}</h6>
+                                        <h6 class="mb-0 line-height">{{session()->get('username') }}</h6>
                                     </div>
                                 </a>
                                 <div class="sub-drop dropdown-menu caption-menu" aria-labelledby="drop-down-arrow">
@@ -77,7 +77,7 @@
                                             <a href="/profile" class="iq-sub-card iq-bg-primary-hover">
                                                 <div class="d-flex align-items-center">
                                                     <div class="rounded card-icon bg-soft-primary">
-                                                        <i class="ri-file-user-line"></i>
+                                                        <i class="ri-file-user-line"></qi>
                                                     </div>
                                                     <div class="ms-3">
                                                         <h6 class="mb-0 ">Profil Saya</h6>

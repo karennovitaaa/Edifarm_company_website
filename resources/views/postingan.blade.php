@@ -1,5 +1,6 @@
 @extends ('sidebar')
 @section('content')
+{{-- @dd($posts[0]['user']['username']) --}}
     <div id="content-page" class="content-page">
         <div class="container">
             <div class="row">
@@ -64,7 +65,7 @@
 
             @foreach ($posts as $post)
                 @if ($post->image == null)
-                    <div class="col-sm-12">
+                    <!-- <div class="col-sm-12">
                         <div class="card card-block card-stretch card-height">
                             <div class="card-body">
                                 <div class="user-post-data">
@@ -76,7 +77,7 @@
                                             <div class=" d-flex  justify-content-between">
                                                 <div class="">
                                                     <h5 class="mb-0 d-inline-block"><a
-                                                            href="/profile">{{ $post->username }}</a></h5>
+                                                            href="/profile">{{ $post->user->username }}</a></h5>
                                                     <p class="mb-0 d-inline-block"></p>
                                                     <p class="mb-0 text-primary">{{ Str::limit($post->created_at, 10) }}</p>
                                                 </div>
@@ -119,8 +120,7 @@
                                                                                                     class="far fa-heart"></i></button>
                                                                                         </span>
                                                                                     </div>
-                                                                                    <div
-                                                                                        class="total-like-block ms-2 me-3">
+                                                                                    <div class="total-like-block ms-2 me-3">
                                                                                         <ul class="list-inline mb-0">
                                                                                             <li class="list-inline-item"><a
                                                                                                     href="/like">Suka</a>
@@ -176,38 +176,38 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    @else
-                                                        <div class="col-sm-12">
-                                                            <div class="card card-block card-stretch card-height">
-                                                                <div class="card-body">
-                                                                    <div class="user-post-data">
-                                                                        <div class="d-flex justify-content-between">
-                                                                            <div class="me-3">
-                                                                                <img class="avatar-60 rounded-circle"
-                                                                                    src="{{ $post->photo }}"
-                                                                                    alt="">
-                                                                            </div>
-                                                                            <div class="w-100">
-                                                                                <div
-                                                                                    class="d-flex  justify-content-between">
-                                                                                    <div class="">
-                                                                                        <h5 class="mb-0 d-inline-block"><a
-                                                                                                href=/profile>{{ $post->username }}</a>
-                                                                                        </h5>
-                                                                                        <span
-                                                                                            class="mb-0 d-inline-block"></span>
-                                                                                        <p class="mb-0 text-primary">
-                                                                                            {{ Str::limit($post->created_at, 10) }}
-                                                                                        </p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="mt-3">
-                                                                        <p>{{ $post->caption }}</p>
-                                                                    </div>
+                                                        </div> -->
+                @else
+                    <div class="col-sm-12">
+                        <div class="card card-block card-stretch card-height">
+                            <div class="card-body">
+                                <div class="user-post-data">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="me-3">
+                                            <img class="avatar-60 rounded-circle"
+                                                src="{{ $post->user->photo }}"
+                                                alt="">
+                                        </div>
+                                        <div class="w-100">
+                                            <div
+                                                class="d-flex  justify-content-between">
+                                                <div class="">
+                                                    <h5  class="mb-0 d-inline-block fw-normal"><a
+                                                            href=/profile>{{ $post->user->username }}</a>
+                                                    </h5>
+                                                    <span
+                                                        class="mb-0 d-inline-block"></span>
+                                                    <p class="mb-0 text-primary">
+                                                        {{ $post->created_at->locale('id')->diffForHumans() }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <p>{{ $post->caption }}</p>
+                                </div>
 
                                                                     <div class="user-post">
                                                                         <a href="javascript:void();"><img
@@ -216,80 +216,83 @@
                                                                                 class="img-fluid rounded w-100"></a>
                                                                     </div>
 
-                                                                    <div class="comment-area mt-3">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center flex-wrap">
-                                                                            <div
-                                                                                class="like-block position-relative d-flex align-items-center">
-                                                                                <div class="d-flex align-items-center">
-                                                                                    <div class="like-data">
-                                                                                        <span class="dropdown-toggle"
-                                                                                            data-bs-toggle="dropdown"
-                                                                                            aria-haspopup="true"
-                                                                                            aria-expanded="false"
-                                                                                            role="button">
-                                                                                            <button class="like-btn"><i
-                                                                                                    class="far fa-heart"></i></button>
-                                                                                        </span>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="total-like-block ms-2 me-3">
-                                                                                        <ul class="list-inline mb-0">
-                                                                                            <li class="list-inline-item"><a
-                                                                                                    href="/like">Suka</a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                    <div class="total-comment-block">
-                                                                                        <form class="post-text ms-3 w-100 "
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#komen-modal"
-                                                                                            action="javascript:void();">
-                                                                                            <input type="button"
-                                                                                                style="border:none;height:10px;margin-bottom:5px"><a
-                                                                                                href="/komen"><i
-                                                                                                    class="far fa-comment"></i></a>
-                                                                                        </form>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="total-like-block ms-2 me-3">
-                                                                                        <ul class="list-inline mb-0">
-                                                                                            <li class="list-inline-item"><a
-                                                                                                    href="/komen">Komentar</a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                    <div class="total-comment-block">
-                                                                                        <form class="post-text ms-3 w-100 "
-                                                                                            data-bs-toggle="modal"
-                                                                                            data-bs-target="#lapor-modal">
-                                                                                            <input type="button"
-                                                                                                style="border:none;height:10px;margin-bottom:5px"><a
-                                                                                                href="javascript:void();"><i
-                                                                                                    class="far fa-flag"></i></a>
-                                                                                        </form>
-                                                                                    </div>
-                                                                                    <div
-                                                                                        class="total-like-block ms-2 me-3">
-                                                                                        <ul class="list-inline mb-0">
-                                                                                            <form data-bs-toggle="modal"
-                                                                                                data-bs-target="#lapor-modal"
-                                                                                                action="javascript:void();">
-                                                                                                <li
-                                                                                                    class="list-inline-item">
-                                                                                                    <a
-                                                                                                        href="javascript:void();">Laporkan</a>
-                                                                                                </li>
-                                                                                            </form>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                <div class="comment-area mt-3">
+                                    <div
+                                        class="d-flex justify-content-between align-items-center flex-wrap">
+                                        <div
+                                            class="like-block position-relative d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <a href="/suka/{{ $post->id }}">
+                                                    <div class="like-data">
+                                                        <span class="dropdown-toggle"
+                                                            data-bs-toggle="dropdown"
+                                                            aria-haspopup="true"
+                                                            aria-expanded="false"
+                                                            role="button">
+                                                            <button class="like-btn" >
+                                                                <i class="far fa-heart"></i></button>
+                                                        </span>
+                                                    </div>
+                                                    <div
+                                                        class="total-like-block ms-2 me-3">
+                                                        <ul class="list-inline mb-0">
+                                                            <li class="list-inline-item">
+                                                                <p >{{ $post->likes->count() }} Suka</p>
+                                                                
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </a>
+                                                <div class="total-comment-block">
+                                                    <form class="post-text ms-3 w-100 "
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#komen-modal"
+                                                        action="javascript:void();">
+                                                        <input type="button"
+                                                            style="border:none;height:10px;margin-bottom:5px"><a
+                                                            href="/komen/{{ $post->id }}"><i
+                                                                class="far fa-comment"></i></a>
+                                                    </form>
+                                                </div>
+                                                <div
+                                                    class="total-like-block ms-2 me-3">
+                                                    <ul class="list-inline mb-0">
+                                                        <li class="list-inline-item"><a
+                                                                href="/komen/{{ $post->id }}">Komentar</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="total-comment-block">
+                                                    <form class="post-text ms-3 w-100 "
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#lapor-modal">
+                                                        <input type="button"
+                                                            style="border:none;height:10px;margin-bottom:5px"><a
+                                                            href="javascript:void();"><i
+                                                                class="far fa-flag"></i></a>
+                                                    </form>
+                                                </div>
+                                                <div
+                                                    class="total-like-block ms-2 me-3">
+                                                    <ul class="list-inline mb-0">
+                                                        <form data-bs-toggle="modal"
+                                                            data-bs-target="#lapor-modal"
+                                                            action="javascript:void();">
+                                                            <li
+                                                                class="list-inline-item">
+                                                                <a
+                                                                    href="javascript:void();">Laporkan</a>
+                                                            </li>
+                                                        </form>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @endif
             @endforeach
 

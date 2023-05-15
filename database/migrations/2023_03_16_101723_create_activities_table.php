@@ -19,7 +19,6 @@ return new class extends Migration
             $table->enum('status', ['selesai', 'belum']);
             $table->date('start');
             $table->date('end');
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('session_id')->constrained('sessions')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

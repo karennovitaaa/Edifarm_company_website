@@ -28,7 +28,8 @@ class User extends Authenticatable
         'longitude',
         'email',
         'password',
-        'level'
+        'level',
+        'bio',
     ];
 
     /**
@@ -55,15 +56,10 @@ class User extends Authenticatable
     //     return $this->hasMany(Comment::class);
     // }
 
-    // public function postComments()
-    // {
-    //     return $this->belongsToMany(Post::class, 'comments');
-    // }
-
-    // public function likes()
-    // {
-    //     return $this->hasMany(Like::class);
-    // }
+    public function postComments()
+    {
+        return $this->belongsToMany(Post::class, 'comments')->withTimestamps();
+    }
 
     // public function postLikes()
     // {
