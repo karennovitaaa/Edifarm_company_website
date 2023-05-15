@@ -740,7 +740,7 @@ public function updateStatusSession(Request $request)
         ]);
         
     }
-=======
+
 public function deleteStatusSession(Request $request)
 {
     $validator = Validator::make($request->all(), [
