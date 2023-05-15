@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Like;
 use App\Models\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -321,15 +322,29 @@ public function update(Request $request)
             'data'=> $users
         ]);
     }
-
     public function getact(Request $request)
     {
-        $id = $request->input('id');
-        $today = date('Y-m-d');
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required' // Make user_id required and check if it exists in the "sessions" table
+        ]);
     
-        $activities = DB::table('activities')->join('sessions','sessions.id','=','activities.session_id')->where('sessions.user_id', $id)
-            ->whereDate('activities.end', '>=', $today)
-            ->whereDate('activities.start', '<=', $today)
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Ada kesalahan',
+                'data' => $validator->errors()->first()
+            ], 400);
+        }
+    
+        $user_id = $request->user_id;
+        $today = date('Y-m-d'); // Include time in the current date
+    
+        $activities = DB::table('activities')
+            ->join('sessions', 'sessions.id', '=', 'activities.session_id')
+            ->where('sessions.user_id', $user_id)
+            ->where('activities.end', '>=', $today)
+            ->where('activities.start', '<=', $today)
+            ->select('activities.*') // Select only the activity columns
             ->get();
     
         if ($activities->isEmpty()) {
@@ -350,126 +365,120 @@ public function update(Request $request)
 
     public function getActFull(Request $request)
     {
-        $id = $request->input('id');
-        
-        $activities = DB::table('activities')->join('sessions','sessions.id','=','activities.session_id')->where('sessions.user_id', $id)->get();
-        
-        
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required' // Make user_id required and check if it exists in the "sessions" table
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Ada kesalahan',
+                'data' => $validator->errors()->first()
+            ], 400);
+        }
+    
+        $user_id = $request->user_id;
+        $today = date('Y-m-d'); // Include time in the current date
+    
+        $activities = DB::table('activities')
+            ->join('sessions', 'sessions.id', '=', 'activities.session_id')
+            ->where('sessions.user_id', $user_id)
+            ->select('activities.*') // Select only the activity columns
+            ->get();
+    
         if ($activities->isEmpty()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak ada data Activity untuk user dengan ID tersebut',
                 'data' => []
             ]);
+        } else {
+            return response()->json([
+                'success' => true,
+                'message' => 'Sukses mendapatkan data',
+                'data' => $activities
+            ]);
         }
+    }
+  
+
+    public function deleteData(Request $request)
+    {
+        $id = $request->input('id');
+    
+        $activity = DB::table('activities')->find($id);
+    
+        if (!$activity) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Data tidak ditemukan',
+               
+            ], 404);
+        }
+    
+        DB::table('activities')->where('id', $id)->delete();
     
         return response()->json([
             'success' => true,
-            'message' => 'Sukses mendapatkan data Activity',
-            'data' => $activities
+            'message' => 'Data berhasil dihapus',
+            
         ]);
     }
-
-
-public function addActivity(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'activity_name' => 'required',
-        'status' => 'required',
-        'start' => 'required',
-        'end' => 'required',
-    ]);
-
-    if ($validator->fails()) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Ada kesalahan',
-            'data' => $validator->errors()->first()
-        ], 403);
-    }
-    $activity = new Activity();
-    $activity->timestamps = false; // tambahkan baris ini
-
-    $activity->activity_name = $request->activity_name;
-    $activity->status = $request->status;
-    $activity->start = $request->start;
-    $activity->end = $request->end;
-    $activity->save();
-
-    return response()->json([
-        'success' => true,
-        'message' => 'Sukses menambahkan data aktivitas',
-        'data' => $activity
-    ]);
-}
-
-public function deleteData(Request $request)
-{
-    $id = $request->input('id');
-    $userId = $request->input('user_id');
+    
+    
     
 
-    $activity = DB::table('activities')->join('sessions','sessions.id','=','activities.session_id')->where('sessions.user_id', $userId)->find($id);
-
-    if (!$activity) {
+    public function updateActivity(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            'activity_name' => 'required',     
+            'start' => 'required',
+            'end' => 'required'
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Ada kesalahan',
+                'data' => $validator->errors()->first()
+            ], 403);
+        }
+    
+        $activity = DB::table('activities')
+            ->where('id', $request->id)
+            ->first();
+    
+        if (!$activity) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tidak ada data Aktivitas dengan ID tersebut',
+                'data' => []
+            ]);
+        }
+    
+        DB::table('activities')
+            ->where('id', $request->id)
+            ->update([
+                'activity_name' => $request->activity_name,
+              
+                'start' => $request->start,
+                'end' => $request->end
+            ]);
+    
+        $updatedActivity = DB::table('activities')
+            ->where('id', $request->id)
+            ->first();
+    
         return response()->json([
-            'success' => false,
-            'message' => 'Data tidak ditemukan'
-        ], 404);
-    }
-
-    $activity->delete();
-
-    return response()->json([
-        'success' => true,
-        'message' => 'Data berhasil dihapus'
-    ]);
-}
-
-public function updateActivity(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'id' => 'required',
-        'user_id' => 'required',
-        'activity_name' => 'required',
-        'status' => 'required',
-        'start' => 'required',
-        'end' => 'required'
-    ]);
-
-    if ($validator->fails()) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Ada kesalahan',
-            'data' => $validator->errors()->first()
-        ], 403);
-    }
-
-    $activity = DB::table('activities')->join('sessions','sessions.id','=','activities.session_id')->where('sessions.user_id', $request->user_id)
-                        ->where('activities.id', $request->id)
-                        ->first();
-
-    if (!$activity) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Tidak ada data Activity untuk user dengan ID dan Activity ID tersebut',
-            'data' => []
+            'success' => true,
+            'message' => 'Sukses mengupdate data Aktivitas',
+            'data' => $updatedActivity
         ]);
     }
+    
 
-    $activity->activity_name = $request->activity_name;
-    $activity->status = $request->status;
-    $activity->start = $request->start;
-    $activity->end = $request->end;
-    $activity->save();
-
-    return response()->json([
-        'success' => true,
-        'message' => 'Sukses mengupdate data Activity',
-        'data' => $activity
-    ]);
-}
-
+    
 
 public function updateStatus(Request $request)
 {
@@ -480,12 +489,12 @@ public function updateStatus(Request $request)
     if ($validator->fails()) {
         return response()->json([
             'success' => false,
-            'message' => 'ada kesalahan',
+            'message' => 'Ada kesalahan',
             'data' => $validator->errors()->first()
         ], 403);
     }
 
-    $activity = DB::table('activities')->join('sessions','sessions.id','=','activities.session_id')->find($request->id);
+    $activity = DB::table('activities')->find($request->id);
 
     if (!$activity) {
         return response()->json([
@@ -495,13 +504,16 @@ public function updateStatus(Request $request)
         ], 404);
     }
 
-    $activity->status = 'selesai'; // Set status ke "selesai" secara otomatis
-    $activity->save();
+    DB::table('activities')
+        ->where('id', $request->id)
+        ->update(['status' => 'selesai']);
+
+    $updatedActivity = DB::table('activities')->find($request->id);
 
     return response()->json([
         'success' => true,
         'message' => 'Data berhasil diupdate',
-        'data' => $activity
+        'data' => $updatedActivity
     ]);
 }
 
@@ -536,8 +548,119 @@ public function filterActivity(Request $request)
         'data' => $activities
     ]);
 }
+public function getLike(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required', // Pastikan user_id diisi
+        'post_id' => 'required' // Pastikan post_id diisi
+    ]);
 
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 400);
+    }
 
+    $input = $request->all();
+
+    // Cek apakah like dengan user_id dan post_id tersebut ada dalam tabel "likes"
+    $like = Like::where('user_id', $input['user_id'])
+                ->where('post_id', $input['post_id'])
+                ->first();
+
+    if (!$like) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Data like tidak ditemukan'
+        ], 404);
+    }
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses mendapatkan data like',
+        'data' => $like
+    ]);
+}
+
+public function addLike(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required', // Pastikan user_id diisi
+        'post_id' => 'required' // Pastikan post_id diisi
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 400);
+    }
+
+    $input = $request->all();
+
+    // Cek apakah user_id dan post_id ada dalam tabel "users" dan "posts" sesuai kebutuhan
+    if (!User::where('id', $input['user_id'])->exists()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'User tidak ditemukan'
+        ], 404);
+    }
+
+    if (!Post::where('id', $input['post_id'])->exists()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Post tidak ditemukan'
+        ], 404);
+    }
+
+    // Buat data like baru
+    $like = new Like();
+    $like->user_id = $input['user_id'];
+    $like->post_id = $input['post_id'];
+    $like->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses menambahkan data like',
+        'data' => $like
+    ]);
+}
+
+public function deleteLikeByPostId(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'post_id' => 'required' // Pastikan post_id diisi
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 400);
+    }
+
+    $input = $request->all();
+
+    // Cek apakah post_id ada dalam tabel "posts"
+    if (!Post::where('id', $input['post_id'])->exists()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Post tidak ditemukan'
+        ], 404);
+    }
+
+    // Hapus data like berdasarkan post_id
+    Like::where('post_id', $input['post_id'])->delete();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses menghapus data like berdasarkan post_id'
+    ]);
+}
 
 public function addSession(Request $request)
 {
@@ -598,11 +721,72 @@ public function getSessionByUserId(Request $request)
         'data' => $sessions
     ]);
 }
+
+public function getses(Request $request){
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required' // Make user_id required and check if it exists in the "users" table
+    ]);
+    
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 400);
+    }
+    
+    $user_id = $request->user_id;
+    
+    $sessions = Session::where('user_id', $user_id)
+                        ->where('status', 'belum')
+                        ->get();
+    
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses mendapatkan data sesi berdasarkan user_id dan status belum',
+        'data' => $sessions
+    ]);
+    
+}
+
+public function countLikesByPostId(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'post_id' => 'required' // Pastikan post_id diisi
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 400);
+    }
+
+    $input = $request->all();
+
+    // Cek apakah post_id ada dalam tabel "posts"
+    if (!Post::where('id', $input['post_id'])->exists()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Post tidak ditemukan'
+        ], 404);
+    }
+
+    // Hitung jumlah user_id berdasarkan post_id
+    $count = Like::where('post_id', $input['post_id'])->count();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses menghitung jumlah likes',
+        'data' => $count
+    ]);
+}
+
 public function updateSession(Request $request)
 {
     $validator = Validator::make($request->all(), [
         'id' => 'required',
-        'user_id' => 'required',
         'start' => 'required',
         'end' => 'required',
         'status' => 'required'
@@ -617,10 +801,8 @@ public function updateSession(Request $request)
     }
 
     $id = $request->input('id');
-    $user_id = $request->input('user_id');
 
     $session = Session::where('id', $id)
-        ->where('user_id', $user_id)
         ->first();
 
     if (!$session) {
@@ -639,6 +821,7 @@ public function updateSession(Request $request)
         'data' => $session
     ]);
 }
+
 
 public function updateStatusSession(Request $request)
 {
@@ -675,6 +858,7 @@ public function updateStatusSession(Request $request)
         'data' => $activity
     ]);
 }
+
 public function deleteStatusSession(Request $request)
 {
     $validator = Validator::make($request->all(), [
@@ -696,7 +880,7 @@ public function deleteStatusSession(Request $request)
         return response()->json([
             'success' => false,
             'message' => 'Kegiatan tidak ditemukan',
-            'data' => null
+        
         ], 404);
     }
 
@@ -707,7 +891,7 @@ public function deleteStatusSession(Request $request)
     return response()->json([
         'success' => true,
         'message' => 'Data berhasil diupdate',
-        'data' => $activity
+       
     ]);
 }
 }

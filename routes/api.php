@@ -28,10 +28,14 @@ Route::post('deleteData', [AuthController::class, 'deleteData']);
 Route::post('filterActivity', [AuthController::class, 'filterActivity']);
 Route::post('getSessionByUserId', [AuthController::class, 'getSessionByUserId']);
 Route::post('addSession', [AuthController::class, 'addSession']);
+Route::post('addLike', [AuthController::class, 'addLike']);
+Route::post('getLike', [AuthController::class, 'getLike']);
+Route::post('countLikesByPostId', [AuthController::class, 'countLikesByPostId']);
+Route::post('deleteLikeByPostId', [AuthController::class, 'deleteLikeByPostId']);
 Route::post('updateSession', [AuthController::class, 'updateSession']);
 Route::post('updateStatusSession', [AuthController::class, 'updateStatusSession']);
 Route::post('deleteStatusSession', [AuthController::class, 'deleteStatusSession']);
-
+Route::post('getses', [AuthController::class, 'getses']);
 Route::post('getpostuse', [AuthController::class, 'getpostuse']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
