@@ -159,7 +159,6 @@ class BlogController extends Controller
         ]);
         
         if ($validator->fails()) {
-
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
