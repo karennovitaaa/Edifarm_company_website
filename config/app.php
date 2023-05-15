@@ -215,5 +215,4 @@ return [
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
     ])->toArray(),
 
-    
 ];

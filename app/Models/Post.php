@@ -18,6 +18,26 @@ class Post extends Model
         'user_id',
     ];
 
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes')->withTimestamps();
+    }
+
+    public function like()
+    {
+        return $this->belongsToMany(User::class, 'likes')->wherePivot('user_id', auth()->id())->withTimestamps();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function comments()
+    {
+        return $this->belongsToMany(User::class, 'comments')->withTimestamps()->withPivot(['comment', 'created_at', 'updated_at']);
+    }
+
     // public function comments()
     // {
     //     return $this->hasMany(Comment::class);
@@ -30,20 +50,20 @@ class Post extends Model
 
     // public function likes()
     // {
-    //     return $this->hasMany(Like::class);   
+    //     return $this->hasMany(Like::class);
     // }
 
     // public function userLikes()
     // {
     //     return $this->belongsToMany(User::class, 'likes');
     // }
-    
+
     // public function reports()
     // {
     //     return $this->hasMany(Report::class);
     // }
 
-    // public function userReports() 
+    // public function userReports()
     // {
     //     return $this->belongsToMany(User::class, 'reports');
     // }

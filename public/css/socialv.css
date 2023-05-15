@@ -29825,13 +29825,8 @@ button [class = "fas fa-arrow-up"]{
   }
 
   .far:hover {
-<<<<<<< HEAD
-    color: #93989A;
-    
-=======
     color: gray;
 
->>>>>>> a2574e7c475776bd7249d1d7c4af8cc809127b88
   }
 
   .fas {
@@ -29874,4 +29869,4 @@ button [class = "fas fa-arrow-up"]{
     weight: 17px;
 }
 
->>>>>>> a2574e7c475776bd7249d1d7c4af8cc809127b88
+
