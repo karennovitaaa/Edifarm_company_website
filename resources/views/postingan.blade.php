@@ -238,7 +238,7 @@
                                                         <ul class="list-inline mb-0">
                                                             <li class="list-inline-item">
                                                                 <p >{{ $post->likes->count() }} Suka</p>
-                                                                
+
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -329,8 +329,8 @@
                 </div>
             </div>
 
-            <button class="welcome-modal-btn">
-                <a href="postingan"><i class="fas fa-arrow-up"></i></a>
+            <button class="welcome-modal-btn" id="scrollToTopBtn">
+                <a href="#" id="scrollToTopBtn"><i class="fas fa-arrow-up"></i></a>
             </button>
             <!-- Wrapper End-->
         @endsection
