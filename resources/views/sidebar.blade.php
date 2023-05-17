@@ -134,6 +134,8 @@
     <script src="js/app.js"></script>
     <script src="vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
     <script src="js/lottie.js"></script>
+    <script src="js/scroll.js"></script>
+
     @include('sweetalert::alert')
 
     <div class="modal fade" id="post-modal" tabindex="-1" aria-labelledby="post-modalLabel" aria-hidden="true">
