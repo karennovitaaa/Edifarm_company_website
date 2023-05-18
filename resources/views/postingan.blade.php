@@ -8,7 +8,7 @@
                     <div id="post-modal-data" class="card card-block card-stretch card-height">
                         <div class="card-header d-flex justify-content-between">
                             <div class="header-title">
-                                <h4 class="card-title">Create Post</h4>
+                                <h4 class="card-title">Tambah Postingan</h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -51,7 +51,7 @@
                                     <hr>
                                     <div class="d-flex align-items-center  invisiblefile">
                                         <div class="bg-soft-primary rounded p-2 pointer me-3">
-                                            <img src="images/small/07.png" alt="icon" class="img-fluid"> Photo/Video
+                                            <img src="images/small/07.png" alt="icon" class="img-fluid"> Foto
                                             <input class="" type="file" name="image">
                                         </div>
                                     </div>
