@@ -4,11 +4,20 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
-use App\Models\Post;
 use App\Models\User;
+use App\Models\Post;
 use App\Models\Like;
+use App\Models\Session;
 use App\Models\Comment;
 use App\Models\Report;
+use PDF;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\UnableToCreateDirectory;
+use League\Flysystem\UnableToWriteFile;
+
+use Illuminate\Support\Str;
+
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -112,26 +121,136 @@ class AuthController extends Controller
     }
 
 
-public function update(Request $request)
+
+
+//     public function update(Request $request)
+//     {   
+//     $input = $request->all();
+//     $user = User::find($input['id']);
+//     $validator = Validator::make($request->json()->all(), [
+//         'username' => 'required',
+//         'name' => 'required',
+//         'email' => 'required|email',
+//         'phone' => 'required',
+//         'address' => 'required',
+//         'born_date' => 'required',
+//     ]);
+//     if(!$user){
+//         return response()->json([
+//             'success'=> false,
+//             'message'=> 'User not found',
+//             'data'=> null
+//         ], 404);
+//     }
+
+
+//     if(isset($input['password'])){
+//         $input['password'] = bcrypt($input['password']);
+//     }
+
+//     $user->update($input);
+    
+//     return response()->json([
+//         'success'=> true,
+//         'message'=> 'User updated successfully',
+//         'data'=> $user
+//     ], 200);
+// }
+
+public function generateReport(Request $request)
 {
-    $input = $request->all();
-    if ($request->has('photo')) {
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required',
+        'session_id' => 'required'
+    ]);
 
-        $imageName = time().'.'.request()->photo->extension();
-        request()->photo->move(public_path('images/user'), $imageName);
-        $path = "images/user/$imageName";
-        $input['photo'] = $path;
-
-        $blog = User::where('id', $input['id'])->update($input);
-    }else{
-        $blog = User::where('id', $input['id'])->update($input);
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 400);
     }
+
+    // Mengambil data user berdasarkan user_id
+    $user = User::find($request->user_id);
+    if (!$user) {
+        return response()->json([
+            'success' => false,
+            'message' => 'User tidak ditemukan',
+            'data' => null
+        ], 404);
+    }
+
+    // Mengambil data session berdasarkan session_id dan user_id
+    $session = Session::where('id', $request->session_id)
+        ->where('user_id', $request->user_id)
+        ->first();
+
+    if (!$session) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Session tidak ditemukan',
+            'data' => null
+        ], 404);
+    }
+
+    // Mengambil data aktivitas berdasarkan session_id
+    $activities = Activity::where('session_id', $request->session_id)->get();
+
+    // Generate PDF menggunakan metode loadView()
+   $pdf = PDF::loadView('report', ['user' => $user, 'session' => $session, 'activities' => $activities]);
+
+    // Konversi konten PDF menjadi bentuk biner
+    $pdfContent = $pdf->output();
+
+    // Simpan data biner PDF ke database
+    $report = Report::create([
+        'user_id' => $request->user_id,
+        'session_id' => $request->session_id,
+        'pdf_file' => $pdfContent,
+    ]);
+
+    // ...
 
     return response()->json([
         'success' => true,
-        'message' => 'sukses update pengguna',
+        'message' => 'Laporan PDF berhasil dibuat dan disimpan ke database',
+        'data' => [
+            'report_id' => $report->id,
+        ]
     ]);
+
+    // Membentuk nama file PDF berdasarkan informasi user dan session
+    $fileName = Str::slug($user->name . ' ' . $session->plant_name . ' ' . $session->id) . '.pdf';
+
+    // Menentukan direktori tujuan
+    $directory = 'report';
+
+    try {
+        // Membuat direktori jika belum ada
+        Storage::disk('public')->makeDirectory($directory);
+
+        // Menyimpan file PDF ke direktori yang diinginkan
+        $filePath = $directory . '/' . $fileName;
+        Storage::disk('public')->put($filePath, $pdf->output());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Laporan PDF berhasil dibuat',
+            'data' => [
+                'file_path' => $filePath,
+            ]
+        ]);
+    } catch (UnableToCreateDirectory | UnableToWriteFile | FilesystemException $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Gagal menyimpan file PDF',
+            'data' => null
+        ], 500);
+    }
 }
+
 
 
 
@@ -169,16 +288,231 @@ public function update(Request $request)
     ]);
 }
 
-    public function getpost()
+    // public function post(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+           
+    //         'caption' => 'required',
+    //         'post_latitude' => 'required',
+    //         'post_longitude' => 'required',
+    //         'user_id' => 'required',
+    //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    //     ]);
+    
+    //     if($validator->fails()){
+    //         return response()->json([
+    //             'success'=> false,
+    //             'message' => 'Ada kesalahan',
+    //             'data'=> $validator->errors()->first()
+    //         ], 404);
+    //     }
+    
+    //     // Proses upload gambar
+    //     $image = $request->file('image');
+    //     $fileName = time() . '.' . $image->getClientOriginalExtension();
+    //     $path = $image->storeAs('public/images', $fileName);
+    //     $url = Storage::url($path);
+    
+    //     // Simpan data post ke database
+    //     $input = $request->all();
+    //     $input['image_path'] = $fileName; // mengupdate nama file ke database
+    //     $post = Post::create($input);
+    
+    //     $success = [
+    //         'id' => $post->id,
+    //         'caption' => $post->caption,
+    //         'image' => $url
+    //     ];
+    
+    //     return response()->json([
+    //         'success'=> true,
+    //         'message'=> 'Sukses membuat ',
+    //         'data'=> $success
+    //     ]);
+    // }
+//     public function post(Request $request)
+//     {
+//         $validator = Validator::make($request->all(),[
+//             'image' => 'required|file|max:7000', // max 7MB
+//             'caption' => 'required',
+//             'post_latitude' => 'required',
+//             'post_longitude' => 'required',
+//             'user_id' => 'required'
+//         ]);
+
+//         if($validator->fails()){
+//             return response()->json([
+//                 'success'=> false,
+//                 'massage' => 'ada kesalahan',
+//                 'data'=> $validator -> errors()->first()
+//             ], 403);
+//         }
+//         $file = $request->file('image');
+//         $name = $file->getClientOriginalName();
+//         $path = $file->store('public/images');
+//         $url = Storage::url($path);
+
+//         // $path = Storage::putFile(
+//         //     'public/images',
+//         //     $request->file('image'),
+//         // );
+
+//         $input = $request->all();
+//         $input['image'] = $path;
+//         $user = Post::create($input);
+
+//         return response()->json([
+//             'success'=> true,
+//             'massage'=> 'sukses post'
+//         ]);
+//     }
+
+public function getpost()
+{
+    $users = Post::join('users', 'posts.user_id', '=', 'users.id')
+                ->select('posts.*', 'users.name', 'users.email', 'users.photo', 'users.username', 'users.address', 'users.latitude', 'users.longitude')
+                ->get();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses',
+        'data' => $users
+    ]);
+}
+
+    public function getCommentsByPostId(Request $request)
     {
-        $users = Post::latest()->get();
- 
+        $validator = Validator::make($request->all(), [
+            'post_id' => 'required'
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()
+            ], 400);
+        }
+    
+        $postId = $request->input('post_id');
+    
+        $comments = Comment::join('users', 'comments.user_id', '=', 'users.id')
+        ->select('comments.*', 'users.username', 'users.photo', 'users.id as user_id')
+        ->where('comments.post_id', $postId)
+        ->get();
+    
+    
         return response()->json([
-            'success'=> true,
-            'massage'=> 'sukses',
-            'data'=> $users
+            'success' => true,
+            'message' => 'Data komentar berhasil diambil',
+            'data' => $comments
         ]);
     }
+
+public function addComment(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'post_id' => 'required',
+        'comment' => 'required',
+        'user_id' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Validasi gagal',
+            'errors' => $validator->errors()
+        ], 400);
+    }
+
+    $postId = $request->input('post_id');
+    $commentText = $request->input('comment');
+    $userId = $request->input('user_id');
+
+    $comment = new Comment();
+    $comment->post_id = $postId;
+    $comment->user_id = $userId;
+    $comment->comment = $commentText;
+    $comment->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Komentar berhasil ditambahkan',
+        'data' => $comment
+    ]);
+}
+public function addReason(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'post_id' => 'required',
+        'reason' => 'required',
+        'user_id' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Validasi gagal',
+            'errors' => $validator->errors()
+        ], 400);
+    }
+
+    $postId = $request->input('post_id');
+    $reasonText = $request->input('reason');
+    $userId = $request->input('user_id');
+
+    // Tambahkan pengecekan jika reason kosong
+    if (empty($reasonText)) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Reason tidak boleh kosong'
+        ], 400);
+    }
+
+    $reason = new Report();
+    $reason->post_id = $postId;
+    $reason->user_id = $userId;
+    $reason->reason = $reasonText;
+    $reason->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Berhasil Melaporkan',
+        'data' => $reason
+    ]);
+}
+
+public function countUserByPost(Request $request)
+{
+    // Validasi inputan menggunakan Validator
+    $validator = Validator::make($request->all(), [
+        'post_id' => 'required',
+    ]);
+
+    // Jika validasi gagal, kembalikan pesan error
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 400);
+    }
+
+    $postId = $request->input('post_id');
+
+    // Hitung jumlah komentar berdasarkan post_id
+    $commentCount = Comment::where('post_id', $postId)->count();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses menghitung jumlah komentar',
+        'data' => $commentCount
+    ]);
+}
+
+
+
+
 
     public function getpostuse(Request $request)
     { $validator = Validator::make($request->all(),[
@@ -191,6 +525,35 @@ public function update(Request $request)
             'data'=> $users
         ]);
     }
+
+    
+    public function getpoststalk(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required'
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()
+            ], 400);
+        }
+    
+        $user_id = $request->input('user_id');
+        $posts = Post::join('users', 'posts.user_id', '=', 'users.id')
+            ->where('users.id', $user_id)
+            ->select('posts.*', 'users.name', 'users.email', 'users.photo', 'users.username', 'users.address')
+            ->get();
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'Sukses mendapatkan data post',
+            'data' => $posts
+        ]);
+    }
+    
     public function getact(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -297,50 +660,55 @@ public function update(Request $request)
     
     
 
-public function updateActivity(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'id' => 'required',
-        'user_id' => 'required',
-        'activity_name' => 'required',
-        'status' => 'required',
-        'start' => 'required',
-        'end' => 'required'
-    ]);
-
-    if ($validator->fails()) {
+    public function updateActivity(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            'activity_name' => 'required',     
+            'start' => 'required',
+            'end' => 'required'
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Ada kesalahan',
+                'data' => $validator->errors()->first()
+            ], 403);
+        }
+    
+        $activity = DB::table('activities')
+            ->where('id', $request->id)
+            ->first();
+    
+        if (!$activity) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tidak ada data Aktivitas dengan ID tersebut',
+                'data' => []
+            ]);
+        }
+    
+        DB::table('activities')
+            ->where('id', $request->id)
+            ->update([
+                'activity_name' => $request->activity_name,
+              
+                'start' => $request->start,
+                'end' => $request->end
+            ]);
+    
+        $updatedActivity = DB::table('activities')
+            ->where('id', $request->id)
+            ->first();
+    
         return response()->json([
-            'success' => false,
-            'message' => 'Ada kesalahan',
-            'data' => $validator->errors()->first()
-        ], 403);
-    }
-
-    $activity = DB::table('activities')->join('sessions','sessions.id','=','activities.session_id')->where('sessions.user_id', $request->user_id)
-                        ->where('activities.id', $request->id)
-                        ->first();
-
-    if (!$activity) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Tidak ada data Activity untuk user dengan ID dan Activity ID tersebut',
-            'data' => []
+            'success' => true,
+            'message' => 'Sukses mengupdate data Aktivitas',
+            'data' => $updatedActivity
         ]);
     }
-
-    $activity->activity_name = $request->activity_name;
-    $activity->status = $request->status;
-    $activity->start = $request->start;
-    $activity->end = $request->end;
-    $activity->save();
-
-    return response()->json([
-        'success' => true,
-        'message' => 'Sukses mengupdate data Activity',
-        'data' => $activity
-    ]);
-}
-
+    
 
     
 
@@ -721,25 +1089,7 @@ public function updateStatusSession(Request $request)
         'message' => 'Data berhasil diupdate',
         'data' => $activity
     ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'massage' => 'data tdk lengkap',
-                'data' => $validator->errors()->first(),
-            ], 403);
-        }
-
-        $input = $request->all();
-        $report = Report::create($input);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Sukses menambah komentar',
-            'data' => $report
-        ]);
-        
-    }
+}
 
 public function deleteStatusSession(Request $request)
 {
@@ -776,154 +1126,4 @@ public function deleteStatusSession(Request $request)
        
     ]);
 }
-
-    public function postLike(Request $request)
-    {
-        $id = $request->input('user_id');
-    
-        $posts = DB::table('likes')->join('posts','posts.id','=','likes.post_id')->join('users','users.id','=','posts.user_id')
-        ->where('likes.user_id', $id)
-            ->get();
-    
-        if ($posts->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Tidak ada data Postingan yang anda sukai',
-                'data' => []
-            ]);
-        } else {
-            return response()->json([
-                'success' => true,
-                'message' => 'Sukses mendapatkan data',
-                'data' => $posts
-            ]);
-        }
-    }
-
-    public function postUser(Request $request)
-    {
-        $id = $request->input('user_id');
-    
-        $posts = Post::where('user_id', $id)->get();
-    
-        if ($posts->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Tidak ada data Postingan',
-                'data' => []
-            ]);
-        } else {
-            return response()->json([
-                'success' => true,
-                'message' => 'Sukses mendapatkan data',
-                'data' => $posts
-            ]);
-        }
-    }
-
-    public function getComment(Request $request)
-    {
-        $postId = $request->input('post_id');
-    
-        $comment = DB::table('comments')->join('users','comments.user_id','=','users.id')->where('post_id', $postId)->get();
-    
-        if ($comment->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Tidak ada data komentar',
-                'data' => []
-            ]);
-        } else {
-            return response()->json([
-                'success' => true,
-                'message' => 'Sukses mendapatkan data',
-                'data' => $comment
-            ]);
-        }
-    }
-
-    public function addComment(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'post_id' => 'required',
-            'user_id' => 'required',
-            'comment' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'massage' => 'data tdk lengkap',
-                'data' => $validator->errors()->first(),
-            ], 403);
-        }
-
-        $input = $request->all();
-        $user = Comment::create($input);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Sukses menambah komentar',
-            'data' => $user
-        ]);
-        
-    }
-
-    public function deleteComment(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'post_id' => 'required',
-            'user_id' => 'required',
-            'comment_id' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'massage' => 'data tdk lengkap',
-                'data' => $validator->errors()->first(),
-            ], 403);
-        }
-
-        $user = Comment::where('user_id', $request['user_id'])->where('post_id', $request['post_id'])->where('id', $request['comment_id'])->get();
-        if ($user->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Data tidak ditemukan'
-            ], 404);
-        }else{
-            Comment::where('id', $request['comment_id'])->delete();
-            return response()->json([
-                'success' => true,
-                'message' => 'Sukses menghapus data',
-            ]);
-        }
-    }
-
-    public function addReport(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'post_id' => 'required',
-            'user_id' => 'required',
-            'reason' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'massage' => 'data tdk lengkap',
-                'data' => $validator->errors()->first(),
-            ], 403);
-        }
-
-        $input = $request->all();
-        $report = Report::create($input);
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Sukses menambah komentar',
-            'data' => $report
-        ]);
-        
-    }
 }

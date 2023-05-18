@@ -18,12 +18,13 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::post('post', [AuthController::class, 'post']);
 Route::post('getpost', [AuthController::class, 'getpost']);
+Route::post('getpoststalk', [AuthController::class, 'getpoststalk']);
 Route::post('getact', [AuthController::class, 'getact']);
 Route::post('getActFull', [AuthController::class, 'getActFull']);
 Route::post('update', [AuthController::class, 'update']);
-Route::post('addActivity', [AuthController::class, 'addActivity']);
+Route::post('generateReport', [AuthController::class, 'generateReport']);
 Route::post('updateStatus', [AuthController::class, 'updateStatus']);
-
+Route::post('updateStatus', [AuthController::class, 'updateStatus']);
 Route::post('updateActivity', [AuthController::class, 'updateActivity']);
 Route::post('deleteData', [AuthController::class, 'deleteData']);
 Route::post('filterActivity', [AuthController::class, 'filterActivity']);
@@ -40,10 +41,11 @@ Route::post('getses', [AuthController::class, 'getses']);
 
 Route::post('getPostLike', [AuthController::class, 'postLike']);
 Route::post('getPostUser', [AuthController::class, 'postUser']);
-Route::post('getComment', [AuthController::class, 'getComment']);
+Route::post('getCommentsByPostId', [AuthController::class, 'getCommentsByPostId']);
 Route::post('addComment', [AuthController::class, 'addComment']);
 Route::post('deleteComment', [AuthController::class, 'deleteComment']);
-Route::post('addReport', [AuthController::class, 'addReport']);
+Route::post('countUserByPost', [AuthController::class, 'countUserByPost']);
+Route::post('addReason', [AuthController::class, 'addReason']);
 
 Route::post('getpostuse', [AuthController::class, 'getpostuse']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
