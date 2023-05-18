@@ -5,8 +5,8 @@
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Edifarm</title>
-      
-      <link rel="shortcut icon" href="images/favicon.ico" />
+
+      <link rel="shortcut icon" href="images/EDIFARM.png" />
       <!-- <link rel="stylesheet" href="css/libs.min.css"> -->
       <link rel="stylesheet" href="{{ asset('css/libs.min.css') }}">
       <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
@@ -22,21 +22,21 @@
   <body class="  ">
     <!-- Wrapper Start -->
     <div class="wrapper">
-      
-      
+
+
         <div class="iq-top-navbar">
           <div class="iq-navbar-custom">
               <nav class="navbar navbar-expand-lg navbar-light p-0">
                   <div class="iq-navbar-logo d-flex justify-content-between">
                       <a href="../dashboard/index.html">
-                          <img src="/images/logo.png" class="img-fluid" alt="">
+                          <img src="/images/EDIFARM.png" class="img-fluid" alt="">
                           <span>Edifarm</span>
                       </a>
                   </div>
                   <div class="iq-search-bar device-search">
                       <form action="#" class="searchbox">
+                        <input type="text" class="text search-input" placeholder="Search here...">
                           <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                          <input type="text" class="text search-input" placeholder="Search here...">
                       </form>
                   </div>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -91,15 +91,15 @@
                                   </div>
                               </div>
                           </li>
-                      </ul>               
+                      </ul>
                   </div>
               </nav>
           </div>
-      </div>       
-           
+      </div>
+
         <div id="content-page" class="content-page">
             <div class="container">
-    
+
                 <!-- bagian konten blog -->
                 @yield('content')
             </div>
@@ -125,7 +125,7 @@
     <script src="js/libs.min.js"></script>
     <!-- slider JavaScript -->
     <script src="js/slider.js"></script>
-    <!-- masonry JavaScript --> 
+    <!-- masonry JavaScript -->
     <script src="js/masonry.pkgd.min.js"></script>
     <!-- SweetAlert JavaScript -->
     <script src="js/enchanter.js"></script>
@@ -136,10 +136,10 @@
     <script src="js/app.js"></script>
     <script src="vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
     <script src="js/lottie.js"></script>
-    
+
 
     <!-- offcanvas start -->
- 
+
     <div class="offcanvas offcanvas-bottom share-offcanvas" tabindex="-1" id="share-btn" aria-labelledby="shareBottomLabel">
        <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="shareBottomLabel">Share</h5>

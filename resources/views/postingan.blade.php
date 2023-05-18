@@ -43,7 +43,7 @@
                                     <div class="d-flex align-items-center">
                                         <div class="user-img">
                                             <img src="{{ session()->get('photo') }}" alt="userimg"
-                                                class="avatar-60 rounded-circle img-fluid">
+                                                class="avatar-61 rounded-circle img-fluid">
                                         </div>
                                         <input type="text" name="caption" class="form-control rounded"
                                             placeholder="Tulis keterangan disini..." style="border:none;">
@@ -237,7 +237,7 @@
                                                         class="total-like-block ms-2 me-3">
                                                         <ul class="list-inline mb-0">
                                                             <li class="list-inline-item">
-                                                                <p >{{ $post->likes->count() }} Suka</p>
+                                                                <p>{{ $post->likes->count() }} Suka</p>
 
                                                             </li>
                                                         </ul>
