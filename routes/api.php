@@ -38,7 +38,6 @@ Route::post('updateSession', [AuthController::class, 'updateSession']);
 Route::post('updateStatusSession', [AuthController::class, 'updateStatusSession']);
 Route::post('deleteStatusSession', [AuthController::class, 'deleteStatusSession']);
 Route::post('getses', [AuthController::class, 'getses']);
-
 Route::post('getPostLike', [AuthController::class, 'postLike']);
 Route::post('getPostUser', [AuthController::class, 'postUser']);
 Route::post('getCommentsByPostId', [AuthController::class, 'getCommentsByPostId']);
@@ -46,8 +45,12 @@ Route::post('addComment', [AuthController::class, 'addComment']);
 Route::post('deleteComment', [AuthController::class, 'deleteComment']);
 Route::post('countUserByPost', [AuthController::class, 'countUserByPost']);
 Route::post('addReason', [AuthController::class, 'addReason']);
-
+Route::post('getAllDocumentations', [AuthController::class, 'getAllDocumentations']);
 Route::post('getpostuse', [AuthController::class, 'getpostuse']);
+Route::post('downloadPDF', [AuthController::class, 'downloadPDF']);
+Route::post('addActivity', [AuthController::class, 'addActivity']);
+Route::post('addPostActivity', [AuthController::class, 'addPostActivity']);
+Route::post('getPostActivityy', [AuthController::class, 'getPostActivity']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

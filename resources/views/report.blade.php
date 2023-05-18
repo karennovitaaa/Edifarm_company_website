@@ -40,6 +40,7 @@
     <h2>Data Pengguna</h2>
     <p>Nama: {{ $user->name }}</p>
     <p>Email: {{ $user->email }}</p>
+    <p>Alamat: {{ $user->address }}</p>
 
     <h2>Data Sesi</h2>
     <p>Nama Tanaman: {{ $session->plant_name }}</p>

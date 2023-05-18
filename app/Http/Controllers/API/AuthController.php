@@ -8,7 +8,10 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Like;
 use App\Models\Session;
+use App\Models\Documentation;
 use App\Models\Comment;
+use App\Models\PostActivity;
+use App\Models\Models\Documentation as ModelsDocumentation;
 use App\Models\Report;
 use PDF;
 use League\Flysystem\FilesystemException;
@@ -23,7 +26,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-
 
 
 class AuthController extends Controller
@@ -120,7 +122,213 @@ class AuthController extends Controller
         }
     }
 
+    public function generateReport(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'session_id' => 'required'
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Ada kesalahan',
+                'data' => $validator->errors()->first()
+            ], 400);
+        }
+    
+        // Mengambil data user berdasarkan user_id
+        $user = User::find($request->user_id);
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User tidak ditemukan',
+                'data' => null
+            ], 404);
+        }
+    
+        // Mengambil data session berdasarkan session_id dan user_id
+        $session = Session::where('id', $request->session_id)
+            ->where('user_id', $request->user_id)
+            ->first();
+    
+        if (!$session) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Session tidak ditemukan',
+                'data' => null
+            ], 404);
+        }
+    
+        // Mengambil data aktivitas berdasarkan session_id
+        $activities = Activity::where('session_id', $request->session_id)->get();
+    
+        // Generate PDF menggunakan metode loadView()
+        $pdf = PDF::loadView('report', ['user' => $user, 'session' => $session, 'activities' => $activities]);
+    
+        // Mendapatkan nama unik untuk file PDF
+        $pdfFileName = 'report_' . time() . '.pdf';
+    
+        $pdf->save(public_path('reports/' . $pdfFileName));
 
+    
+        // Simpan informasi file PDF ke database
+        $report = Documentation::create([
+            'user_id' => $request->user_id,
+            'session_id' => $request->session_id,
+            'pdf_file' => $pdfFileName,
+        ]);
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'Laporan PDF berhasil dibuat dan disimpan',
+            'data' => [
+                'report_id' => $report->id,
+                'pdf_file' => $pdfFileName,
+            ]
+        ]);
+    }
+    
+    public function downloadPDF(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'id' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Invalid request',
+            'errors' => $validator->errors(),
+        ], 400);
+    }
+
+    $id = $request->input('id');
+
+    $report = Documentation::find($id);
+
+    if (!$report) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Report not found',
+            'data' => null,
+        ], 404);
+    }
+
+    $pdfFilePath = public_path('reports/' . $report->pdf_file);
+
+    if (!file_exists($pdfFilePath)) {
+        return response()->json([
+            'success' => false,
+            'message' => 'PDF file not found',
+            'data' => null,
+        ], 404);
+    }
+
+    // Mendapatkan URL tautan untuk mengunduh file PDF
+    $downloadUrl = url('/reports/' . $report->pdf_file);
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Download link for PDF generated',
+        'data' => [
+            'download_url' => $downloadUrl,
+        ],
+    ]);
+}
+
+
+    public function getAllDocumentations(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 422);
+        }
+    
+        $user_id = $request->user_id;
+    
+        $documentations = Documentation::join('sessions', 'documentations.session_id', '=', 'sessions.id')
+            ->where('documentations.user_id', $user_id)
+            ->select('documentations.*', 'sessions.plant_name', 'documentations.created_at as documentation_created_at', 'sessions.created_at as session_created_at')
+            ->get();
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'Data documentations berhasil diambil',
+            'data' => $documentations,
+        ]);
+    }
+    
+    public function addPostActivity(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required',
+        'session_id' => 'required',
+        'pdf_file' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Validasi gagal',
+            'errors' => $validator->errors()
+        ], 400);
+    }
+
+    $user_id = $request->input('user_id');
+    $session_id = $request->input('session_id');
+    $pdf_file = $request->input('pdf_file');
+
+    $postAct = new PostActivity();
+    $postAct->user_id = $user_id;
+    $postAct->session_id = $session_id;
+    $postAct->pdf_file = $pdf_file;
+    $postAct->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Data berhasil ditambahkan',
+        'data' => $postAct
+    ]);
+}
+
+    
+    
+        public function post(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'caption' => 'required',
+            'post_latitude' => 'required',
+            'post_longitude' => 'required',
+            'user_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+    
+            if($validator->fails()){
+                return response()->json([
+                    'success'=> false,
+                    'massage' => 'ada kesalahan',
+                    'data'=> $validator -> errors()->first()
+                ], 403);
+            }
+            $imageName = time().'.'.request()->image->extension();
+            request()->image->move(public_path('images/post'), $imageName);
+            $path = "images/post/$imageName";
+    
+            $input = $request->all();
+            $input['image'] = $path;
+    
+            $user = Post::create($input);
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'Sukses membuat post',
+            'data' => $user
+        ]);
+    }
 
 
 //     public function update(Request $request)
@@ -157,136 +365,6 @@ class AuthController extends Controller
 //     ], 200);
 // }
 
-public function generateReport(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'user_id' => 'required',
-        'session_id' => 'required'
-    ]);
-
-    if ($validator->fails()) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Ada kesalahan',
-            'data' => $validator->errors()->first()
-        ], 400);
-    }
-
-    // Mengambil data user berdasarkan user_id
-    $user = User::find($request->user_id);
-    if (!$user) {
-        return response()->json([
-            'success' => false,
-            'message' => 'User tidak ditemukan',
-            'data' => null
-        ], 404);
-    }
-
-    // Mengambil data session berdasarkan session_id dan user_id
-    $session = Session::where('id', $request->session_id)
-        ->where('user_id', $request->user_id)
-        ->first();
-
-    if (!$session) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Session tidak ditemukan',
-            'data' => null
-        ], 404);
-    }
-
-    // Mengambil data aktivitas berdasarkan session_id
-    $activities = Activity::where('session_id', $request->session_id)->get();
-
-    // Generate PDF menggunakan metode loadView()
-   $pdf = PDF::loadView('report', ['user' => $user, 'session' => $session, 'activities' => $activities]);
-
-    // Konversi konten PDF menjadi bentuk biner
-    $pdfContent = $pdf->output();
-
-    // Simpan data biner PDF ke database
-    $report = Report::create([
-        'user_id' => $request->user_id,
-        'session_id' => $request->session_id,
-        'pdf_file' => $pdfContent,
-    ]);
-
-    // ...
-
-    return response()->json([
-        'success' => true,
-        'message' => 'Laporan PDF berhasil dibuat dan disimpan ke database',
-        'data' => [
-            'report_id' => $report->id,
-        ]
-    ]);
-
-    // Membentuk nama file PDF berdasarkan informasi user dan session
-    $fileName = Str::slug($user->name . ' ' . $session->plant_name . ' ' . $session->id) . '.pdf';
-
-    // Menentukan direktori tujuan
-    $directory = 'report';
-
-    try {
-        // Membuat direktori jika belum ada
-        Storage::disk('public')->makeDirectory($directory);
-
-        // Menyimpan file PDF ke direktori yang diinginkan
-        $filePath = $directory . '/' . $fileName;
-        Storage::disk('public')->put($filePath, $pdf->output());
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Laporan PDF berhasil dibuat',
-            'data' => [
-                'file_path' => $filePath,
-            ]
-        ]);
-    } catch (UnableToCreateDirectory | UnableToWriteFile | FilesystemException $e) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Gagal menyimpan file PDF',
-            'data' => null
-        ], 500);
-    }
-}
-
-
-
-
-
-    public function post(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'caption' => 'required',
-        'post_latitude' => 'required',
-        'post_longitude' => 'required',
-        'user_id' => 'required',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-    ]);
-
-        if($validator->fails()){
-            return response()->json([
-                'success'=> false,
-                'massage' => 'ada kesalahan',
-                'data'=> $validator -> errors()->first()
-            ], 403);
-        }
-        $imageName = time().'.'.request()->image->extension();
-        request()->image->move(public_path('images/post'), $imageName);
-        $path = "images/post/$imageName";
-
-        $input = $request->all();
-        $input['image'] = $path;
-
-        $user = Post::create($input);
-
-    return response()->json([
-        'success' => true,
-        'message' => 'Sukses membuat post',
-        'data' => $user
-    ]);
-}
 
     // public function post(Request $request)
     // {
@@ -746,6 +824,40 @@ public function updateStatus(Request $request)
         'success' => true,
         'message' => 'Data berhasil diupdate',
         'data' => $updatedActivity
+    ]);
+}
+
+public function addActivity(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'activity_name' => 'required',
+        'status' => 'required',
+        'start' => 'required',
+        'end' => 'required',
+      
+        'session_id' => 'required'
+    ]);
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 403);
+    }
+    $activity = new Activity();
+    $activity->timestamps = false; // tambahkan baris ini
+  
+    $activity->activity_name = $request->activity_name;
+    $activity->status = $request->status;
+    $activity->start = $request->start;
+    $activity->end = $request->end;
+
+    $activity->session_id = $request->session_id;
+    $activity->save();
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses menambahkan data aktivitas',
+        'data' => $activity
     ]);
 }
 
