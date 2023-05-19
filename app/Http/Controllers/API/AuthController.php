@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Like;
 use App\Models\Session;
 use App\Models\Documentation;
+use App\Models\Rating;
 use App\Models\Comment;
 use App\Models\PostActivity;
 use App\Models\Models\Documentation as ModelsDocumentation;
@@ -23,6 +24,7 @@ use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -236,6 +238,43 @@ class AuthController extends Controller
         ],
     ]);
 }
+
+public function getPostActivity(Request $request)
+{
+    $postActivity = PostActivity::join('sessions', 'post_activity.session_id', '=', 'sessions.id')
+        ->join('users', 'post_activity.user_id', '=', 'users.id')
+        ->select('post_activity.*', 'sessions.plant_name', 'users.name', 'users.username', 'users.email', 'users.address')
+        ->orderBy('post_activity.created_at', 'desc')
+        ->get();
+
+    // Menghapus bagian waktu dari string tanggal
+// Mengubah format tanggal
+$postActivity = $postActivity->map(function ($activity) {
+    $activity->created_at = date('Y-m-d', strtotime($activity->created_at));
+    $activity->updated_at = date('Y-m-d', strtotime($activity->updated_at));
+    return $activity;
+});
+
+// Menghapus bagian waktu dari string tanggal
+$postActivity = $postActivity->map(function ($activity) {
+    $activity->created_at = substr($activity->created_at, 0, 10);
+    $activity->updated_at = substr($activity->updated_at, 0, 10);
+    return $activity;
+});
+
+// Alternatif: Menggunakan Carbon
+$postActivity = $postActivity->map(function ($activity) {
+    $activity->created_at = \Carbon\Carbon::parse($activity->created_at)->toDateString();
+    $activity->updated_at = \Carbon\Carbon::parse($activity->updated_at)->toDateString();
+    return $activity;
+});
+    return response()->json([
+        'success' => true,
+        'message' => 'Data berhasil diambil',
+        'data' => $postActivity
+    ]);
+}
+
 
 
     public function getAllDocumentations(Request $request)
@@ -1005,6 +1044,151 @@ public function deleteLikeByPostId(Request $request)
         'message' => 'Sukses menghapus data like berdasarkan post_id'
     ]);
 }
+public function addRating(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required', // Pastikan user_id diisi
+        'post_activity_id' => 'required', // Pastikan post_activity_id diisi
+        'rate' => 'required|integer' // Pastikan rate diisi dengan nilai integer
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 400);
+    }
+
+    $input = $request->all();
+
+    // Cek apakah user_id dan post_activity_id ada dalam tabel "users" dan "post_activity" sesuai kebutuhan
+    if (!User::where('id', $input['user_id'])->exists()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'User tidak ditemukan'
+        ], 404);
+    }
+
+    if (!PostActivity::where('id', $input['post_activity_id'])->exists()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Post Activity tidak ditemukan'
+        ], 404);
+    }
+
+    // Buat data rating baru
+    $rating = new Rating();
+    $rating->user_id = $input['user_id'];
+    $rating->post_activity_id = $input['post_activity_id'];
+    $rating->rate = $input['rate'];
+    $rating->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Berhasil Memberikan Bintang ',
+        'data' => $rating
+    ]);
+}
+
+public function deleteRatingByPostActivityId(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'post_activity_id' => 'required' // Pastikan post_activity_id diisi
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 400);
+    }
+
+    $input = $request->all();
+
+    // Cek apakah post_activity_id ada dalam tabel "post_activity"
+    if (!PostActivity::where('id', $input['post_activity_id'])->exists()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Post Activity tidak ditemukan'
+        ], 404);
+    }
+
+    // Hapus data rating berdasarkan post_activity_id
+    Rating::where('post_activity_id', $input['post_activity_id'])->delete();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses menghapus data rating berdasarkan post_activity_id'
+    ]);
+}
+
+public function calculateAverageRating(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'post_activity_id' => 'required|exists:post_activity,id'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Invalid post activity id',
+            'errors' => $validator->errors()
+        ], 400);
+    }
+
+    $postActivityId = $request->input('post_activity_id');
+
+    $averageRating = Rating::where('post_activity_id', $postActivityId)->avg('rate');
+
+    if ($averageRating === null) {
+        $averageRating = 0.0;
+    }
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Average rating by post activity id',
+        'data' => (double) $averageRating
+    ]);
+}
+
+
+public function checkUserRating(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required|exists:users,id',
+        'post_activity_id' => 'required|exists:post_activity,id'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Invalid user id or post activity id',
+            'errors' => $validator->errors()
+        ], 400);
+    }
+
+    $userId = $request->input('user_id');
+    $postActivityId = $request->input('post_activity_id');
+
+    $rating = Rating::where('user_id', $userId)
+                    ->where('post_activity_id', $postActivityId)
+                    ->first();
+
+    $hasRated = !is_null($rating);
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Anda Sudah Menberi Rating',
+        'data' => [
+            'user_id' => $userId,
+            'post_activity_id' => $postActivityId,
+            'has_rated' => $hasRated
+        ]
+    ]);
+}
+
 
 public function addSession(Request $request)
 {

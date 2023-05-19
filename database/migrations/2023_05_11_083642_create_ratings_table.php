@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('rate');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('postact_id')->constrained('post_activity')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('post_activity_id')->constrained('post_activity')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

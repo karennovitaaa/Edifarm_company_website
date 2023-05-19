@@ -50,7 +50,10 @@ Route::post('getpostuse', [AuthController::class, 'getpostuse']);
 Route::post('downloadPDF', [AuthController::class, 'downloadPDF']);
 Route::post('addActivity', [AuthController::class, 'addActivity']);
 Route::post('addPostActivity', [AuthController::class, 'addPostActivity']);
-Route::post('getPostActivityy', [AuthController::class, 'getPostActivity']);
+Route::post('getPostActivity', [AuthController::class, 'getPostActivity']);
+Route::post('addRating', [AuthController::class, 'addRating']);
+Route::post('calculateAverageRating', [AuthController::class, 'calculateAverageRating']);
+Route::post('checkUserRating', [AuthController::class, 'checkUserRating']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
