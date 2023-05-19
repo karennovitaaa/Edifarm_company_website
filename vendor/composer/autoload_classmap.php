@@ -31,6 +31,8 @@ return array(
     'App\\Models\\Documentation' => $baseDir . '/app/Models/Documentation.php',
     'App\\Models\\Like' => $baseDir . '/app/Models/Like.php',
     'App\\Models\\Post' => $baseDir . '/app/Models/Post.php',
+    'App\\Models\\PostActivity' => $baseDir . '/app/Models/PostActivity.php',
+    'App\\Models\\Rating' => $baseDir . '/app/Models/Rating.php',
     'App\\Models\\Report' => $baseDir . '/app/Models/Report.php',
     'App\\Models\\Reports' => $baseDir . '/app/Models/Reports.php',
     'App\\Models\\Session' => $baseDir . '/app/Models/Session.php',

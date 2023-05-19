@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('documentation', function (Blueprint $table) {
+        Schema::create('documentations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('session_id');
             $table->binary('pdf_file');
             $table->timestamps();
-            
+
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('session_id')->references('id')->on('sessions');
         });
