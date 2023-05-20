@@ -31,7 +31,7 @@
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <div class="iq-navbar-logo d-flex justify-content-between">
                     <a href="postingan">
-                        <img src="/images/EDIFARM.png" class="img-fluid" alt="">
+                        <img src="/images/Logofix.png" class="img-fluid" alt="">
                         <span>Edifarm</span>
                     </a>
 
@@ -141,6 +141,8 @@
     <script src="{{ asset('js/app.js')}}"></script>
     <script src="vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
     <script src="js/lottie.js"></script>
+    <script src="js/scroll.js"></script>
+
     @include('sweetalert::alert')
 
     <div class="modal fade" id="post-modal" tabindex="-1" aria-labelledby="post-modalLabel" aria-hidden="true">

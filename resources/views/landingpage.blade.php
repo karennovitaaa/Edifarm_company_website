@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>EDIFARM</title>
-        <link rel="shortcut icon" href="images/logo.png" />
+        <link rel="shortcut icon" href="images/Logofix.png" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
@@ -22,7 +22,8 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
             <div class="container px-5">
-                <a class="navbar-brand fw-bold" href="#page-top">EDIFARM</a>
+                <a class="navbar-brand fw-bold" href="/">
+                    <img src="/images/EDIFARM.png" class="imgbaru" style=" height: 100px;width: 100px;margin-bottom: -30px;margin-top: -30px;margin-left: -70px;">EDIFARM</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="bi-list"></i>
@@ -216,7 +217,7 @@
             </div>
         </footer>
         <!-- Feedback Modal-->
-                        
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

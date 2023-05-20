@@ -404,7 +404,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -421,7 +421,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -438,7 +438,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -455,7 +455,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -472,7 +472,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -489,7 +489,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -506,7 +506,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -523,7 +523,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -546,7 +546,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -563,7 +563,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -580,7 +580,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -597,7 +597,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
@@ -614,7 +614,7 @@
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
                                                    <li><a href="#" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
                                                    <li><a href="#" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"> 10 <i class="ri-share-forward-line"></i> </a></li>
+                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>

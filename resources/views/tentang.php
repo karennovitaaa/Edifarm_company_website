@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    
+
 <link rel="shortcut icon" href="images/logo.png" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +20,7 @@
                 <h1>Tentang</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb foi-breadcrumb">
-                        <li class="breadcrumb-item"><a href="/landingpage">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Tentang</li>
                     </ol>
                 </nav>
@@ -126,79 +126,7 @@
         </div>
     </main>
 
-    <footer class="foi-footer text-white">
-        <div class="container">
-            <div class="row footer-content">
-                <div class="col-xl-6 col-lg-7 col-md-8">
-                    <h2 class="mb-0">Do you want to know more or just have a question? write to us.</h2>
-                </div>
-            </div>
-            <div class="row footer-widget-area">
-                <div class="col-md-3">
-                    <div class="py-3">
-                        <img src="landing/assets/images/logo-white.svg" alt="FOI">
-                    </div>
-                    <p class="font-os font-weight-semibold mb3">Get our mobile app</p>
-                    <div>
-                        <button class="btn btn-app-download"><img src="landing/assets/images/android.svg" alt="play store"></button>
-                    </div>
-                </div>
-                <div class="col-md-3 mt-3 mt-md-0">
-                    <nav>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Edifarm Development</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Pengoptimalan Fitur</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Media Sosial</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Pengoptimalan Situs Web</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Activity</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-md-3 mt-3 mt-md-0">
-                    <nav>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Digital Marketing</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Informasi Pertanian</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#!" class="nav-link">Pemeriksaan Situs Web</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-md-3 mt-3 mt-md-0">
-                    <p>
-                        &copy;  <a href="https://edifarm21@gmail.com" target="_blank" rel="noopener noreferrer" class="text-reset">Email Edifarm</a>.
-                    </p>
-                    <nav class="social-menu">
-                        <a href="#!"><img src="landing/assets/images/facebook.svg" alt="facebook"></a>
-                        <a href="#!"><img src="landing/assets/images/instagram.svg" alt="instagram"></a>
-                        <a href="#!"><img src="landing/assets/images/twitter.svg" alt="twitter"></a>
-                        <a href="#!"><img src="landing/assets/images/youtube.svg" alt="youtube"></a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </footer>
+
     <script src="landing/assets/vendors/jquery/jquery.min.js"></script>
     <script src="landing/assets/vendors/popper.js/popper.min.js"></script>
     <script src="landing/assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
