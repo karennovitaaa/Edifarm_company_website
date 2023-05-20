@@ -584,6 +584,8 @@ class ComposerStaticInita54cffd84cb3e9b38160ef0e0bbd0757
         'App\\Models\\Documentation' => __DIR__ . '/../..' . '/app/Models/Documentation.php',
         'App\\Models\\Like' => __DIR__ . '/../..' . '/app/Models/Like.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
+        'App\\Models\\PostActivity' => __DIR__ . '/../..' . '/app/Models/PostActivity.php',
+        'App\\Models\\Rating' => __DIR__ . '/../..' . '/app/Models/Rating.php',
         'App\\Models\\Report' => __DIR__ . '/../..' . '/app/Models/Report.php',
         'App\\Models\\Reports' => __DIR__ . '/../..' . '/app/Models/Reports.php',
         'App\\Models\\Session' => __DIR__ . '/../..' . '/app/Models/Session.php',

@@ -14,7 +14,7 @@ class BlogController extends Controller
 {
     public function table()
     {
-        $users = User::get();
+        $users = User::where('level', 'user')->get();
         //$datas = compact('users');
         return view('AdminTable', compact('users'));
     }
