@@ -44,6 +44,7 @@ Route::post('getComment', [AuthController::class, 'getComment']);
 Route::post('addComment', [AuthController::class, 'addComment']);
 Route::post('deleteComment', [AuthController::class, 'deleteComment']);
 Route::post('addReport', [AuthController::class, 'addReport']);
+Route::post('passwordUp/{id}', [AuthController::class, 'passwordUp']);
 
 Route::post('getpostuse', [AuthController::class, 'getpostuse']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

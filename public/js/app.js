@@ -880,12 +880,43 @@ var like = document.querySelector('.like-data');
 like.addEventListener('click', function() {
   like.classList.toggle('active'); /* menambah/menghapus class "active" */
 });
+// const likeButtons = document.querySelectorAll('.like-btn');
+// likeButtons.forEach(function(button) {
+//   button.addEventListener('click', function() {
+//     const icon = this.querySelector('i');
+//     icon.classList.toggle('far');
+//     icon.classList.toggle('fas');
+
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('POST', '/suka/{{ $post->id }}');
+//   });
+// });
 const likeButtons = document.querySelectorAll('.like-btn');
+
 likeButtons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    const icon = this.querySelector('i');
-    icon.classList.toggle('far');
-    icon.classList.toggle('fas');
-  });
+   button.addEventListener('click', function() {
+      const postId = this.dataset.postId;
+      const icon = this.querySelector('i');
+
+      // Mengirim permintaan Ajax ke controller Laravel
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/like/4", true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onload = function() {
+         if (xhr.status === 200) {
+            // Mengubah class ikon sesuai dengan respon dari server
+            const response = JSON.parse(xhr.responseText);
+            if (response.liked) {
+               icon.classList.remove('far');
+               icon.classList.add('fas');
+            } else {
+               icon.classList.remove('fas');
+               icon.classList.add('far');
+            }
+         } else {
+            console.error('Terjadi kesalahan. Status: ' + xhr.status);
+         }
+      };
+      xhr.send();
+   });
 });
-  

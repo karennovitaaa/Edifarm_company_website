@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('level', ['admin', 'user']);
             $table->timestamps();
+
         });
     }
 

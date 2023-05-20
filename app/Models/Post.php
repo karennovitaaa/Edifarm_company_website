@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Auth;
 
 class Post extends Model
 {
@@ -36,6 +37,11 @@ class Post extends Model
     public function comments()
     {
         return $this->belongsToMany(User::class, 'comments')->withTimestamps()->withPivot(['comment', 'created_at', 'updated_at']);
+    }
+
+    public function hasLike()
+    {
+        return $this->hasOne(Like::class)->where('likes.user_id', Auth::user()->id);
     }
 
     // public function comments()

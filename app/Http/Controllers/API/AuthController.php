@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 
 class AuthController extends Controller
@@ -925,5 +926,27 @@ public function deleteStatusSession(Request $request)
             'data' => $report
         ]);
         
+    }
+
+    public function passwordUp(Request $request, $id)
+    {
+        //$user = Auth::user();
+
+        // Validasi input
+        $this->validate($request, [
+            'cpassword' => 'required',
+            'npassword' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Periksa apakah kata sandi saat ini benar
+        if (!Hash::check($request->cpassword, $user->password)) {
+            return response()->json(['message' => 'Password updated successfully']);
+        }
+
+        // Ubah kata sandi pengguna
+        $user->password = Hash::make($request->npassword);
+        $user->save();
+
+        return response()->json(['message' => 'Password updated successfully']);
     }
 }

@@ -8,12 +8,14 @@
             <div class="card-body profile-page p-0">
                <div class="profile-header">
                   <div class="position-relative">
+                     @foreach($user as $profile)
                      <div class="profile-img">
-                        <img src="{{session()->get('photo') }}" alt="profile-img" class="avatar-130 img-fluid" />
+                        <img src="{{ $profile->photo }}" alt="profile-img" class="avatar-130 img-fluid" />
                      </div>
                      <div class="profile-detail">
-                        <h3 class="profile">{{session()->get('username') }}</h3>
+                        <h3 class="profile">{{ $profile->username }}</h3>
                      </div>
+                     @endforeach
                   </div>
                   <div class="profile-info p-3 d-flex align-items-center justify-content-between position-relative">
                      <div class="social-links">
@@ -51,7 +53,7 @@
       </div>
       <div class="col-sm-12">
          <div class="tab-content">
-            <div class="tab-pane fade" id="about" role="tabpanel" >
+            <div class="tab-pane fade active show" id="about" role="tabpanel" >
                <div class="card">
                   <div class="card-body">
                      <div class="row">
@@ -67,7 +69,7 @@
                            </ul>
                         </div>
                         <div class="col-md-9 ps-4">
-                           @foreach($reports as $report)
+                           @foreach($user as $profile)
                            <div class="tab-content" >
                               <div class="tab-pane fade active show" id="v-pills-basicinfo-tab" role="tabpanel"  aria-labelledby="v-pills-basicinfo-tab">
                               <h4 >Informasi Pribadi</h4>
@@ -77,19 +79,19 @@
                                        <h6>Nama</h6>
                                     </div>
                                     <div class="col-9">
-                                       <p class="mb-0">{{ $report->name }}</p>
+                                       <p class="mb-0">{{ $profile->name }}</p>
                                     </div>
                                     <div class="col-3">
                                        <h6>Tanggal Lahir</h6>
                                     </div>
                                     <div class="col-9">
-                                       <p class="mb-0">{{ $report->born_date }}</p>
+                                       <p class="mb-0">{{ $profile->born_date }}</p>
                                     </div>
                                     <div class="col-3">
                                        <h6>Jenis Kelamin</h6>
                                     </div>
                                     <div class="col-9">
-                                       <p class="mb-0">{{ $report->gender }}</p>
+                                       <p class="mb-0">{{ $profile->gender }}</p>
                                     </div>
                                  </div>
                               <h4 class="mt-3">Contact Information</h4>
@@ -99,26 +101,26 @@
                                        <h6>Email</h6>
                                     </div>
                                     <div class="col-9">
-                                       <p class="mb-0">{{ $report->email }}</p>
+                                       <p class="mb-0">{{ $profile->email }}</p>
                                     </div>
                                     <div class="col-3">
                                        <h6>Nomor HP</h6>
                                     </div>
                                     <div class="col-9">
-                                       <p class="mb-0">{{ $report->phone }}</p>
+                                       <p class="mb-0">{{ $profile->phone }}</p>
                                     </div>
                                     <div class="col-3">
                                         <h6>Alamat</h6>
                                      </div>
                                      <div class="col-9">
-                                        <p class="mb-0">{{ $report->address }}</p>
+                                        <p class="mb-0">{{ $profile->address }}</p>
                                      </div>
                                  </div>
                               </div>
 
                               <div class="tab-pane fade" id="v-pills-details-tab" role="tabpanel" aria-labelledby="v-pills-details-tab">
                                  <h4 class="mb-3">Bio Saya</h4>
-                                 <p>{{ $report->bio }}</p>
+                                 <p>{{ $profile->bio }}</p>
                               </div>
                            </div>
                            @endforeach
@@ -136,24 +138,25 @@
                            <div class="tab-pane fade active show" id="photosofyou" role="tabpanel">
                               <div class="card-body p-0">
                                  <div class="d-grid gap-2 d-grid-template-1fr-13">
+                                    @foreach($posts as $post)
                                     <div class="">
                                        <div class="user-images position-relative overflow-hidden">
-                                          <a href="/postingan_profile">
-                                          <img src="/images/page-img/52.jpg" class="img-fluid rounded" alt="Responsive image">
+                                          <a href="{{ route('postingan.profile', ['id' => $post->id]) }}">
+                                          <img src="{{ $post->image }}" class="img-fluid rounded" alt="Responsive image">
                                           </a>
                                           <div class="image-hover-data">
                                              <div class="product-elements-icon">
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
-                                                   <li><a href="/like" class="pe-3 text-white"> 60 <i class="ri-thumb-up-line"></i> </a></li>
-                                                   <li><a href="/komen" class="pe-3 text-white"> 30 <i class="ri-chat-3-line"></i> </a></li>
-                                                   <li><a href="#" class="pe-3 text-white"><i class="ri-flag-line"></i> </a></li>
+                                                   <li><a href="/like" class="pe-3 text-white"> {{ $post->likes->count() }} <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="/komen" class="pe-3 text-white"> {{ $post->comments->count() }} <i class="ri-chat-3-line"></i> </a></li>
                                                 </ul>
                                              </div>
                                           </div>
-                                          <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Hapus Postingan"><i class="ri-delete-bin-6-line"></i></a>
+                                          <a href="deletePost/{{$post->id}}" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Hapus Postingan" onclick="return confirm('Yain ingin menghapus data?') "><i class="ri-delete-bin-6-line"></i></a>
                                        </div>
                                     </div>
-                                    <div class="">
+                                    @endforeach
+                                    <!-- <div class="">
                                        <div class="user-images position-relative overflow-hidden">
                                           <a href="/postingan_profile">
                                           <img src="/images/page-img/53.jpg" class="img-fluid rounded" alt="Responsive image">
@@ -169,8 +172,8 @@
                                           </div>
                                           <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Hapus Postingan"><i class="ri-delete-bin-6-line"></i></a>
                                        </div>
-                                    </div>
-                                    <div class="">
+                                    </div> -->
+                                    <!-- <div class="">
                                        <div class="user-images position-relative overflow-hidden">
                                           <a href="/postingan_profile">
                                           <img src="/images/page-img/54.jpg" class="img-fluid rounded" alt="Responsive image">
@@ -526,11 +529,11 @@
                                           </div>
                                           <a href="#" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit or Remove"><i class="ri-edit-2-fill"></i></a>
                                        </div>
-                                    </div>
+                                    </div> -->
                                  </div>
                               </div>
                            </div>
-                           <div class="tab-pane fade" id="your-photos" role="tabpanel">
+                           <!-- <div class="tab-pane fade" id="your-photos" role="tabpanel">
                               <div class="card-body p-0">
                                  <div class="d-grid gap-2 d-grid-template-1fr-13 ">
                                     <div class="">
@@ -688,7 +691,7 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
+                           </div> -->
                         </div>
                      </div>
                   </div>

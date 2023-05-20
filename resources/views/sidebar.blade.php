@@ -4,18 +4,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
     <title>Edifarm</title>
 
-    <link rel="shortcut icon" href="images/logo.png" />
-    <link rel="stylesheet" href="css/libs.min.css">
-    <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="vendor/remixicon/fonts/remixicon.css">
-    <link rel="stylesheet" href="vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
-    <link rel="stylesheet" href="vendor/font-awesome-line-awesome/css/all.min.css">
-    <link rel="stylesheet" href="vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-dYmLvC1rLz/rJksmDfCmOlk+ymMzfJxYYhX9lhHVQ0UyyB6lAg8bw/+Nz/pL0B5+5Ln03p5xkr06WZ0v/6/OYQ==" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
+    <link rel="stylesheet" href="{{ asset('css/libs.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/socialv.css?v=4.0.0') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/remixicon/fonts/remixicon.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/vanillajs-datepicker/dist/css/datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome-line-awesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-dYmLvC1rLz/rJksmDfCmOlk+ymMzfJxYYhX9lhHVQ0UyyB6lAg8bw/+Nz/pL0B5+5Ln03p5xkr06WZ0v/6/OYQ=="
+        crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    @stack('styles')
 
 </head>
 
@@ -74,7 +79,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body p-0 ">
-                                            <a href="/profile" class="iq-sub-card iq-bg-primary-hover">
+                                            <a href="{{ route('profile.user', ['id' => session('ids')]) }}" class="iq-sub-card iq-bg-primary-hover">
                                                 <div class="d-flex align-items-center">
                                                     <div class="rounded card-icon bg-soft-primary">
                                                         <i class="ri-file-user-line"></i>
@@ -119,6 +124,8 @@
     </div>
     </div>
     <!-- Wrapper End-->
+
+    @stack('scripts')
     <!-- Backend Bundle JavaScript -->
     <script src="js/libs.min.js"></script>
     <!-- slider JavaScript -->
@@ -131,7 +138,7 @@
     <script src="js/sweetalert.js"></script>
     <!-- app JavaScript -->
     <script src="js/charts/weather-chart.js"></script>
-    <script src="js/app.js"></script>
+    <script src="{{ asset('js/app.js')}}"></script>
     <script src="vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
     <script src="js/lottie.js"></script>
     @include('sweetalert::alert')
