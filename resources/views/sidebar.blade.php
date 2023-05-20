@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Edifarm</title>
 
-    <link rel="shortcut icon" href="images/EDIFARM.png" />
+    <link rel="shortcut icon" href="images/Logofix.png" />
     <link rel="stylesheet" href="css/libs.min.css">
     <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
     <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
@@ -26,7 +26,7 @@
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <div class="iq-navbar-logo d-flex justify-content-between">
                     <a href="postingan">
-                        <img src="/images/EDIFARM.png" class="img-fluid" alt="">
+                        <img src="/images/Logofix.png" class="img-fluid" alt="">
                         <span>Edifarm</span>
                     </a>
 

@@ -14200,7 +14200,7 @@ fieldset:disabled .btn {
 
 .iq-navbar-logo a span {
     font-family: Poppins, sans-serif;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: .625rem;
     font-size: 1.75rem;
     line-height: 2.813rem;
@@ -14223,7 +14223,7 @@ fieldset:disabled .btn {
 }
 
 .iq-navbar-logo img {
-    height: 5.813rem
+    height: 3.813rem
 }
 
 .iq-top-navbar .sub-drop {
