@@ -59,17 +59,19 @@
                     <div class="sign-in-from">
                         <h1 class="mb-0">Lupa Password</h1>
                         <p>Masukkan Email dan OTP disini untuk mengganti password anda.</p>
-                        <form class="mt-4" method="POST" action="/authLogin">
+                        <form method="POST" action="/otpSend" class="mt-4">
                         @csrf
-                        <div class="form-group">
+                            <div class="form-group div-to-hide">
                                 <label class="form-label" for="exampleInputEmail1">Email</label>
-                                <input type="text" name="email" class="form-control mb-0" id="exampleInputEmail1" placeholder="Masukkan email anda" required>
+                                <input type="text" name="email" class="form-control mb-0" value="{{ old('email') }}" placeholder="Masukkan email anda" >
                             </div>
+                            @if(session('success'))
                             <div class="form-group">
                                 <label class="form-label" for="exampleInputPassword1">OTP</label>
-                                <input type="password" name="otp" class="form-control mb-0" id="exampleInputPassword1" placeholder="Masukkan kode otp anda" required>
+                                <input type="text" name="otp" class="form-control mb-0" placeholder="Masukkan kode otp anda">
                             </div>
-                            <div class="d-inline-block w-100">
+                            @endif
+                            <div class="div-to-hide">
                                 <button type="submit" class="btn btn-primary float-end">Kirim</button>
                             </div>
                         </form>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Report;
 use App\Models\User;
+use App\Models\Comment;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -74,6 +75,7 @@ class BlogController extends Controller
     public function komen(Post $post)
     {
         $post->load('comments');
+        // return dd($post);
         return view('komen', compact('post'));
     }
 

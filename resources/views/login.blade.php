@@ -68,12 +68,12 @@
                         @csrf
                         <div class="form-group">
                                 <label class="form-label" for="exampleInputEmail1">Username</label>
-                                <input type="text" name="username" class="form-control mb-0" id="exampleInputEmail1" placeholder="Masukkan username anda" required>
+                                <input type="text" name="username" value="{{ old('username') }}"class="form-control mb-0" id="exampleInputEmail1" placeholder="Masukkan username anda" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="exampleInputPassword1">Password</label>
                                 <a href="/lupapassword" class="float-end">Lupa password?</a>
-                                <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Massukkan password anda" required>
+                                <input type="password" name="password" value="{{ old('password') }}" class="form-control mb-0" id="exampleInputPassword1" placeholder="Massukkan password anda" required>
                             </div>
                             <div class="d-inline-block w-100">
                                 <button type="submit" class="btn btn-primary float-end">Masuk</button>
