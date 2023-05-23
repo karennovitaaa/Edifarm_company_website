@@ -27,15 +27,9 @@
               <nav class="navbar navbar-expand-lg navbar-light p-0">
                   <div class="iq-navbar-logo d-flex justify-content-between">
                       <a href="../dashboard/index.html">
-                          <img src="/images/EDIFARM.png" class="img-fluid" alt="">
+                          <img src="/images/Logofix.png" class="img-fluid" alt="">
                           <span>Edifarm</span>
                       </a>
-                  </div>
-                  <div class="iq-search-bar device-search">
-                      <form action="#" class="searchbox">
-                        <input type="text" class="text search-input" placeholder="Search here...">
-                          <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                      </form>
                   </div>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                       data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -82,8 +76,7 @@
                                               </div>
                                           </a>
                                           <div class="d-inline-block w-100 text-center p-3">
-                                              <a class="btn btn-primary iq-sign-btn" href="/login" role="button">Log
-                                                  out<i class="ri-login-box-line ms-2"></i></a>
+                                              <a class="btn btn-primary iq-sign-btn" href="/login" role="button">Keluar<i class="ri-login-box-line ms-2"></i></a>
                                           </div>
                                       </div>
                                   </div>

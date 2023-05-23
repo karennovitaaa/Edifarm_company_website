@@ -98,7 +98,7 @@ class BlogController extends Controller
         return redirect('/komen/'.$validated['post_id']);
     }
 
-    
+
 
     public function like()
     {
@@ -133,7 +133,7 @@ class BlogController extends Controller
             return back()->with('toast_error', 'anda tidak dapat menghapus postingan orang lain')->withInput();
         }
 
-        
+
     }
 
     public function profileup(Request $request, $id)
@@ -196,7 +196,7 @@ class BlogController extends Controller
         $user->updateOrFail([
             'password' => bcrypt($validated['npassword'])
         ]);
-        return redirect('login')->with('toast_success', 'Ubah Password Berhasil! Silahkan melaukan login ulang');
+        return redirect('login')->with('toast_success', 'Ubah Password Berhasil! Silahkan melakukan login ulang');
     }
 
     public function postup(Request $request)

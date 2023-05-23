@@ -103,8 +103,7 @@
                                                 </div>
                                             </a>
                                             <div class="d-inline-block w-100 text-center p-3">
-                                                <a class="btn btn-primary iq-sign-btn" href="/logout" role="button">Log
-                                                    out<i class="ri-login-box-line ms-2"></i></a>
+                                                <a class="btn btn-primary iq-sign-btn" href="/login" role="button">Keluar<i class="ri-login-box-line ms-2"></i></a>
                                             </div>
                                         </div>
                                     </div>

@@ -89,8 +89,8 @@
                                                 <textarea class="form-control" name="bio" rows="5" style="line-height: 22px;">{{ $report->bio }}</textarea>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
-                                        <button type="reset" class="btn bg-soft-danger">Cancle</button>
+                                        <button type="submit" class="btn btn-primary me-2">Simpan</button>
+                                        <button type="reset" class="btn bg-soft-danger">Batal</button>
                                     </form>
                                 </div>
                                 @endforeach
@@ -100,27 +100,26 @@
                             <div class="card">
                                 <div class="card-header d-flex justify-content-between">
                                 <div class="iq-header-title">
-                                    <h4 class="card-title">Change Password</h4>
+                                    <h4 class="card-title">Ganti Password</h4>
                                 </div>
                                 </div>
                                 <div class="card-body">
                                 <form action="{{ url('passwordup') }}" method="post">
                                 @csrf
                                     <div class="form-group">
-                                        <label for="cpass" class="form-label">Current Password:</label>
-                                        <a href="#" class="float-end">Forgot Password</a>
+                                        <label for="cpass" class="form-label">Password Lama:</label>
                                         <input type="Password" name="cpassword" class="form-control" id="cpass" value="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="npass" class="form-label">New Password:</label>
+                                        <label for="npass" class="form-label">Password Baru:</label>
                                         <input type="Password" name="npassword" class="form-control" id="npass" value="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="vpass" class="form-label">Verify Password:</label>
+                                        <label for="vpass" class="form-label">Konfirmasi Password:</label>
                                         <input type="Password" name="vpassword" class="form-control" id="vpass" value="">
                                     </div>
-                                    <button type="submit" class="btn btn-primary me-2">Submit</button>
-                                    <button type="reset" class="btn bg-soft-danger">Cancle</button>
+                                    <button type="submit" class="btn btn-primary me-2">Simpan</button>
+                                    <button type="reset" class="btn bg-soft-danger">Batal</button>
                                 </form>
                                 </div>
                             </div>

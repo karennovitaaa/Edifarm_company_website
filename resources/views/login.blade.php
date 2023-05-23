@@ -50,6 +50,11 @@
                                     <h4 class="mb-1 text-white">Buat Aktivitas Baru</h4>
                                     <p>Cara untuk memulai adalah dengan berhenti berbicara dan mulai melakukan.</p>
                                 </li>
+                                <li class="swiper-slide">
+                                    <img src="images/login/petani1.jpg" class="img-fluid mb-4" alt="logo">
+                                    <h4 class="mb-1 text-white">Pecahkan Masalah Tanaman</h4>
+                                    <p>Pecahkan Masalahmu seputar pertanian dengan ruang diskusi pada aplikasi kami.</p>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -67,14 +72,14 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="exampleInputPassword1">Password</label>
-                                <a href="/lupapassword" class="float-end">Forgot password?</a>
+                                <a href="/lupapassword" class="float-end">Lupa password?</a>
                                 <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Massukkan password anda" required>
                             </div>
                             <div class="d-inline-block w-100">
                                 <button type="submit" class="btn btn-primary float-end">Masuk</button>
                             </div>
                             <div class="sign-info">
-                                <span class="dark-color d-inline-block line-height-2">Anda tidak memiliki akun? <a href="register">Register</a></span>
+                                <span class="dark-color d-inline-block line-height-2">Anda tidak memiliki akun? <a href="register">Daftar</a></span>
                             </div>
                         </form>
                     </div>
