@@ -147,7 +147,7 @@
                                           <div class="image-hover-data">
                                              <div class="product-elements-icon">
                                                 <ul class="d-flex align-items-center m-0 p-0 list-inline">
-                                                   <li><a href="/like" class="pe-3 text-white"> {{ $post->likes->count() }} <i class="ri-thumb-up-line"></i> </a></li>
+                                                   <li><a href="/like" class="pe-3 text-white"> {{ $post->likes->count() }} <i class="ri-heart-3-line"></i> </a></li>
                                                    <li><a href="/komen" class="pe-3 text-white"> {{ $post->comments->count() }} <i class="ri-chat-3-line"></i> </a></li>
                                                 </ul>
                                              </div>

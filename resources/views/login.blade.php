@@ -7,7 +7,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Edifarm</title>
 
-      <link rel="shortcut icon" href="images/EDIFARM.png" />
+      <link rel="shortcut icon" href="images/Logofix.png" />
       <link rel="stylesheet" href="css/libs.min.css">
       <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
       <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
@@ -35,7 +35,7 @@
                         <a class="sign-in-logo mb-5" href="#"><img src="images/logo_baru2.png" class="img-fluid" alt="logo"></a>
                         <div class="sign-slider overflow-hidden ">
                             <ul  class="swiper-wrapper list-inline m-0 p-0 ">
-                                <li class="swiper-slide">   
+                                <li class="swiper-slide">
                                 <img src="images/login/tani1.jpeg" class="img-fluid mb-4" alt="logo">
                                     <h4 class="mb-1 text-white">Temukan Teman Baru</h4>
                                     <p>Belum terlambat untuk mengembangkan persahabatan baru atau berhubungan kembali dengan orang-orang.</p>

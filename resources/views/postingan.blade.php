@@ -38,7 +38,7 @@
                     <div class="modal-dialog   modal-fullscreen-sm-down">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="post-modalLabel">Create Post</h5>
+                                <h5 class="modal-title" id="post-modalLabel">Tambah Postingan</h5>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
                                         class="ri-close-fill"></i></button>
                             </div>
@@ -60,7 +60,7 @@
                                             <input class="" type="file" name="image">
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary d-block w-100 mt-3">Post</button>
+                                    <button type="submit" class="btn btn-primary d-block w-100 mt-3">Unggah</button>
                                 </form>
                             </div>
                         </div>
@@ -69,8 +69,8 @@
             </div>
 
             @livewire('post-like')
-                
-            <button class="welcome-modal-btn">
+
+            <button id="scrollToTopBtn" class="welcome-modal-btn">
                 <a href="postingan"><i class="fas fa-arrow-up"></i></a>
             </button>
             <!-- Wrapper End-->

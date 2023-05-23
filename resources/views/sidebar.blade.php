@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
- 
+
     <title>Edifarm</title>
 
-    <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/Logofix.png') }}">
     <link rel="stylesheet" href="{{ asset('css/libs.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/socialv.css?v=4.0.0') }}">
     <link rel="stylesheet" href="{{ asset('vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
@@ -37,9 +37,9 @@
 
                 </div>
                 <div class="iq-search-bar device-search">
-                    <form action="#" class="searchbox">
-                        <input type="text" class="text search-input" placeholder="Search here...">
-                        <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                    <form method="GET"action="#" class="searchbox">
+                        <input type="text" name="search" class="text search-input" placeholder="Search here...">
+                        <button type= "submit" class="search-link" style="height:0px;width:0px;margin-right:10px;"><i class="ri-search-line"></i></button>
                     </form>
                 </div>
                 </button>
@@ -56,7 +56,7 @@
                             </form>
                         </li>
                         <li>
-                            <a href="/profile" class="d-flex align-items-center">
+                            <a href="{{ route('profile.user', ['id' => session('ids')]) }}" class="d-flex align-items-center">
                                 <img src="images/profileijo.png" class="profile">
                             </a>
                         </li>
