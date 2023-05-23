@@ -63,11 +63,11 @@
                         @csrf
                         <div class="form-group">
                                 <label class="form-label" for="exampleInputEmail1">Email</label>
-                                <input type="text" name="email" class="form-control mb-0" id="exampleInputEmail1" placeholder="Enter username" required>
+                                <input type="text" name="email" class="form-control mb-0" id="exampleInputEmail1" placeholder="Masukkan email anda" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="exampleInputPassword1">OTP</label>
-                                <input type="password" name="otp" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" required>
+                                <input type="password" name="otp" class="form-control mb-0" id="exampleInputPassword1" placeholder="Masukkan kode otp anda" required>
                             </div>
                             <div class="d-inline-block w-100">
                                 <button type="submit" class="btn btn-primary float-end">Kirim</button>
