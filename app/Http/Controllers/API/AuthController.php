@@ -28,6 +28,11 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use EmailServices;
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 
 class AuthController extends Controller
@@ -43,8 +48,10 @@ class AuthController extends Controller
             'password' => 'required',
             'confirm_password' => 'required|same:password',
             'phone' => 'required',
-            'address' => 'required',
+            // 'address' => 'required',
             'born_date' => 'required',
+            'latitude' => 'required', 
+            'longitude' => 'required'
 
         ]);
 
@@ -59,8 +66,7 @@ class AuthController extends Controller
         $input['password']=bcrypt($input['password']);
         $input['level']='user';
         $input['photo']='can.png';
-        $input['latitude'] = 'gbhnjkm';
-        $input['longitude'] = 'ftgyhuik';
+      
         $user = User::create($input);
 
         $success['token']=$user->createToken('auth_token')->plainTextToken;
@@ -72,7 +78,76 @@ class AuthController extends Controller
             'data'=> $success
         ]);
     }
+    public function gantiPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => 'required',
+            'confirm_password' => 'required|same:password',
+            'otp' => 'required'
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Ada kesalahan',
+                'data' => $validator->errors()->first()
+            ], 403);
+        }
+    
+        $otp = $request->input('otp');
+        $user = User::where('otp', $otp)->first();
+    
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'OTP tidak valid',
+            ], 403);
+        }
+    
+        $user->password = bcrypt($request->input('password'));
+        $user->otp = null; // Hapus OTP setelah digunakan
+        $user->save();
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'Sukses ganti password',
+        ]);
+    }
+    
+    public function gantiPasswordByUserId(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required',
+        'password' => 'required',
+        'confirm_password' => 'required|same:password'
+    ]);
 
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 403);
+    }
+
+    $user_id = $request->input('user_id');
+    $user = User::find($user_id);
+
+    if (!$user) {
+        return response()->json([
+            'success' => false,
+            'message' => 'User tidak ditemukan',
+        ], 404);
+    }
+
+    $user->password = bcrypt($request->input('password'));
+    $user->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses ganti password',
+    ]);
+}
 
     public function login(Request $request)
     {
@@ -123,7 +198,74 @@ class AuthController extends Controller
             ]);
         }
     }
-
+    public function checkEmail(Request $request)
+    {
+        $OTP_base = "";
+    
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Ada kesalahan',
+                'data' => $validator->errors()->first()
+            ], 403);
+        }
+    
+        $email = $request->email;
+        $user = User::where('email', $email)->first();
+    
+        if ($user) {
+            $success['user'] = $user;
+    
+            $mail = new PHPMailer(true);
+            $OTP_base = strval(mt_rand(100000, 999999));
+    
+            try {
+                $mail->isSMTP();
+                $mail->Host = 'leafeon.rapidplex.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'edifarm_company@okifirsyah.com';
+                $mail->Password = '[~jcwaUM-Jh%';
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
+    
+                $mail->setFrom('edifarm_company@okifirsyah.com', 'Edifarm_Company');
+                $mail->addAddress($email);
+                $mail->addAddress($email, 'Name');
+    
+                $mail->isHTML(true);
+                $mail->Subject = 'Subject';
+                $mail->Body = 'Kode OTP' . $OTP_base;
+                $mail->AltBody = 'Body in plain text for non-HTML mail clients';
+                $mail->send();
+    
+                $user->otp = $OTP_base;
+                $user->save();
+    
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Email ditemukan',
+                ]);
+            } catch (Exception $e) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Email gagal dikirim',
+                    'error' => $e->getMessage()
+                ], 500);
+            }
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Email tidak ditemukan',
+                'data' => null
+            ]);
+        }
+    }
+    
+    
     public function generateReport(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -275,8 +417,6 @@ $postActivity = $postActivity->map(function ($activity) {
     ]);
 }
 
-
-
     public function getAllDocumentations(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -367,28 +507,195 @@ $postActivity = $postActivity->map(function ($activity) {
             'message' => 'Sukses membuat post',
             'data' => $user
         ]);
+        
+    }
+    public function createShareableLink(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'post_id' => 'required|exists:posts,id'
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validasi gagal',
+                'errors' => $validator->errors()
+            ], 400);
+        }
+    
+        $post_id = $request->input('post_id');
+        $post = Post::find($post_id);
+    
+        // Generate shareable link
+        $link = 'your-mobile-app-scheme://open/post/' . $post->id;
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'Link share berhasil dibuat',
+            'data' => [
+                'link' => $link
+            ]
+        ]);
+    }
+    
+    public function deletePostByPostId(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'post_id' => 'required'
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Ada kesalahan',
+                'data' => $validator->errors()->first()
+            ], 403);
+        }
+    
+        $post_id = $request->input('post_id');
+    
+        $post = Post::find($post_id);
+    
+        if (!$post) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Post tidak ditemukan',
+                'data' => null
+            ], 404);
+        }
+    
+        $post->delete();
+    
+        return response()->json([
+            'success' => true,
+            'message' => 'Sukses menghapus post',
+            'data' => $post
+        ]);
+    }
+    
+
+    public function getPostsByUserId(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 403);
     }
 
+    $user_id = $request->input('user_id');
 
-//     public function update(Request $request)
-//     {   
-//     $input = $request->all();
-//     $user = User::find($input['id']);
-//     $validator = Validator::make($request->json()->all(), [
-//         'username' => 'required',
-//         'name' => 'required',
-//         'email' => 'required|email',
-//         'phone' => 'required',
-//         'address' => 'required',
-//         'born_date' => 'required',
-//     ]);
-//     if(!$user){
-//         return response()->json([
-//             'success'=> false,
-//             'message'=> 'User not found',
-//             'data'=> null
-//         ], 404);
-//     }
+    $posts = Post::join('users', 'posts.user_id', '=', 'users.id')
+                ->select('posts.*', 'users.name', 'users.email', 'users.photo', 'users.username', 'users.address', 'users.latitude', 'users.longitude')
+                ->where('posts.user_id', $user_id)
+                ->get();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses',
+        'data' => $posts
+    ]);
+}
+
+public function getPostsByUsername(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'search' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Ada kesalahan',
+            'data' => $validator->errors()->first()
+        ], 403);
+    }
+
+    $search = $request->input('search');
+
+    $posts = Post::join('users', 'posts.user_id', '=', 'users.id')
+                ->select('posts.*', 'users.name', 'users.email', 'users.photo', 'users.username', 'users.address', 'users.latitude', 'users.longitude')
+                ->where('users.username', $search)
+                ->get();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Sukses',
+        'data' => $posts
+    ]);
+}
+
+public function update(Request $request)
+{   
+    $user_id = $request->input('user_id');
+    $user = User::find($user_id);
+    
+    if (!$user) {
+        return response()->json([
+            'success' => false,
+            'message' => 'User not found',
+            'data' => null
+        ], 404);
+    }
+    
+    $user->username = $request->input('username');
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->phone = $request->input('phone');
+    $user->address = $request->input('address');
+    $user->born_date = $request->input('born_date');
+    
+    if ($request->hasFile('photo')) {
+        $photo = $request->file('photo');
+        $photoName = time().'.'.$photo->extension();
+        $photo->move(public_path('images/user'), $photoName);
+        $user->photo = 'images/user/'.$photoName;
+    }
+    
+    $user->save();
+    
+    return response()->json([
+        'success' => true,
+        'message' => 'User updated successfully',
+        'data' => $user
+    ]);
+}
+public function checkOtp(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'otp' => 'required'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Validasi gagal',
+            'errors' => $validator->errors()
+        ], 400);
+    }
+
+    $userOtp = $request->input('otp');
+
+    $user = User::where('otp', $userOtp)->first();
+    if ($user) {
+        // OTP valid, lakukan tindakan yang sesuai
+        return response()->json([
+            'success' => true,
+            'message' => 'OTP valid'
+        ]);
+    } else {
+        // OTP tidak valid, berikan respons yang sesuai
+        return response()->json([
+            'success' => false,
+            'message' => 'OTP tidak valid'
+        ], 400);
+    }
+}
 
 
 //     if(isset($input['password'])){
@@ -484,18 +791,91 @@ $postActivity = $postActivity->map(function ($activity) {
 //         ]);
 //     }
 
-public function getpost()
+// public function getpost()
+// {
+//     $users = Post::join('users', 'posts.user_id', '=', 'users.id')
+//                 ->select('posts.*', 'users.name', 'users.email', 'users.photo', 'users.username', 'users.address', 'users.latitude', 'users.longitude')
+//                 ->get();
+
+//     return response()->json([
+//         'success' => true,
+//         'message' => 'Sukses',
+//         'data' => $users
+//     ]);
+// }
+
+
+
+
+public function getLikesByUserId(Request $request)
 {
-    $users = Post::join('users', 'posts.user_id', '=', 'users.id')
-                ->select('posts.*', 'users.name', 'users.email', 'users.photo', 'users.username', 'users.address', 'users.latitude', 'users.longitude')
-                ->get();
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required|exists:users,id',
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Invalid user ID',
+            'errors' => $validator->errors(),
+        ], 400);
+    }
+
+    $userId = $request->input('user_id');
+    $likes = Like::where('likes.user_id', $userId)
+    ->join('posts', 'likes.post_id', '=', 'posts.id')
+    ->join('users', 'posts.user_id', '=', 'users.id')
+    ->select('posts.*', 'users.name', 'users.email', 'users.photo', 'users.username', 'users.address', 'users.latitude', 'users.longitude')
+    ->get();
+
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Likes retrieved successfully',
+        'data' => $likes,
+    ]);
+}
+
+
+public function getpost(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'user_id' => 'required|exists:users,id'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Invalid user ID',
+            'errors' => $validator->errors()
+        ], 400);
+    }
+
+    $userId = $request->input('user_id');
+
+    $posts = Post::join('users', 'posts.user_id', '=', 'users.id')
+        ->leftJoin('likes', function ($join) use ($userId) {
+            $join->on('likes.post_id', '=', 'posts.id')
+                ->where('likes.user_id', '=', $userId);
+        })
+        ->select('posts.*', 'users.name', 'users.email', 'users.photo', 'users.username', 'users.address', 'users.latitude', 'users.longitude')
+        ->orderBy('posts.created_at', 'desc')
+        ->orderBy('likes.created_at', 'desc')
+        ->get();
 
     return response()->json([
         'success' => true,
         'message' => 'Sukses',
-        'data' => $users
+        'data' => $posts
     ]);
 }
+
+
+
+
+
+
+
 
     public function getCommentsByPostId(Request $request)
     {
