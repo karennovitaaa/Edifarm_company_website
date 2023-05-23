@@ -30,7 +30,6 @@ return new class extends Migration
             $table->enum('level', ['admin', 'user']);
             $table->string('otp', 20)->nullable();
             $table->timestamps();
-
         });
     }
 
