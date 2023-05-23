@@ -57,20 +57,21 @@
 
                 <div class="col-md-6 bg-white pt-5 pt-5 pb-lg-0 pb-5">
                     <div class="sign-in-from">
-                        <h1 class="mb-0">Sign in</h1>
-                        <p>Enter your email address and password to access admin panel.</p>
+                        <h1 class="mb-0">Masuk</h1>
+                        <p>Masukkan Username dan Password anda untuk menggunakan aplikasi kami.</p>
                         <form class="mt-4" method="POST" action="/authLogin">
                         @csrf
                         <div class="form-group">
                                 <label class="form-label" for="exampleInputEmail1">Username</label>
-                                <input type="text" name="username" class="form-control mb-0" id="exampleInputEmail1" placeholder="Enter username" required>
+                                <input type="text" name="username" class="form-control mb-0" id="exampleInputEmail1" placeholder="Masukkan username anda" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="exampleInputPassword1">Password</label>
-                                <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Password" required>
+                                <a href="/lupapassword" class="float-end">Forgot password?</a>
+                                <input type="password" name="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="Massukkan password anda" required>
                             </div>
                             <div class="d-inline-block w-100">
-                                <button type="submit" class="btn btn-primary float-end">Log In</button>
+                                <button type="submit" class="btn btn-primary float-end">Masuk</button>
                             </div>
                             <div class="sign-info">
                                 <span class="dark-color d-inline-block line-height-2">Anda tidak memiliki akun? <a href="register">Register</a></span>
@@ -78,7 +79,7 @@
                         </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>

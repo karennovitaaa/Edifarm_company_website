@@ -59,8 +59,8 @@
                     </div>
                     <div class="col-md-6 bg-white pt-5 pt-5 pb-lg-0 pb-5" >
                         <div class="sign-in-from">
-                            <h1 class="mb-0">Register</h1>
-                            <p>Masukkan data email anda untuk mengakses website.</p>
+                            <h1 class="mb-0">Daftar</h1>
+                            <p>Daftarkan akun anda untuk menggunakan aplikasi kami..</p>
                             <form class="mt-0" method="POST" action="/authRegist">
                                 @csrf
                                 <div class="form-group">
@@ -103,11 +103,11 @@
                                         <label class="form-check-label" for="customCheck1">Saya menyetujui <a
                                                 href="#">Syarat dan Ketentuan </a></label>
                                     </div>
-                                    <button type="submit" class="btn btn-primary float-end">Register</button>
+                                    <button type="submit" class="btn btn-primary float-end">Daftar</button>
 
                                     <div class="sign-info">
                                         <span class="dark-color d-inline-block line-height-2">Anda sudah memiliki akun?
-                                            <a href="login">Log In</a></span>
+                                            <a href="login">Masuk</a></span>
                                     </div>
                                 </div>
                             </form>

@@ -38,3 +38,9 @@ Route::get('/tentang', function () {
 Route::get('/', function () {
     return view('landingpage');
 });
+Route::get('/lupapassword', function () {
+    return view('lupapassword');
+});
+Route::get('/kirimotp', function () {
+    return view('kirimotp');
+});

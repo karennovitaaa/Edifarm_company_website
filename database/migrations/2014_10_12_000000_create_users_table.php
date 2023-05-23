@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('longitude')->nullable();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('otp');
             $table->enum('level', ['admin', 'user']);
             $table->string('otp', 20)->nullable();
             $table->timestamps();

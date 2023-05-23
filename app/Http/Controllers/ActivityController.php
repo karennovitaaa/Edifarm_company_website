@@ -75,7 +75,7 @@ class ActivityController extends Controller
     public function logout()
     {
         session()->flush();
-        return view('/');
+        return view('login');
     }
     public function loginPage()
     {
