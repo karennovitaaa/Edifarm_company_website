@@ -43,7 +43,7 @@
                                                 <img class="profile-pic" src="{{ $report->photo }}" alt="profile-pic">
                                                 <div class="p-image">
                                                     <i class="ri-pencil-line upload-button text-white"></i>
-                                                    <input class="file-upload" name="photo" type="file" value="{{ $report->photo }}"/>
+                                                    <input class="file-upload" name="photo" type="file"/>
                                                 </div>
                                                 </div>
                                             </div>

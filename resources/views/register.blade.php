@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Edifarm</title>
 
-    <link rel="shortcut icon" href="images/EDIFARM.png" />
+    <link rel="shortcut icon" href="images/Logofix.png" />
     <link rel="stylesheet" href="css/libs.min.css">
     <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
     <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 bg-white pt-5 pt-5 pb-lg-0 pb-5">
+                    <div class="col-md-6 bg-white pt-5 pt-5 pb-lg-0 pb-5" >
                         <div class="sign-in-from">
                             <h1 class="mb-0">Register</h1>
                             <p>Masukkan data email anda untuk mengakses website.</p>

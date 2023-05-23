@@ -33,24 +33,39 @@ class UserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
         ]);
-
         User::create([
-            'username' => 'wishal123',
-                'name' => 'wishal',
+            'username' => 'user',
+                'name' => 'User',
                 'gender' => 'Laki-laki',
-                'photo' => 'wishal.jpg',
-                'address' => 'Jember',
+                'photo' => 'images\profile.png',
+                'address' => 'Jalan user',
                 'phone' => '1234567890',
                 'born_date' => '1990-01-01',
-                'bio' => 'halo dek',
+                'bio' => 'Bio user',
                 'latitude' => null,
                 'longitude' => null,
-                'email' => 'wishal123@gmail.com',
+                'email' => 'user@example.com',
                 'password' => bcrypt('123'),
                 'level' => 'user',
                 'created_at' => now(),
                 'updated_at' => now(),
         ]);
-
+        User::create([
+            'username' => 'monalisa',
+                'name' => 'Monalisa',
+                'gender' => 'Laki-laki',
+                'photo' => 'images\profile.png',
+                'address' => 'Jalan user',
+                'phone' => '1234567890',
+                'born_date' => '1990-01-01',
+                'bio' => 'Bio user',
+                'latitude' => null,
+                'longitude' => null,
+                'email' => 'monalisa@example.com',
+                'password' => bcrypt('123'),
+                'level' => 'user',
+                'created_at' => now(),
+                'updated_at' => now(),
+        ]);
     }
 }

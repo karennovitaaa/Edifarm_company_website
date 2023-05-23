@@ -880,27 +880,43 @@ var like = document.querySelector('.like-data');
 like.addEventListener('click', function() {
   like.classList.toggle('active'); /* menambah/menghapus class "active" */
 });
+// const likeButtons = document.querySelectorAll('.like-btn');
+// likeButtons.forEach(function(button) {
+//   button.addEventListener('click', function() {
+//     const icon = this.querySelector('i');
+//     icon.classList.toggle('far');
+//     icon.classList.toggle('fas');
+
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('POST', '/suka/{{ $post->id }}');
+//   });
+// });
 const likeButtons = document.querySelectorAll('.like-btn');
+
 likeButtons.forEach(function(button) {
-  button.addEventListener('click', function() {
-    const icon = this.querySelector('i');
-    icon.classList.toggle('far');
-    icon.classList.toggle('fas');
-  });
-});
+   button.addEventListener('click', function() {
+      const postId = this.dataset.postId;
+      const icon = this.querySelector('i');
 
-// Mendeteksi scroll dan menampilkan tombol scroll ke atas ketika posisi scroll melewati ambang batas tertentu
-window.addEventListener('scroll', function() {
-    var scrollToTopBtn = document.getElementById('scrollToTopBtn');
-    if (window.pageYOffset > 100) { // Ambang batas scroll
-        scrollToTopBtn.style.display = 'block';
-    } else {
-        scrollToTopBtn.style.display = 'none';
-    }
-});
-
-// Menjalankan animasi scroll ke atas ketika tombol di klik
-document.getElementById('scrollToTopBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Mengirim permintaan Ajax ke controller Laravel
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/like/4", true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onload = function() {
+         if (xhr.status === 200) {
+            // Mengubah class ikon sesuai dengan respon dari server
+            const response = JSON.parse(xhr.responseText);
+            if (response.liked) {
+               icon.classList.remove('far');
+               icon.classList.add('fas');
+            } else {
+               icon.classList.remove('fas');
+               icon.classList.add('far');
+            }
+         } else {
+            console.error('Terjadi kesalahan. Status: ' + xhr.status);
+         }
+      };
+      xhr.send();
+   });
 });

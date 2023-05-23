@@ -4,18 +4,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>Edifarm</title>
 
-    <link rel="shortcut icon" href="images/EDIFARM.png" />
-    <link rel="stylesheet" href="css/libs.min.css">
-    <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="vendor/remixicon/fonts/remixicon.css">
-    <link rel="stylesheet" href="vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
-    <link rel="stylesheet" href="vendor/font-awesome-line-awesome/css/all.min.css">
-    <link rel="stylesheet" href="vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-dYmLvC1rLz/rJksmDfCmOlk+ymMzfJxYYhX9lhHVQ0UyyB6lAg8bw/+Nz/pL0B5+5Ln03p5xkr06WZ0v/6/OYQ==" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="{{ asset('images/Logofix.png') }}">
+    <link rel="stylesheet" href="{{ asset('css/libs.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/socialv.css?v=4.0.0') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/remixicon/fonts/remixicon.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/vanillajs-datepicker/dist/css/datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome-line-awesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-dYmLvC1rLz/rJksmDfCmOlk+ymMzfJxYYhX9lhHVQ0UyyB6lAg8bw/+Nz/pL0B5+5Ln03p5xkr06WZ0v/6/OYQ=="
+        crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    @stack('styles')
 
 </head>
 
@@ -26,16 +31,17 @@
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <div class="iq-navbar-logo d-flex justify-content-between">
                     <a href="postingan">
-                        <img src="/images/EDIFARM.png" class="img-fluid" alt="">
+                        <img src="/images/Logofix.png" class="img-fluid" alt="">
                         <span>Edifarm</span>
                     </a>
 
                 </div>
                 <div class="iq-search-bar device-search">
-                    <form action="#" class="searchbox">
-                        <input type="text" class="text search-input" placeholder="Search here...">
-                        <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+
+                    <form class="searchbox">
+                        @livewire('search-dropdown')
                     </form>
+
                 </div>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -51,7 +57,7 @@
                             </form>
                         </li>
                         <li>
-                            <a href="/profile" class="d-flex align-items-center">
+                            <a href="{{ route('profile.user', ['id' => session('ids')]) }}" class="d-flex align-items-center">
                                 <img src="images/profileijo.png" class="profile">
                             </a>
                         </li>
@@ -74,7 +80,7 @@
                                             </div>
                                         </div>
                                         <div class="card-body p-0 ">
-                                            <a href="/profile" class="iq-sub-card iq-bg-primary-hover">
+                                            <a href="{{ route('profile.user', ['id' => session('ids')]) }}" class="iq-sub-card iq-bg-primary-hover">
                                                 <div class="d-flex align-items-center">
                                                     <div class="rounded card-icon bg-soft-primary">
                                                         <i class="ri-file-user-line"></i>
@@ -97,7 +103,7 @@
                                                 </div>
                                             </a>
                                             <div class="d-inline-block w-100 text-center p-3">
-                                                <a class="btn btn-primary iq-sign-btn" href="/login" role="button">Log
+                                                <a class="btn btn-primary iq-sign-btn" href="/logout" role="button">Log
                                                     out<i class="ri-login-box-line ms-2"></i></a>
                                             </div>
                                         </div>
@@ -119,6 +125,8 @@
     </div>
     </div>
     <!-- Wrapper End-->
+
+    @stack('scripts')
     <!-- Backend Bundle JavaScript -->
     <script src="js/libs.min.js"></script>
     <!-- slider JavaScript -->
@@ -131,7 +139,7 @@
     <script src="js/sweetalert.js"></script>
     <!-- app JavaScript -->
     <script src="js/charts/weather-chart.js"></script>
-    <script src="js/app.js"></script>
+    <script src="{{ asset('js/app.js')}}"></script>
     <script src="vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
     <script src="js/lottie.js"></script>
     <script src="js/scroll.js"></script>

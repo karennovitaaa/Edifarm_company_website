@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('start');
             $table->date('end');
             $table->enum('status', ['selesai', 'belum']);
+            $table->string('planting_report')->nullable();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

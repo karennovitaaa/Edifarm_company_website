@@ -12,10 +12,23 @@ use Validator;
 
 class BlogController extends Controller
 {
+    public function suka(Post $post)
+    {
+        $like = $post->like();
+        $user_id = auth()->id();
+
+        if ($like->count() > 0) {
+            $like->detach($user_id);
+            return redirect('postingan');
+        }
+
+        $like->attach($user_id);
+        return redirect('postingan');
+    }
+
     public function table()
     {
-        $users = User::where('level', 'user')->get();
-        //$datas = compact('users');
+        $users = User::where('level', 'user', )->get();
         return view('AdminTable', compact('users'));
     }
 
@@ -35,31 +48,32 @@ class BlogController extends Controller
 
     public function post()
     {
-        // $posts = DB::table('posts')->join('users', 'users.id', '=', 'posts.user_id')->orderBy('posts.id', 'DESC')->get();
-
-        $posts = Post::with('likes', 'user')->latest()->get();
-        // return var_dump($posts);
+        $posts = Post::with('likes', 'user', 'hasLike')->latest()->get();
+        // return dd($posts);
         return view('postingan', compact('posts'));
     }
 
-    public function profile()
+    public function profile(Request $request)
     {
-        $id = session('ids');
-        $reports = DB::table('users')->where('id', $id)->get();
-
-        return view('profile', compact('reports'));
+        $id = $request->id;
+        $user = User::with('posts')->where('users.id', $id)->get();
+        $posts = Post::with('likes', 'comments', 'user')->where('user_id', $id)->get();
+        return view('profile')->with(compact( 'posts','user'));
     }
 
-    public function postingan()
+    public function postingan(Request $request)
     {
-        return view('postingan_profile');
+        $id = $request->id;
+        // $posts = Post::with('likes', 'comments', 'user')->where('id', $id)->get();
+        // return dd($posts);
+        return view('postingan_profile', [
+            'pos' =>  Post::with('likes', 'comments', 'user')->where('id', $id)->get(),
+        ]);
     }
 
     public function komen(Post $post)
     {
         $post->load('comments');
-        // dd($post['comments']['0']['pivot']['comment']);
-
         return view('komen', compact('post'));
     }
 
@@ -84,21 +98,7 @@ class BlogController extends Controller
         return redirect('/komen/'.$validated['post_id']);
     }
 
-    public function suka(Post $post)
-    {
-        $like = $post->like();
-        $user_id = auth()->id();
-
-        if ($like->count() > 0) {
-            $like->detach($user_id);
-
-            return redirect('postingan');
-        }
-
-        $like->attach($user_id);
-
-        return redirect('postingan');
-    }
+    
 
     public function like()
     {
@@ -120,10 +120,26 @@ class BlogController extends Controller
         return redirect('/table');
     }
 
+    public function deletePost($id)
+    {
+        $blog = Post::where('id', $id)->where('user_id', session('ids'))->first();
+        //return dd($blog);
+        if ($blog) {
+            // Data blog ditemukan, lakukan tindakan yang sesuai
+            $blog->delete();
+            // Tambahkan pesan atau log jika diperlukan
+            return back()->with('toast_success', 'Berhasil menghapus data!');
+        } else {
+            return back()->with('toast_error', 'anda tidak dapat menghapus postingan orang lain')->withInput();
+        }
+
+        
+    }
+
     public function profileup(Request $request, $id)
     {
         request()->validate([
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($request->has('photo')) {
@@ -157,15 +173,15 @@ class BlogController extends Controller
             ]);
         }
 
-        $request->session()->put('nama', $request->name);
+        $request->session()->put('username', $request->username);
 
-        return redirect('/profile');
+        return redirect()->route('profile.user', ['id' => session('ids')]);
     }
 
     public function passwordup(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'cpassword' => 'required',
+            'cpassword' => 'required|current_password:web',
             'npassword' => 'required',
             'vpassword' => 'required|same:npassword',
         ]);
@@ -174,15 +190,13 @@ class BlogController extends Controller
             return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
         }
 
-        if (Auth::attempt(['password' => $request->cpassword])) {
-            return var_dump('lolos');
-            $blog = User::where('id', $id)->update([
-                'password' => bcrypt($request->npassword)]);
+        $validated = $validator->validated();
+        $user = auth()->user();
 
-            return redirect('table');
-        } else {
-            return var_dump($request->cpassword);
-        }
+        $user->updateOrFail([
+            'password' => bcrypt($validated['npassword'])
+        ]);
+        return redirect('login')->with('toast_success', 'Ubah Password Berhasil! Silahkan melaukan login ulang');
     }
 
     public function postup(Request $request)
