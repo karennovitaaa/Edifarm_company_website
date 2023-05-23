@@ -27,8 +27,18 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::post('/authLogin', [ActivityController::class, 'Login']);
 Route::post('/authRegist', [ActivityController::class, 'register']);
-Route::get('/login', [ActivityController::class, 'loginPage'])->name('login');
 
+Route::post('/otpSend', [ActivityController::class, 'otpSend']);
+Route::post('/otpValidation', [ActivityController::class, 'otpValidation']);
+Route::post('/changePassword', [ActivityController::class, 'changePassword']);
+
+Route::get('/login', [ActivityController::class, 'loginPage'])->name('login');
+Route::get('/OtpValidasi', function () {
+     return view('/ValidasiOtp');
+});
+Route::get('/ChangePassword', function () {
+    return view('/lupapassword');
+});
 Route::get('/register', function () {
     return view('/register');
 });

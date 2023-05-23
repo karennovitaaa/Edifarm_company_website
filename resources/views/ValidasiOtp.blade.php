@@ -58,18 +58,18 @@
                 <div class="col-md-6 bg-white pt-5 pt-5 pb-lg-0 pb-5">
                     <div class="sign-in-from">
                         <h1 class="mb-0">Lupa Password</h1>
-                        <p>Masukkan password baru anda dan konfirmasi password disini untuk mengganti password anda.</p>
-                        <form class="mt-4" method="POST" action="/changePassword">
+                        <p>Masukkan Email dan OTP disini untuk mengganti password anda.</p>
+                        <form method="POST" action="/otpValidation" class="mt-4">
                         @csrf
-                        <div class="form-group">
-                                <label class="form-label" for="exampleInputEmail1">Password</label>
-                                <input type="password" name="npassword" class="form-control mb-0" value="{{ old('npassword') }}" placeholder="Masukkan password anda" required>
+                            <div class="form-group div-to-hide">
+                                <label class="form-label" for="exampleInputEmail1">Email</label>
+                                <input type="text" name="email" class="form-control mb-0" readonly value="{{ session('Otp') }} {{ old('email') }}" >
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="exampleInputPassword1">Konfirmasi Password</label>
-                                <input type="password" name="vpassword" class="form-control mb-0" value="{{ old('vpassword') }}" placeholder="Masukkan kembali password anda " required>
+                                <label class="form-label" for="exampleInputPassword1">OTP</label>
+                                <input type="text" name="otp" class="form-control mb-0" value="{{ old('otp') }}" placeholder="Masukkan kode otp anda">
                             </div>
-                            <div class="d-inline-block w-100">
+                            <div class="div-to-hide">
                                 <button type="submit" class="btn btn-primary float-end">Kirim</button>
                             </div>
                         </form>

@@ -64,37 +64,37 @@
                             <form class="mt-0" method="POST" action="/authRegist">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" name="name" class="form-control mb-0"
+                                    <input type="text" name="name" value="{{ old('name') }}"class="form-control mb-0"
                                         id="exampleInputEmail1" placeholder="Nama Lengkap" required>
                                 </div>
                                 <div class="form-group">
                                     <!-- <label class="form-label" for="exampleInputEmail1">Your Username</label> -->
-                                    <input type="text" name="username" class="form-control mb-0"
+                                    <input type="text" name="username" value="{{ old('username') }}"class="form-control mb-0"
                                         id="exampleInputEmail1" placeholder="Username" required>
                                 </div>
                                 <div class="form-group">
                                     <!-- <label class="form-label" for="exampleInputEmail1">Your Phone Number</label> -->
-                                    <input type="number" name="phone" class="form-control mb-0"
+                                    <input type="number" name="phone" value="{{ old('phone') }}"class="form-control mb-0"
                                         id="exampleInputEmail1" placeholder="Nomor Telepon" required>
                                 </div>
                                 <div class="form-group">
                                     <!-- <label class="form-label" for="exampleInputEmail2">Email address</label> -->
-                                    <input type="email" name="email" class="form-control mb-0"
+                                    <input type="email" name="email" value="{{ old('email') }}"class="form-control mb-0"
                                         id="exampleInputEmail2" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
                                     <!-- <label class="form-label" for="exampleInputEmail2">Born Date</label> -->
-                                    <input type="date" name="born_date" class="form-control mb-0"
+                                    <input type="date" name="born_date" value="{{ old('born_date') }}"class="form-control mb-0"
                                         id="exampleInputEmail2" placeholder="Tanggal Lahir" required>
                                 </div>
                                 <div class="form-group">
                                     <!-- <label class="form-label" for="exampleInputPassword1">Password</label> -->
-                                    <input type="text" name="address" class="form-control mb-0"
+                                    <input type="text" name="address" value="{{ old('address') }}"class="form-control mb-0"
                                         id="exampleInputPassword1" placeholder="Alamat" required>
                                 </div>
                                 <div class="form-group">
                                     <!-- <label class="form-label" for="exampleInputPassword1">Confirm Password</label> -->
-                                    <input type="password" name="password" class="form-control mb-0"
+                                    <input type="password" name="password" value="{{ old('password') }}"class="form-control mb-0"
                                         id="exampleInputPassword1" placeholder="Password" required>
                                 </div>
                                 <div class="d-inline-block w-100">
