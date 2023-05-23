@@ -57,15 +57,18 @@ class BlogController extends Controller
     {
         $id = $request->id;
         $user = User::with('posts')->where('users.id', $id)->get();
-        $posts = Post::with('likes', 'comments')->where('user_id', $id)->get();
+        $posts = Post::with('likes', 'comments', 'user')->where('user_id', $id)->get();
         return view('profile')->with(compact( 'posts','user'));
     }
 
     public function postingan(Request $request)
     {
         $id = $request->id;
-        $posts = Post::with('likes', 'comments', 'user')->where('id', $id)->get();
-        return view('postingan_profile', compact('posts'));
+        // $posts = Post::with('likes', 'comments', 'user')->where('id', $id)->get();
+        // return dd($posts);
+        return view('postingan_profile', [
+            'pos' =>  Post::with('likes', 'comments', 'user')->where('id', $id)->get(),
+        ]);
     }
 
     public function komen(Post $post)

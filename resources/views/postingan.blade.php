@@ -5,7 +5,6 @@
 @endpush
 
 @section('content')
-{{-- @dd($posts[0]['user']['username']) --}}
     <div id="content-page" class="content-page">
         <div class="container">
             <div class="row">
@@ -70,7 +69,7 @@
 
             @livewire('post-like')
                 
-            <button class="welcome-modal-btn">
+            <button id="scrollToTopBtn" class="welcome-modal-btn">
                 <a href="postingan"><i class="fas fa-arrow-up"></i></a>
             </button>
             <!-- Wrapper End-->

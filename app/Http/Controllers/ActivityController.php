@@ -12,7 +12,7 @@ class ActivityController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'username' => 'unique:users,username',
+            'username' => 'unique:users,username' ,
             'name' => 'required',
             'email' => 'unique:users,email',
             'password' => 'required',
@@ -43,7 +43,7 @@ class ActivityController extends Controller
         return redirect('login')->with('toast_success', 'Registrasi Berhasil! Silahkan login dengan akun baru anda');
     }
 
-    public function login(Request $request)
+    public function Login(Request $request)
     {
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'level' => 'admin'])) {
             $auth = Auth::user();
@@ -72,9 +72,13 @@ class ActivityController extends Controller
         }
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        // $request->session()->flush();
+        session()->flush();
+        return view('/');
+    }
+    public function loginPage()
+    {
         return view('login');
     }
 }
