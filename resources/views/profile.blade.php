@@ -152,7 +152,11 @@
                                                 </ul>
                                              </div>
                                           </div>
-                                          <a href="deletePost/{{$post->id}}" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Hapus Postingan" onclick="return confirm('Yain ingin menghapus data?') "><i class="ri-delete-bin-6-line"></i></a>
+                                          @if(auth()->user()->id == $post->user->id)
+                                          <a href="deletePost/{{$post->id}}" class="image-edit-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Hapus Postingan" onclick="return confirm('Yain ingin menghapus data?') ">
+                                             <i class="ri-delete-bin-6-line"></i>
+                                          </a>
+                                          @endif
                                        </div>
                                     </div>
                                     @endforeach

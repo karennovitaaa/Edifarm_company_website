@@ -57,7 +57,7 @@
                                         <form class="comment-text d-flex2 align-items-center mt-3" action="/comment" method="POST">
                                             @csrf
                                             <input type="hidden" value="{{ $post->id }}" name="post_id">
-                                            {{-- <input type="hidden" value="{{ $post->id }}" name="post_id"> --}}
+                                            
                                             <input type="text" class="form-control rounded"
                                                 placeholder="Ketikkan komenmu disini..." name="comment">
                                             <div class="comment-attagement d-flex2">

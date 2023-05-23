@@ -37,10 +37,11 @@
 
                 </div>
                 <div class="iq-search-bar device-search">
-                    <form method="GET"action="#" class="searchbox">
-                        <input type="text" name="search" class="text search-input" placeholder="Search here...">
-                        <button type= "submit" class="search-link" style="height:0px;width:0px;margin-right:10px;"><i class="ri-search-line"></i></button>
+
+                    <form class="searchbox">
+                        @livewire('search-dropdown')
                     </form>
+
                 </div>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -102,7 +103,7 @@
                                                 </div>
                                             </a>
                                             <div class="d-inline-block w-100 text-center p-3">
-                                                <a class="btn btn-primary iq-sign-btn" href="/login" role="button">Log
+                                                <a class="btn btn-primary iq-sign-btn" href="/logout" role="button">Log
                                                     out<i class="ri-login-box-line ms-2"></i></a>
                                             </div>
                                         </div>

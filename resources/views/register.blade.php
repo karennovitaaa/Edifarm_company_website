@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 bg-white pt-5 pt-5 pb-lg-0 pb-5">
+                    <div class="col-md-6 bg-white pt-5 pt-5 pb-lg-0 pb-5" >
                         <div class="sign-in-from">
                             <h1 class="mb-0">Register</h1>
                             <p>Masukkan data email anda untuk mengakses website.</p>

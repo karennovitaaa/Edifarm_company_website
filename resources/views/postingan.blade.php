@@ -5,7 +5,6 @@
 @endpush
 
 @section('content')
-{{-- @dd($posts[0]['user']['username']) --}}
     <div id="content-page" class="content-page">
         <div class="container">
             <div class="row">

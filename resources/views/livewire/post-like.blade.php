@@ -62,9 +62,9 @@
                                         <li class="list-inline-item"><a href="/komen/{{ $post->id }}">{{ $post->comments->count() }} Komentar</a></li>
                                     </ul>
                                 </div>
+                                @if(auth()->user()->id != $post->user->id)
                                 <div class="total-comment-block">
                                     <button data-bs-toggle="modal" data-bs-target="#lapor-modal" style="background-color: white; color: black;"><i class="far fa-flag"></i></button>
-                                    
                                 </div>
                                 <div class="total-like-block ms-2 me-3">
                                     <ul class="list-inline mb-0">
@@ -75,6 +75,7 @@
                                         </form>
                                     </ul>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -94,7 +95,7 @@
                     <form wire:submit.prevent="store({{ $post->id }})" class="comment-text d-flex align-items-center mt-3">
                         <input wire:model.defer="body" type="text" class="form-control rounded" placeholder="Ketikkan keluhanmu disini..." required>
                         <div class="comment-attagement d-flex">
-                            <button type="submit" data-bs-dismiss="modal"><i class="far fa-paper-plane"></i></button>
+                            <button type="submit"><i class="far fa-paper-plane"></i></button>
                         </div>
                     </form>
                 </div>

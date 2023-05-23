@@ -6,15 +6,15 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Edifarm</title>
 
-      <link rel="shortcut icon" href="images/Logofix.png" />
+      <link rel="shortcut icon" href="{{ asset('images/Logofix.png') }}" />
       <!-- <link rel="stylesheet" href="css/libs.min.css"> -->
       <link rel="stylesheet" href="{{ asset('css/libs.min.css') }}">
-      <link rel="stylesheet" href="css/socialv.css?v=4.0.0">
-      <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/all.min.css">
-      <link rel="stylesheet" href="vendor/remixicon/fonts/remixicon.css">
-      <link rel="stylesheet" href="vendor/vanillajs-datepicker/dist/css/datepicker.min.css">
-      <link rel="stylesheet" href="vendor/font-awesome-line-awesome/css/all.min.css">
-      <link rel="stylesheet" href="vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+      <link rel="stylesheet" href="{{ asset('css/socialv.css?v=4.0.0') }}">
+      <link rel="stylesheet" href="{{ asset('vendor/@fortawesome/fontawesome-free/css/all.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('vendor/remixicon/fonts/remixicon.css') }}">
+      <link rel="stylesheet" href="{{ asset('vendor/vanillajs-datepicker/dist/css/datepicker.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('vendor/font-awesome-line-awesome/css/all.min.css') }}">
+      <link rel="stylesheet" href="{{ asset('vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css') }}">
       <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css"> -->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
@@ -22,8 +22,6 @@
   <body class="  ">
     <!-- Wrapper Start -->
     <div class="wrapper">
-
-
         <div class="iq-top-navbar">
           <div class="iq-navbar-custom">
               <nav class="navbar navbar-expand-lg navbar-light p-0">
@@ -96,10 +94,8 @@
               </nav>
           </div>
       </div>
-
         <div id="content-page" class="content-page">
             <div class="container">
-
                 <!-- bagian konten blog -->
                 @yield('content')
             </div>
@@ -122,20 +118,20 @@
           </div>
        </div>
     </footer>    <!-- Backend Bundle JavaScript -->
-    <script src="js/libs.min.js"></script>
+    <script src="{{ asset('js/libs.min.js') }}"></script>
     <!-- slider JavaScript -->
-    <script src="js/slider.js"></script>
+    <script src="{{ asset('js/slider.js') }}"></script>
     <!-- masonry JavaScript -->
-    <script src="js/masonry.pkgd.min.js"></script>
+    <script src="{{ asset('js/masonry.pkgd.min.js') }}"></script>
     <!-- SweetAlert JavaScript -->
-    <script src="js/enchanter.js"></script>
+    <script src="{{ asset('js/enchanter.js') }}"></script>
     <!-- SweetAlert JavaScript -->
-    <script src="js/sweetalert.js"></script>
+    <script src="{{ asset('js/sweetalert.js') }}"></script>
     <!-- app JavaScript -->
-    <script src="js/charts/weather-chart.js"></script>
-    <script src="js/app.js"></script>
-    <script src="vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script>
-    <script src="js/lottie.js"></script>
+    <script src="{{ asset('js/charts/weather-chart.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/lottie.js') }}"></script>
 
 
     <!-- offcanvas start -->

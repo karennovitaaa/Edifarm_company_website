@@ -54,6 +54,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6 bg-white pt-5 pt-5 pb-lg-0 pb-5">
                     <div class="sign-in-from">
                         <h1 class="mb-0">Sign in</h1>
@@ -77,6 +78,7 @@
                         </form>
                     </div>
                 </div>
+                
             </div>
         </div>
     </section>
